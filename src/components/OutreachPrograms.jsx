@@ -1,28 +1,36 @@
-
-
-
-
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import "animate.css";
+import { Slide, Zoom, Bounce, Flip, Rotate } from "react-awesome-reveal";
+import feed from '../Images/feed.png'
+import youth from '../Images/youth.png'
+import motherbaby from '../Images/motherbaby.png'
+import cloth from '../Images/cloth.png'
 
-/* ---------- LIGHT SECTION ---------- */
+/* ---------- SECTION ---------- */
 
 const OutreachSection = styled.section`
-  padding: 110px 20px;
-  background: #f8fafc;
-  text-align: center;
+  padding:110px 20px;
+  background:#f8fafc;
+  text-align:center;
 `;
 
 /* ---------- TITLE ---------- */
 
 const SectionTitle = styled.h2`
-  font-size: 2.8rem;
-  margin-bottom: 70px;
-
-  background: linear-gradient(90deg,#ff7e5f,#feb47b);
-  -webkit-background-clip:text;
+  font-size:2.8rem;
+  margin-bottom:70px;
+font-style:italic;
   color:transparent;
+
+background-image:linear-gradient(
+135deg,
+rgb(255,65,179),
+rgb(67,61,248)
+// rgb(47,161,104)
+);
+
+-webkit-background-clip:text;
+background-clip:text;
 `;
 
 /* ---------- GRID ---------- */
@@ -32,14 +40,12 @@ const Grid = styled.div`
   margin:auto;
 
   display:grid;
- grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:40px;
 
-@media(max-width:768px){
-  grid-template-columns:1fr; /* 1 per row on small screens */
-}
-
-
+  @media(max-width:768px){
+    grid-template-columns:1fr;
+  }
 `;
 
 /* ---------- FLOAT ANIMATION ---------- */
@@ -67,7 +73,7 @@ const Card = styled.div`
   }
 `;
 
-/* ---------- CARD IMAGE ---------- */
+/* ---------- IMAGE ---------- */
 
 const Image = styled.img`
   width:100%;
@@ -77,7 +83,7 @@ const Image = styled.img`
   animation:${float} 5s ease-in-out infinite;
 `;
 
-/* ---------- CARD CONTENT ---------- */
+/* ---------- CONTENT ---------- */
 
 const Content = styled.div`
   padding:30px;
@@ -87,97 +93,281 @@ const Content = styled.div`
 const Title = styled.h3`
   font-size:1.6rem;
   margin-bottom:15px;
-  color:#1e293b;
+  
+
+    color:transparent;
+
+background-image:linear-gradient(
+135deg,
+rgb(255,65,179),
+rgb(67,61,248)
+// rgb(47,161,104)
+);
+
+-webkit-background-clip:text;
+background-clip:text;
 `;
 
-const Text = styled.pre`
-  font-family:inherit;
+const Text = styled.div`
   font-size:.95rem;
   line-height:1.7;
   color:#334155;
-  white-space:pre-wrap;
+
+  p{
+    margin-bottom:12px;
+  }
+
+  ul{
+    margin-left:18px;
+    margin-bottom:12px;
+  }
+
+  li{
+    margin-bottom:6px;
+  }
 `;
 
 /* ---------- COMPONENT ---------- */
 
 export default function OutreachPrograms(){
 
-const programs = [
-
-{
-title:"Feeding the Multitudes",
-text:`This program is developed to insure that no one in our
-community will go hungry. More specific service is dedicated to
-our immediate jurisdiction (Austell, Powder Springs, Mableton
-and Marietta). Feeding the multitude is designed to provide free weekly bakery supplies to these communities, every Saturday at 2:00 pm, and again on Sundays after the morning
-service.`
-},
-
-{
-title:"Hope to Cope (Youth Outreach)",
-text:`Our AFTER SCHOOL/SUMMER PROGRAM serves the purpose of keeping our youths (7-18) off the streets after school and away from the temptation and bad influences.
-Our comprehensive program will incorporate:
-🟢 Youth Mentoring.
-Home Work Assistance.
-Computer Training.
-🟢 Performing Arts, including Music, Singing, Dance. - Theater/Drama-Acting, Photography, Videography. Etiquette, Mannerism, Home-making.`
-},
-
-{
-title:"Hope to Cope (Mother & Baby Friendly Outreach)",
-text:`OUR COMPREHENSIVE PROGRAM INCORPORATES
-HELPING OUT WITH ANY OF THESE ITEMS:
--
-Baby Diapers
--Baby Clothing/Going Home Clothes for Baby
-Feeding Bottles for Bottle Fed Babies
-- Breast Feeding Pods
-Newborn Toys
-Baby Hats, Booties, Mittens, Socks, Bibs, Burp Cloths Bedding & Blankets
--Maternity Bag, Diaper Bag, Changing Mat`
-},
-
-{
-title:"Clothing Ministry",
-text:`The clothing ministry is designed to meet the needs of the homeless and underprivileged by providing coats, jackets, sweaters, gloves, scarves, thermal underwear, and blankets particularly in winter season.`
-}
-
-]
-
 return(
 
 <OutreachSection>
 
+<Slide direction="up" triggerOnce={false} duration={3000}>
 <SectionTitle>
-Outreach Programs
+OUR OUTREACH PROGRAMS
 </SectionTitle>
+</Slide>
 
 <Grid>
 
-{programs.map((p,i)=>(
 
-<Card
-key={i}
-className="animate__animated animate__fadeInUp"
->
+{/* ---------- CARD 1 ---------- */}
 
-<Image src={`/images/outreach${i+1}.jpg`} />
+<Card>
+
+<Image src={feed} alt="Feeding the Multitudes" />
 
 <Content>
 
-<Title>
-{p.title}
-</Title>
+<Slide triggerOnce={false} duration={3000}>
+<Title>Feeding the Multitudes</Title>
+</Slide>
 
 <Text>
-{p.text}
+
+<Slide direction="left" triggerOnce={false} duration={3000}>
+<p>
+This program is developed to ensure that no one in our community
+goes hungry. Special focus is given to the communities of
+Austell, Powder Springs, Mableton, and Marietta.
+</p>
+</Slide>
+
+<Slide direction="right" triggerOnce={false} duration={3000}>
+<p>
+Feeding the Multitudes provides free weekly bakery supplies
+to these communities at the following times:
+</p>
+</Slide>
+
+<ul>
+
+<Zoom triggerOnce={false} duration={3000}>
+<li>Every Saturday at 2:00 PM</li>
+</Zoom>
+
+<Bounce triggerOnce={false} duration={3000}>
+<li>Every Sunday after the morning service</li>
+</Bounce>
+
+</ul>
+
 </Text>
 
 </Content>
 
 </Card>
 
-))}
+
+
+{/* ---------- CARD 2 ---------- */}
+
+<Card>
+
+<Image src={youth} alt="Youth Outreach" />
+
+<Content>
+
+<Rotate triggerOnce={false} duration={3000}>
+<Title>Hope to Cope (Youth Outreach)</Title>
+</Rotate>
+
+<Text>
+
+<Slide direction="up" triggerOnce={false} duration={3000}>
+<p>
+Our After School and Summer Program is designed to keep youths
+between the ages of 7–18 off the streets and away from negative
+influences.
+</p>
+</Slide>
+
+<Zoom triggerOnce={false} duration={3000}>
+<p>The program includes:</p>
+</Zoom>
+
+<ul>
+
+<Slide direction="left" triggerOnce={false} duration={3000}>
+<li>Youth Mentoring</li>
+</Slide>
+
+<Slide direction="right" triggerOnce={false} duration={3000}>
+<li>Homework Assistance</li>
+</Slide>
+
+<Bounce triggerOnce={false} duration={3000}>
+<li>Computer Training</li>
+</Bounce>
+
+<Zoom triggerOnce={false} duration={3000}>
+<li>Performing Arts (Music, Singing, Dance)</li>
+</Zoom>
+
+<Zoom triggerOnce={false} duration={3000}>
+<li>Theater / Drama / Acting</li>
+</Zoom>
+
+<Zoom triggerOnce={false} duration={3000}>
+<li>Photography</li>
+</Zoom>
+
+<Zoom triggerOnce={false} duration={3000}>
+<li>Videography</li>
+</Zoom>
+
+<Bounce triggerOnce={false} duration={3000}>
+<li>Etiquette and Mannerism Training</li>
+</Bounce>
+
+<Bounce triggerOnce={false} duration={3000}>
+<li>Home-making Skills</li>
+</Bounce>
+
+</ul>
+
+</Text>
+
+</Content>
+
+</Card>
+
+
+
+{/* ---------- CARD 3 ---------- */}
+
+<Card>
+
+<Image src={motherbaby} alt="Mother and Baby Outreach" />
+
+<Content>
+
+<Slide triggerOnce={false} duration={3000}>
+<Title>Hope to Cope (Mother & Baby Friendly Outreach)</Title>
+</Slide>
+
+<Text>
+
+<Slide direction="left" triggerOnce={false} duration={3000}>
+<p>
+This outreach supports mothers and newborn babies by providing
+essential items needed for early childcare.
+</p>
+</Slide>
+
+<Zoom triggerOnce={false} duration={3000}>
+<p>Items provided include:</p>
+</Zoom>
+
+<ul>
+
+<Bounce triggerOnce={false} duration={3000}><li>Baby Diapers</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Baby Clothing / Going Home Clothes</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Feeding Bottles</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Breast Feeding Pods</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Newborn Toys</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Baby Hats, Booties, Mittens, Socks</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Bibs and Burp Cloths</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Bedding and Blankets</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Maternity Bags</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Diaper Bags</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Changing Mats</li></Bounce>
+
+</ul>
+
+</Text>
+
+</Content>
+
+</Card>
+
+
+
+{/* ---------- CARD 4 ---------- */}
+
+<Card>
+
+<Image src={cloth} alt="Clothing Ministry" />
+
+<Content>
+
+<Rotate triggerOnce={false} duration={3000}>
+<Title>Clothing Ministry</Title>
+</Rotate>
+
+<Text>
+
+<Slide direction="right" triggerOnce={false} duration={3000}>
+<p>
+The Clothing Ministry serves the homeless and underprivileged
+by providing essential clothing and warmth during difficult
+seasons.
+</p>
+</Slide>
+
+<Zoom triggerOnce={false} duration={3000}>
+<p>Items distributed include:</p>
+</Zoom>
+
+<ul>
+
+<Bounce triggerOnce={false} duration={3000}><li>Coats</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Jackets</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Sweaters</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Gloves</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Scarves</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Thermal Underwear</li></Bounce>
+<Bounce triggerOnce={false} duration={3000}><li>Blankets</li></Bounce>
+
+</ul>
+
+<Slide direction="up" triggerOnce={false} duration={3000}>
+<p>
+Special attention is given during the winter season to ensure
+that people in need remain warm and protected.
+</p>
+</Slide>
+
+</Text>
+
+</Content>
+
+</Card>
+
+
 
 </Grid>
 

@@ -3,11 +3,13 @@ import MinistriesHero from "./MinistriesHero";
 import ChurchMinistries from "./ChurchMinistries";
 import OutreachPrograms from "./OutreachPrograms";
 import styled from "styled-components";
+import cta1 from '../Images/cta1.png'
+import { useNavigate } from "react-router-dom";
 
 /* ---------------- CTA ---------------- */
 const CTA = styled.section`
   padding: 120px 20px;
-  background: url("/images/church.jpg");
+  background: url(${cta1});
   background-size: cover;
   background-position: center;
   position: relative;
@@ -66,6 +68,8 @@ const outreachPrograms = [
 ];
 
 export default function MinistriesPage() {
+const navigate = useNavigate();
+
   return (
     <div>
       {/* HERO */}
@@ -85,7 +89,7 @@ export default function MinistriesPage() {
             Discover your purpose by serving God and others through one of our
             ministries.
           </p>
-          <CTAButton>Get Involved</CTAButton>
+          <CTAButton onClick={()=>navigate('/contact')}>Get Involved</CTAButton>
         </CTAContent>
       </CTA>
     </div>

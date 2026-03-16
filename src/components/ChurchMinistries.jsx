@@ -136,7 +136,7 @@ const SmallTitle = styled.p`
 
 const MainTitle = styled.h2`
   font-size: 36px;
-  color: #1b67a8;
+
 
   color:transparent;
 
