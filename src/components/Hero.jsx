@@ -249,7 +249,7 @@ import "animate.css";
 import h1 from '../Images/h1.jpeg'
 import h2 from '../Images/h2.jpeg'
 import h3 from '../Images/h3.jpeg'
-import h4 from '../Images/h4.jpeg'
+// import h4 from '../Images/h4.jpeg'
 import h5 from '../Images/h5.jpeg'
 import h6 from '../Images/h6.jpeg'
 import h7 from '../Images/h7.jpeg'
@@ -329,7 +329,7 @@ const DarkOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); // 50% dark shade
+  background-color: rgba(0, 0, 0, 0.2); // 50% dark shade
   z-index: 1; // sits above the background image but below content
 `;
 
@@ -456,7 +456,7 @@ opacity:0.9;
 export default function HeroSection(){
 
 const images = [
-h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12
+h1,h2,h3,h5,h6,h7,h8,h9,h10,h11,h12
 ];
 
 const animations = [
@@ -510,7 +510,7 @@ Where Faith Creates Miracles */}
 </Title>
 
 <Subtitle>
-Experience powerful worship,<br/> life-changing sermons,<br/>
+Experience powerful worship, life-changing sermons,
 and a loving church family.
 </Subtitle>
 

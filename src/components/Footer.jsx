@@ -33,9 +33,27 @@ transform:scale(1);
 }
 `;
 
+// const FooterContainer = styled.footer`
+// // background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1a1a1a);
+// background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,black);
+// background-size:400% 400%;
+// animation:${gradientMove} 18s ease infinite;
+
+// color:white;
+// padding:70px 40px 30px;
+// `;
+
+
+
 const FooterContainer = styled.footer`
-// background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1a1a1a);
-background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,black);
+background: linear-gradient(
+  -45deg,
+  #001233,   /* darker deep blue */
+  #002366,   /* medium-dark blue */
+  #000000,   /* dark gold */
+  #b8860b    /* highlight gold */
+);
+
 background-size:400% 400%;
 animation:${gradientMove} 18s ease infinite;
 

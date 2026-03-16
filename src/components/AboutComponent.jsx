@@ -715,7 +715,7 @@ max-width:1200px;
 `;
 
 const Text = styled.p`
-font-size:0.8rem;
+font-size:1rem;
 line-height:1.8;
 text-align:center;
 font-weight:500;
