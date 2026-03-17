@@ -1,8 +1,7 @@
 import React from 'react'
 import HeroSection from './Hero'
 import AboutComponent from './AboutComponent'
-import AutoAudioPlayer from './AutoAudioPlayer'
-import worshipMusic from "../Images/holy.mp3";
+
 import styled,{keyframes} from 'styled-components';
 
 const LandingPage = ()=>{
@@ -44,7 +43,7 @@ const LandingPage = ()=>{
     
     return(
         <Container>
-            <AutoAudioPlayer src={worshipMusic}/>
+          
             <HeroSection/>
             <AboutComponent/>
         </Container>

@@ -55,7 +55,7 @@ const ministries = [
   },
   {
     title: "Outreach/In Reach Ministry",
-    description: "Exists to organize the outreach ministries of The Faith and Miracle Center. The team researches, survey and evaluate the church and community to determine what outreach programs, ministries are most needed. Reaching people at their point of need and leading them to a personal relationship with Christ. This team also exits to oversee the process of new members transitioning into the family of FMC. This process includes understanding the vision of FMC, membership assimilation, and spiritual growth.",
+    description: "Exists to organize the outreach ministries of FMC. The team researches, survey and evaluate the church and community to determine what outreach programs, ministries are most needed. Reaching people at their point of need and leading them to a personal relationship with Christ. This team also exits to oversee the process of new members transitioning into the family of FMC. This process includes understanding the vision of FMC, membership assimilation, and spiritual growth.",
     images: [f4, f5, f6], // repeated images
   }
 ];
@@ -136,7 +136,7 @@ const SmallTitle = styled.p`
 
 const MainTitle = styled.h2`
   font-size: 36px;
-
+font-style:italic;
 
   color:transparent;
 
@@ -144,7 +144,7 @@ background-image:linear-gradient(
 135deg,
 rgb(255,65,179),
 rgb(67,61,248)
-// rgb(47,161,104)
+
 );
 
 -webkit-background-clip:text;
@@ -159,7 +159,7 @@ const Grid = styled.div`
 
 const Tile = styled.div`
   position: relative;
-  height: 300px;
+  height: 400px;
   border-radius: 20px;
   overflow: hidden;
   background-size: cover;

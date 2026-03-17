@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled, { keyframes } from "styled-components"
 import { Fade, Slide, Flip } from "react-awesome-reveal"
-import m1 from '../Images/m1.png'
+import m1 from '../Images/a1.png'
 
 const fade = keyframes`
 0%{opacity:0}
@@ -78,27 +78,31 @@ animation:${float} 6s infinite;
 const slides = [
 
 {
-text:"Creating a powerful life-changing atmosphere in God's presence."
+text:"Faith and Miracle Center Worldwide is a community built on prayer, faith and the transforming power of God's word."
 },
+
 {
-text:"Releasing prayers that transform, heal and restore lives."
+text:"We are committed to helping people grow spiritually, discover their purpose and walk confidently in their calling."
 },
+
 {
-text:"Helping children grow in their relationship with God through worship, teaching and fun activities."
+text:"Our mission is to create an atmosphere where lives are healed, restored and empowered through God's presence."
 },
+
 {
-text:"Raising up leaders who understand their calling and influence the world."
+text:"Together we raise believers who influence their families, communities and the world for Christ."
 },
+
 ]
 
-export default function MinistriesHero(){
+export default function AboutHero(){
 
 const [index,setIndex] = useState(0)
 
 useEffect(()=>{
 const interval=setInterval(()=>{
 setIndex(prev=>(prev+1)%slides.length)
-},3000)
+},3500)
 
 return()=>clearInterval(interval)
 },[])
@@ -116,7 +120,7 @@ return(
 {/* Title animation */}
 <Flip triggerOnce={false} duration={4000}>
 <HeroTitle>
-Our <span>Ministries</span>
+About <span>Faith & Miracle Center</span>
 </HeroTitle>
 </Flip>
 
