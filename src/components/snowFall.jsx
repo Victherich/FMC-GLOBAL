@@ -8,7 +8,7 @@ const Snowfall = () => {
       const snowflake = document.createElement('div');
       snowflake.className = 'snowflake';
       snowflake.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-      snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random speed
+      snowflake.style.animationDuration = `${Math.random() * 30 + 2}s`; // Random speed
       snowflake.style.opacity = `${Math.random()}`; // Random opacity
 
       document.body.appendChild(snowflake);

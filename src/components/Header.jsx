@@ -270,7 +270,7 @@ const menus = [
   { title: "Sermons & Media", link: "/sermons" },
   { title: "Events", link: "/events" },
   { title: "Donations & Tithes", link: "/donations" },
-  { title: "Gallery", link: "/gallery" },
+//   { title: "Gallery", link: "/gallery" },
   { title: "Blog", link: "/blog" },
   { title: "Testimonials", link: "/testimonials" },
   { title: "Contact", link: "/contact" }

@@ -14,6 +14,8 @@ import ScrollToTop from './components/ScrollToTop';
 import AutoAudioPlayer from './components/AutoAudioPlayer'
 import worshipMusic from "./Images/holy.mp3";
 import WordFromPastor from './components/WordFromPastor';
+import SalvationExperience from './components/SalvationExperience';
+import Hero2 from './components/Hero2';
 
 
 function App() {
@@ -35,6 +37,9 @@ function App() {
  </Routes>
 
  <WordFromPastor/>
+ <SalvationExperience/>
+ <Hero2/>
+ 
   <Footer/>
  </BrowserRouter>
   );

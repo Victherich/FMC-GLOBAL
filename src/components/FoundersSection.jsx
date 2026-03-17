@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
+import { Zoom,Slide } from "react-awesome-reveal";
 
 /* =========================
 ANIMATIONS
@@ -10,6 +11,12 @@ const float = keyframes`
 0%{transform:translateY(0)}
 50%{transform:translateY(-10px)}
 100%{transform:translateY(0)}
+`;
+
+const float2 = keyframes`
+0%{transform:scale(1)}
+50%{transform:scale(1.1)}
+100%{transform:scale(1)}
 `;
 
 /* =========================
@@ -108,6 +115,8 @@ color:#1f2937;
 font-weight:600;
 cursor:pointer;
 transition:0.3s;
+/* ✅ Correct animation usage */
+animation: ${float2} 3s ease-in-out infinite;
 &:hover{
 background:#fbbf24;
 }
@@ -206,12 +215,16 @@ export default function FoundersSection() {
 
   return (
     <SectionWrapper>
+        <Zoom duration={4000} triggerOnce={false}>
       <SectionHeading>Meet the Founders</SectionHeading>
+      </Zoom>
       <Section>
         {founders.map((founder, idx) => (
           <Card key={idx}>
             <Portrait src={founder.image} alt={founder.name} />
+            <Zoom duration={4000} triggerOnce={false}>
             <Name>{founder.name}</Name>
+            </Zoom>
             <Position>{founder.position}</Position>
             <BioButton onClick={() => setActiveBio(idx)}>
               {founder.name}'s Biography

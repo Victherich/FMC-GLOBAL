@@ -12,7 +12,7 @@ import dragon8 from '../Images/f2.png';
 import dragon9 from '../Images/f3.png';
 import dragon10 from '../Images/f4.png';
 import bgImg from '../Images/galaxy.gif';
-import modelImg from '../Images/ELogo.png';
+import modelImg from '../Images/logo.png';
 
 const rotate = keyframes`
   from {
@@ -155,7 +155,7 @@ const Hero2 = () => {
           ))}
         </Slider>
         <Content>
-          <Title data-content="ELEXDON HOST">ELEXDON HOST</Title>
+          <Title data-content="FMC GLOBAL">FMC GLOBAL</Title>
           <Author>
             <h2></h2>
             <p><b></b></p>
