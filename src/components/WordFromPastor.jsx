@@ -7,7 +7,7 @@ ANIMATIONS
 
 const float = keyframes`
 0%{transform:translateY(0px)}
-50%{transform:translateY(-12px)}
+50%{transform:translateY(-30px)}
 100%{transform:translateY(0px)}
 `;
 
@@ -40,7 +40,7 @@ margin-bottom:10px;
 
 background-image:linear-gradient(
 135deg,
-rgb(255,65,179),
+rgb(158, 44, 112),
 rgb(67,61,248)
 );
 
@@ -92,8 +92,8 @@ animation:${float} 6s ease-in-out infinite;
 `;
 
 const Portrait = styled.img`
-width:150px;
-height:150px;
+width:300px;
+height:300px;
 border-radius:50%;
 object-fit:cover;
 border:4px solid #ffd700;
@@ -106,7 +106,7 @@ font-weight:700;
 
 background-image:linear-gradient(
 135deg,
-rgb(255,65,179),
+rgb(158, 44, 112),
 rgb(67,61,248)
 );
 
@@ -157,14 +157,31 @@ const MessageTitle = styled.h3`
 font-size:1.5rem;
 margin-bottom:20px;
 font-weight:700;
-color:#111;
+
+background-image:linear-gradient(
+135deg,
+rgb(158, 44, 112),
+rgb(67,61,248)
+);
+
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
 `;
 
 const Highlight = styled.div`
 margin-top:30px;
 font-size:1.2rem;
 font-weight:700;
-color:#111;
+background-image:linear-gradient(
+135deg,
+rgb(255,65,179),
+rgb(67,61,248)
+);
+
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
 text-align:center;
 `;
 
@@ -192,15 +209,15 @@ return(
 
 <PortraitCard>
 <Portrait src="/bishop.jpg"/>
-<PastorName>Bishop Taiwo Kuku</PastorName>
+<PastorName>Bishop Taiwo Kuku & Pastor Sade Kuku</PastorName>
 <Role>Founder & General Overseer</Role>
 </PortraitCard>
 
-<PortraitCard>
+{/* <PortraitCard>
 <Portrait src="/sade.jpg"/>
 <PastorName>Pastor Sade Kuku</PastorName>
 <Role>Co-Pastor</Role>
-</PortraitCard>
+</PortraitCard> */}
 
 </Portraits>
 
@@ -211,7 +228,7 @@ return(
 
 <MessageCard>
 
-<MessageTitle>Welcome</MessageTitle>
+<MessageTitle>Welcome to FMC GLOBAL</MessageTitle>
 
 <p>
 Thank You for visiting The Faith and Miracle Center God will work for you... if you let Him. When you have a heart directed to- ward the world, toward material things, and to- ward destructive sinful desires, or directed toward just yourself and your pro- blems then you leave God out. When you are willing to let God into your heart and you are willing to let God work for you, in you, and through you, then He will work for you in your life. God needs you to always have an attitude of compliance and willingness toward His will in your life. God always stands at the door of your heart wanting to come in and live within you. When you surrender and open your heart to His love then he comes into your life and works miracles and performs wonders. An open heart permits God to wipe away painful memories. An open heart permits God to heal wounds that have never healed. An open heart permits God to inspire encouragement within you. An open heart to Christ's love gives you a reason to live, breath, and continue to walk the Lord's path each day. When you take an open heart to Christ dying on the Cross then you come away from the Cross as a new person. In the spiritual wars in your life, when everything looks its darkest, an open heart reaching up to God is always touched by God's love for you. Every obstacle in life no matter how great it seems can be turned into a glorious testament to God's redeeming love. Make no mistake that you cannot turn obstacles into glories on your own. However, with God's power and His force of love within you, even the most daunting of problems can be con- quered... for God cares for you.
