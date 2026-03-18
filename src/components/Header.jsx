@@ -271,8 +271,8 @@ const menus = [
   { title: "Events", link: "/events" },
   { title: "Donations & Tithes", link: "/donations" },
 //   { title: "Gallery", link: "/gallery" },
-  { title: "Blog", link: "/blog" },
-  { title: "Testimonials", link: "/testimonials" },
+  { title: "Inspirationals", link: "/inspirationals" },
+  { title: "Testimonies", link: "/testimonies" },
   { title: "Contact", link: "/contact" }
 ]
 

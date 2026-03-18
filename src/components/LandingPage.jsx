@@ -3,6 +3,13 @@ import HeroSection from './Hero'
 import AboutComponent from './AboutComponent'
 
 import styled,{keyframes} from 'styled-components';
+import MinistriesHighlight from './MinistriesHighlight';
+import SermonsHighlight from './SermonsHighlight';
+import EventsHighlight from './EventsHighlight';
+import DonationHighlight from './DonationHighlight';
+import TestimoniesHighlight from './TestimoniesHighlight';
+import InspirationalHighlight from './InspirationalHighlight';
+import ContactCTA from './ContactUsCTA';
 
 const LandingPage = ()=>{
 
@@ -46,6 +53,14 @@ const LandingPage = ()=>{
           
             <HeroSection/>
             <AboutComponent/>
+            <MinistriesHighlight/>
+           
+            <EventsHighlight/>
+             <SermonsHighlight/>
+             <TestimoniesHighlight/>
+             <DonationHighlight/>
+             <InspirationalHighlight/>
+            
         </Container>
     )
 }

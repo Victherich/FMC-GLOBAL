@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Fade } from "react-awesome-reveal";
+import { Fade, Zoom } from "react-awesome-reveal";
 import f1 from "../Images/children1.png";
 import f2 from "../Images/children2.png";
 import f3 from "../Images/children3.png";
@@ -100,7 +100,9 @@ export default function ChurchMinistries() {
       <Container>
         <Header>
           <SmallTitle>Explore</SmallTitle>
+          <Zoom triggerOnce={false} duration={4000}>
           <MainTitle>OUR CHURCH MINISTRIES</MainTitle>
+          </Zoom>
         </Header>
 
         <Grid>

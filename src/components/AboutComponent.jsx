@@ -941,7 +941,7 @@ style={{backgroundImage:`url(${img})`}}
 
 {showMore && (
 
-<More onClick={()=>navigate("/aboutus")}>
+<More onClick={()=>navigate("/about")}>
 More about Faith & Miracle Center
 </More>
 

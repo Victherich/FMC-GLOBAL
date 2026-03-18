@@ -135,11 +135,11 @@ return(
 
 <OutreachSection>
 
-<Slide direction="up" triggerOnce={false} duration={3000}>
+<Zoom triggerOnce={false} duration={3000}>
 <SectionTitle>
 OUR OUTREACH PROGRAMS
 </SectionTitle>
-</Slide>
+</Zoom>
 
 <Grid>
 
@@ -158,30 +158,30 @@ OUR OUTREACH PROGRAMS
 
 <Text>
 
-<Slide direction="left" triggerOnce={false} duration={3000}>
+{/* <Slide direction="left" triggerOnce={false} duration={3000}> */}
 <p>
 This program is developed to ensure that no one in our community
 goes hungry. Special focus is given to the communities of
 Austell, Powder Springs, Mableton, and Marietta.
 </p>
-</Slide>
+{/* </Slide> */}
 
-<Slide direction="right" triggerOnce={false} duration={3000}>
+{/* <Slide direction="right" triggerOnce={false} duration={3000}> */}
 <p>
 Feeding the Multitudes provides free weekly bakery supplies
 to these communities at the following times:
 </p>
-</Slide>
+{/* </Slide> */}
 
 <ul>
 
-<Zoom triggerOnce={false} duration={3000}>
+{/* <Zoom triggerOnce={false} duration={3000}> */}
 <li>Every Saturday at 2:00 PM</li>
-</Zoom>
+{/* </Zoom> */}
 
-<Bounce triggerOnce={false} duration={3000}>
+{/* <Bounce triggerOnce={false} duration={3000}> */}
 <li>Every Sunday after the morning service</li>
-</Bounce>
+{/* </Bounce> */}
 
 </ul>
 
@@ -207,13 +207,13 @@ to these communities at the following times:
 
 <Text>
 
-<Slide direction="up" triggerOnce={false} duration={3000}>
+{/* <Slide direction="up" triggerOnce={false} duration={3000}> */}
 <p>
 Our After School and Summer Program is designed to keep youths
 between the ages of 7–18 off the streets and away from negative
 influences.
 </p>
-</Slide>
+{/* </Slide> */}
 
 <Zoom triggerOnce={false} duration={3000}>
 <p>The program includes:</p>
@@ -221,41 +221,41 @@ influences.
 
 <ul>
 
-<Slide direction="left" triggerOnce={false} duration={3000}>
+{/* <Slide direction="left" triggerOnce={false} duration={3000}> */}
 <li>Youth Mentoring</li>
-</Slide>
+{/* </Slide> */}
 
-<Slide direction="right" triggerOnce={false} duration={3000}>
+{/* <Slide direction="right" triggerOnce={false} duration={3000}> */}
 <li>Homework Assistance</li>
-</Slide>
+{/* </Slide> */}
 
-<Bounce triggerOnce={false} duration={3000}>
+{/* <Bounce triggerOnce={false} duration={3000}> */}
 <li>Computer Training</li>
-</Bounce>
+{/* </Bounce> */}
 
-<Zoom triggerOnce={false} duration={3000}>
+{/* <Zoom triggerOnce={false} duration={3000}> */}
 <li>Performing Arts (Music, Singing, Dance)</li>
-</Zoom>
+{/* </Zoom> */}
 
-<Zoom triggerOnce={false} duration={3000}>
+{/* <Zoom triggerOnce={false} duration={3000}> */}
 <li>Theater / Drama / Acting</li>
-</Zoom>
+{/* </Zoom> */}
 
-<Zoom triggerOnce={false} duration={3000}>
+{/* <Zoom triggerOnce={false} duration={3000}> */}
 <li>Photography</li>
-</Zoom>
+{/* </Zoom> */}
 
-<Zoom triggerOnce={false} duration={3000}>
+{/* <Zoom triggerOnce={false} duration={3000}> */}
 <li>Videography</li>
-</Zoom>
+{/* </Zoom> */}
 
-<Bounce triggerOnce={false} duration={3000}>
+{/* <Bounce triggerOnce={false} duration={3000}> */}
 <li>Etiquette and Mannerism Training</li>
-</Bounce>
+{/* </Bounce> */}
 
-<Bounce triggerOnce={false} duration={3000}>
+{/* <Bounce triggerOnce={false} duration={3000}> */}
 <li>Home-making Skills</li>
-</Bounce>
+{/* </Bounce> */}
 
 </ul>
 
@@ -275,22 +275,22 @@ influences.
 
 <Content>
 
-<Slide triggerOnce={false} duration={3000}>
+<Zoom triggerOnce={false} duration={3000}>
 <Title>Hope to Cope (Mother & Baby Friendly Outreach)</Title>
-</Slide>
+</Zoom>
 
 <Text>
 
-<Slide direction="left" triggerOnce={false} duration={3000}>
+{/* <Slide direction="left" triggerOnce={false} duration={3000}> */}
 <p>
 This outreach supports mothers and newborn babies by providing
 essential items needed for early childcare.
 </p>
-</Slide>
+{/* </Slide> */}
 
-<Zoom triggerOnce={false} duration={3000}>
+{/* <Zoom triggerOnce={false} duration={3000}> */}
 <p>Items provided include:</p>
-</Zoom>
+{/* </Zoom> */}
 
 <ul>
 
@@ -324,23 +324,23 @@ essential items needed for early childcare.
 
 <Content>
 
-<Rotate triggerOnce={false} duration={3000}>
+<Zoom triggerOnce={false} duration={3000}>
 <Title>Clothing Ministry</Title>
-</Rotate>
+</Zoom>
 
 <Text>
 
-<Slide direction="right" triggerOnce={false} duration={3000}>
+{/* <Slide direction="right" triggerOnce={false} duration={3000}> */}
 <p>
 The Clothing Ministry serves the homeless and underprivileged
 by providing essential clothing and warmth during difficult
 seasons.
 </p>
-</Slide>
+{/* </Slide> */}
 
-<Zoom triggerOnce={false} duration={3000}>
+{/* <Zoom triggerOnce={false} duration={3000}> */}
 <p>Items distributed include:</p>
-</Zoom>
+{/* </Zoom> */}
 
 <ul>
 
@@ -354,12 +354,12 @@ seasons.
 
 </ul>
 
-<Slide direction="up" triggerOnce={false} duration={3000}>
+{/* <Slide direction="up" triggerOnce={false} duration={3000}> */}
 <p>
 Special attention is given during the winter season to ensure
 that people in need remain warm and protected.
 </p>
-</Slide>
+{/* </Slide> */}
 
 </Text>
 

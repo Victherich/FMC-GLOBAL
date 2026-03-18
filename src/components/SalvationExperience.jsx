@@ -107,7 +107,7 @@ animation:${fade} 1s ease;
 `;
 
 const StoryBox = styled.div`
-background:white;
+background:rgba(255,255,255,0.5);
 padding:25px;
 border-radius:20px;
 box-shadow:0 15px 40px rgba(0,0,0,0.08);
@@ -128,9 +128,10 @@ gap:25px;
 const Step = styled.div`
 padding:25px;
 border-radius:20px;
-background:linear-gradient(135deg,#ffffff,#f9fafc);
+// background:linear-gradient(135deg,#ffffff,#f9fafc);
 box-shadow:0 15px 40px rgba(0,0,0,0.08);
 animation:${fade} 1s ease;
+background:rgba(255,255,255,0.5);
 `;
 
 const StepTitle = styled.h3`
@@ -156,7 +157,7 @@ max-width:900px;
 margin-left:auto;
 margin-right:auto;
 
-background:rgba(255,255,255,0.7);
+background:rgba(255,255,255,0.5);
 backdrop-filter:blur(20px);
 padding:50px;
 border-radius:30px;
@@ -199,7 +200,7 @@ FOOTER TEXT
 const Footer = styled.div`
 max-width:900px;
 margin:40px auto 0;
-background:white;
+background:rgba(255,255,255,0.5);
 padding:30px;
 border-radius:20px;
 box-shadow:0 15px 40px rgba(0,0,0,0.08);

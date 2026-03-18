@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import MinistriesHero from "./MinistriesHero";
 import ChurchMinistries from "./ChurchMinistries";
 import OutreachPrograms from "./OutreachPrograms";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import cta1 from '../Images/cta1.png'
 import { useNavigate } from "react-router-dom";
+
+const float2 = keyframes`
+0%{transform:scale(1)}
+50%{transform:scale(1.2)}
+100%{transform:scale(1)}
+`;
 
 /* ---------------- CTA ---------------- */
 const CTA = styled.section`
@@ -41,6 +47,7 @@ const CTAButton = styled.button`
   cursor: pointer;
   margin-top: 25px;
   transition: 0.3s;
+  animation: ${float2} 3s ease-in-out infinite;
 
   &:hover {
     transform: scale(1.1);

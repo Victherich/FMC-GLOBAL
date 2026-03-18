@@ -6,9 +6,9 @@ ANIMATIONS
 ========================= */
 
 const float = keyframes`
-0%{transform:translateY(0px) scale(1)}
-50%{transform:translateY(-15px) scale(1.03)}
-100%{transform:translateY(0px) scale(1)}
+0%{transform:translateY(0px) scale(0.9)}
+50%{transform:translateY(-15px) scale(1)}
+100%{transform:translateY(0px) scale(0.9)}
 `;
 
 const shimmer = keyframes`

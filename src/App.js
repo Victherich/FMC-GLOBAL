@@ -16,6 +16,8 @@ import worshipMusic from "./Images/holy.mp3";
 import WordFromPastor from './components/WordFromPastor';
 import SalvationExperience from './components/SalvationExperience';
 import Hero2 from './components/Hero2';
+import ContactSection from './components/ContactUs';
+import ContactCTA from './components/ContactUsCTA';
 
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
   <Route path='/' element={<LandingPage/>}/>
 <Route path='/ministries' element={<MinistriesPage/>}/>
 <Route path='/about' element={<AboutPage/>}/>
+<Route path='/contact' element={<ContactSection/>}/>
 
 
   <Route path='/signup' element={<UserSignup/>}/>
@@ -38,6 +41,7 @@ function App() {
 
  <WordFromPastor/>
  <SalvationExperience/>
+  <ContactCTA/>
  <Hero2/>
  
   <Footer/>
