@@ -1,7 +1,7 @@
 import React, { useState,useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import logo from '../Images/logo.png'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import 'animate.css';
 
 const gradientMove = keyframes`
@@ -132,35 +132,68 @@ gap:25px;
 align-items:center;
 `;
 
+// const NavItem = styled.a`
+// color:white;
+// font-weight:500;
+// font-size:15px;
+// cursor:pointer;
+// position:relative;
+// text-decoration:none;
+// transition:all 0.3s ease;
+
+// &:hover{
+// color:#ffd700;
+// transform:translateY(-3px);
+// }
+
+// &::after{
+// content:"";
+// position:absolute;
+// left:0;
+// bottom:-5px;
+// width:0%;
+// height:2px;
+// background:#ffd700;
+// transition:0.3s;
+// }
+
+// &:hover::after{
+// width:100%;
+// }
+// `;
+
+
+
 const NavItem = styled.a`
-color:white;
-font-weight:500;
-font-size:15px;
-cursor:pointer;
-position:relative;
-text-decoration:none;
-transition:all 0.3s ease;
+  color: ${props => props.active ? "#ffd700" : "white"};  // gold if active
+  font-weight:500;
+  font-size:15px;
+  cursor:pointer;
+  position:relative;
+  text-decoration:none;
+  transition:all 0.3s ease;
 
-&:hover{
-color:#ffd700;
-transform:translateY(-3px);
-}
+  &:hover{
+    color:#ffd700;
+    transform:translateY(-3px);
+  }
 
-&::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-5px;
-width:0%;
-height:2px;
-background:#ffd700;
-transition:0.3s;
-}
+  &::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:${props => props.active ? "100%" : "0%"};  // underline if active
+    height:2px;
+    background:#ffd700;
+    transition:0.3s;
+  }
 
-&:hover::after{
-width:100%;
-}
+  &:hover::after{
+    width:100%;
+  }
 `;
+
 
 const DonateButton = styled.button`
 padding:10px 18px;
@@ -262,6 +295,7 @@ const [open,setOpen] = useState(false)
 const navigate = useNavigate();
 const menuRef = useRef(null);
 const buttonRef = useRef(null);
+const location = useLocation(); // get current route
 
 const menus = [
   { title: "Home", link: "/" },
@@ -317,8 +351,18 @@ return (
 
 <Nav>
 
-{menus.map((menu,i)=>(
+{/* {menus.map((menu,i)=>(
 <NavItem  onClick={()=>navigate(`${menu.link}`)} key={i}>{menu.title}</NavItem>
+))} */}
+
+{menus.map((menu,i)=>(
+  <NavItem  
+    key={i} 
+    active={location.pathname === menu.link}
+    onClick={()=>navigate(`${menu.link}`)}
+  >
+    {menu.title}
+  </NavItem>
 ))}
 
 <DonateButton onClick={()=>navigate('/donations')}>
@@ -335,8 +379,18 @@ Give
 
 <MobileMenu ref={menuRef} open={open}  className="animate__animated animate__fadeInRight">
 
-{menus.map((menu,i)=>(
+{/* {menus.map((menu,i)=>(
 <p  onClick={()=>navigate(`${menu.link}`)} key={i}>{menu.title}</p>
+))} */}
+
+{menus.map((menu,i)=>(
+  <p  
+    key={i} 
+    style={{ color: location.pathname === menu.link ? "#ffd700" : "white", fontWeight: location.pathname === menu.link ? 600 : 400 }}
+    onClick={()=>navigate(`${menu.link}`)}
+  >
+    {menu.title}
+  </p>
 ))}
 
 <DonateButton onClick={()=>navigate('/donations')}>

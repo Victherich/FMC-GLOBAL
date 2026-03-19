@@ -2,6 +2,7 @@ import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Slide, Zoom } from "react-awesome-reveal";
+import testimony from '../Images/testimony1.png';
 
 /* ---------- SECTION ---------- */
 
@@ -167,7 +168,7 @@ return(
 
 <Hero>
 
-<Image src="/images/testimony-main.jpg" alt="Testimonies"/>
+<Image src={testimony} alt="Testimonies"/>
 
 <Content>
 <Zoom triggerOnce={false} duration={4000}>
@@ -194,7 +195,7 @@ in peace and purpose.”
 
 </Featured>
 
-<Button onClick={()=>navigate("/testimonials")}>
+<Button onClick={()=>navigate("/testimonies")}>
 Read More Testimonies
 </Button>
 

@@ -1,5 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import { Zoom, Slide } from "react-awesome-reveal";
+import { useLocation } from "react-router-dom";
 
 /* =========================
 ANIMATIONS
@@ -191,14 +193,22 @@ COMPONENT
 
 export default function WordFromPastor(){
 
+const location = useLocation();
+
+if(location.pathname==='/dashboard'|| location.pathname==='/login' || location.pathname==='/signup'){
+    return;
+}
+
 return(
 
 <Section>
 
+<Zoom triggerOnce={false} duration={4000}>
 <Title>A Word from the Pastor</Title>
-
+</Zoom>
+<Slide duration={4000} triggerOnce={false}>
 <Subtitle>Your Setback is a Setup for a Comeback</Subtitle>
-
+</Slide>
 <Content>
 
 {/* Pastors */}

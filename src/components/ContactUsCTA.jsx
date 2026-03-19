@@ -1,6 +1,6 @@
 import React from "react";
 import styled, {keyframes} from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Zoom } from "react-awesome-reveal";
 
 
@@ -86,6 +86,12 @@ const Button = styled.button`
 export default function ContactCTA(){
 
   const navigate = useNavigate();
+  const location = useLocation();
+  
+if(location.pathname==='/dashboard'|| location.pathname==='/login' || location.pathname==='/signup'){
+    return;
+}
+
 
   return(
     <Section>

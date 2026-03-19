@@ -13,7 +13,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0a3cff 90%, #d4af37 10%);
+  background: linear-gradient(135deg, #0a3bff28 90%, #d4af37 10%);
   padding: 2rem;
 `;
 

@@ -18,6 +18,11 @@ import SalvationExperience from './components/SalvationExperience';
 import Hero2 from './components/Hero2';
 import ContactSection from './components/ContactUs';
 import ContactCTA from './components/ContactUsCTA';
+import SermonsPage from './components/SermonsPage';
+import EventsPage from './components/EventsPage';
+import InspirationalPage from './components/InspirationalPage';
+import TestimoniesPage from './components/TestimoniesPage';
+import DonationsPage from './components/DonationsPage';
 
 
 function App() {
@@ -32,6 +37,12 @@ function App() {
 <Route path='/ministries' element={<MinistriesPage/>}/>
 <Route path='/about' element={<AboutPage/>}/>
 <Route path='/contact' element={<ContactSection/>}/>
+<Route path='/sermons' element={<SermonsPage/>}/>
+<Route path='/events' element={<EventsPage/>}/>
+<Route path='/inspirationals' element={<InspirationalPage/>}/>
+<Route path='/testimonies' element={<TestimoniesPage/>}/>
+<Route path='/donations' element={<DonationsPage/>}/>
+
 
 
   <Route path='/signup' element={<UserSignup/>}/>

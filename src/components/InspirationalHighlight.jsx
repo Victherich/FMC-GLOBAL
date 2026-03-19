@@ -1,6 +1,15 @@
 import React from "react";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
+import {Zoom, Slide} from 'react-awesome-reveal'
+
+
+
+const float2 = keyframes`
+0%{transform:scale(1)}
+50%{transform:scale(1.1)}
+100%{transform:scale(1)}
+`;
 
 /* ---------- SECTION ---------- */
 
@@ -94,7 +103,7 @@ const Button = styled.button`
 
   background:linear-gradient(135deg,#b8860b,#d4af37);
   color:white;
-
+animation: ${float2} 3s ease-in-out infinite;
   transition:.3s;
 
   &:hover{
@@ -170,15 +179,18 @@ return(
 {/* ---------- HEADER ---------- */}
 
 <Header>
-
+<Zoom triggerOnce={false} duration={4000}>
 <Title>
 Inspirational <span>Messages</span>
 </Title>
+</Zoom>
 
+<Slide direction="right" duration={4000} triggerOnce={false}>
 <Subtitle>
 Be uplifted, encouraged, and strengthened through powerful
-messages from our Pastor.
+inspirationals from our Pastor.
 </Subtitle>
+</Slide>
 
 </Header>
 
@@ -203,7 +215,7 @@ working behind the scenes for our good.
 
 <Author>— Pastor John Doe</Author>
 
-<Button onClick={()=>navigate("/blog")}>
+<Button>
 Read Full Message
 </Button>
 
@@ -216,10 +228,10 @@ Read Full Message
 
 <Grid>
 
-<Card onClick={()=>navigate("/blog")}>
-
+<Card>
+<Zoom triggerOnce={false} duration={4000}>
 <CardTitle>Trusting God in Difficult Times</CardTitle>
-
+</Zoom>
 <CardText>
 Even in the storms of life, God remains faithful. Learn how to
 stand firm and trust Him through every challenge.
@@ -230,9 +242,10 @@ stand firm and trust Him through every challenge.
 </Card>
 
 
-<Card onClick={()=>navigate("/blog")}>
-
+<Card>
+<Zoom triggerOnce={false} duration={4000}>
 <CardTitle>The Power of Prayer</CardTitle>
+</Zoom>
 
 <CardText>
 Prayer is a direct connection to God. Discover how a consistent
@@ -244,10 +257,11 @@ prayer life can transform everything around you.
 </Card>
 
 
-<Card onClick={()=>navigate("/blog")}>
+<Card>
 
+<Zoom triggerOnce={false} duration={4000}>
 <CardTitle>Living a Purposeful Life</CardTitle>
-
+</Zoom>
 <CardText>
 You were created with purpose. Step into your calling and begin
 to live the life God has designed for you.

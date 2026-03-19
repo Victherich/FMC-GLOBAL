@@ -2,6 +2,8 @@ import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Slide, Zoom } from "react-awesome-reveal";
+import youthexplosion from '../Images/youthexplosion1.png'
+import co1 from '../Images/co1.png'
 
 /* ---------- SECTION ---------- */
 
@@ -65,7 +67,7 @@ const Card = styled.div`
   overflow:hidden;
 
   box-shadow:0 12px 30px rgba(0,0,0,0.08);
-  cursor:pointer;
+
 
   transition:0.35s;
 
@@ -188,7 +190,7 @@ Stay connected and be part of what God is doing in our community
 <Grid>
 
 {/* EVENT 1 */}
-<Card onClick={()=>navigate("/events")}>
+<Card >
 
 <ImageWrapper>
 
@@ -215,11 +217,11 @@ Experience revival like never before.
 
 
 {/* EVENT 2 */}
-<Card onClick={()=>navigate("/events")}>
+<Card>
 
 <ImageWrapper>
 
-<Image src="/images/event2.jpg" alt="Event"/>
+<Image src={youthexplosion} alt="Event"/>
 
 <DateBadge>
 25 <br/> SEP
@@ -243,11 +245,11 @@ Don’t miss this life-changing gathering.
 
 
 {/* EVENT 3 */}
-<Card onClick={()=>navigate("/events")}>
+<Card>
 
 <ImageWrapper>
 
-<Image src="/images/event3.jpg" alt="Event"/>
+<Image src={co1} alt="Event"/>
 
 <DateBadge>
 05 <br/> OCT

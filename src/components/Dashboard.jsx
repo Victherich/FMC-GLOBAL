@@ -171,7 +171,7 @@ const UserDashboard = () => {
     <>
       <TopBar>
         <Hamburger onClick={() => setMenuOpen(true)}>☰</Hamburger>
-        <h3>User Dashboard</h3>
+        <h3>Dashboard</h3>
       </TopBar>
 
       <Overlay open={menuOpen} onClick={() => setMenuOpen(false)} />

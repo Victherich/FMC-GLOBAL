@@ -258,6 +258,7 @@ import h9 from '../Images/h9.jpeg'
 import h10 from '../Images/h10.jpeg'
 import h11 from '../Images/h11.jpeg'
 import h12 from '../Images/h12.jpeg'
+import { useNavigate } from "react-router-dom";
 const gradientMove = keyframes`
 0%{background-position:0% 50%}
 50%{background-position:100% 50%}
@@ -455,6 +456,8 @@ opacity:0.9;
 
 export default function HeroSection(){
 
+  const navigate = useNavigate();
+
 const images = [
 h1,h2,h3,h5,h6,h7,h8,h9,h10,h11,h12
 ];
@@ -482,6 +485,8 @@ setIndex((prev)=>(prev+1)%images.length);
 return ()=>clearInterval(interval);
 
 },[]);
+
+
 
 return(
 
@@ -516,12 +521,12 @@ and a loving church family.
 
 <Buttons>
 
-<PrimaryButton>
+{/* <PrimaryButton>
 <FaPlay/>
 Watch Sermons
-</PrimaryButton>
+</PrimaryButton> */}
 
-<SecondaryButton>
+<SecondaryButton onClick={()=>navigate('/contact')}>
 <FaChurch/>
 Visit Church
 </SecondaryButton>

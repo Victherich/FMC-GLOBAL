@@ -2,6 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { Zoom, Slide } from "react-awesome-reveal";
 import Salvationimg from '../Images/Salvationimg.png'
+import { useLocation } from "react-router-dom";
 
 /* =========================
 ANIMATIONS
@@ -213,6 +214,13 @@ COMPONENT
 ========================= */
 
 export default function SalvationExperience(){
+
+
+    const location = useLocation();
+    
+  if(location.pathname==='/dashboard'|| location.pathname==='/login' || location.pathname==='/signup'){
+    return;
+}
 
 return(
 
