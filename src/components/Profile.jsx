@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
@@ -15,17 +15,18 @@ import {
 
 /* ================= THEME ================= */
 const colors = {
-  primary: "#5B6CFF",
-  secondary: "#7C4DFF",
-  bg: "#F4F6FF",
-  card: "rgba(255,255,255,0.85)",
-  textDark: "#2D2E4A",
+  primary: "#0A3CFF",
+  secondary: "#D4AF37",
+  bg: "#F9FAFC",
+  card: "#FFFFFF",
+  textDark: "#1E1E2F",
+  border: "#E6E8F0",
 };
 
 /* ================= LAYOUT ================= */
 const Page = styled.div`
   min-height: 100vh;
-  background: linear-gradient(135deg, ${colors.primary}, ${colors.secondary});
+  // background: ${colors.bg};
   padding: 2rem;
 `;
 
@@ -44,10 +45,10 @@ const Wrapper = styled.div`
 /* ================= PROFILE PANEL ================= */
 const ProfilePanel = styled.div`
   background: ${colors.card};
-  backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid ${colors.border};
 `;
 
 const Avatar = styled.div`
@@ -85,9 +86,11 @@ const EditButton = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: 600;
 
   &:hover {
     background: ${colors.secondary};
+    color: #000;
   }
 `;
 
@@ -98,7 +101,7 @@ const ActionArea = styled.div`
 `;
 
 const Title = styled.h3`
-  color: white;
+  color: ${colors.textDark};
   margin-bottom: 1rem;
 `;
 
@@ -110,15 +113,16 @@ const Grid = styled.div`
 
 const ActionCard = styled.div`
   background: ${colors.card};
-  backdrop-filter: blur(10px);
   border-radius: 16px;
   padding: 1.6rem;
   cursor: pointer;
   text-align: center;
+  border: 1px solid ${colors.border};
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 
   &:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -137,10 +141,65 @@ const Desc = styled.p`
   color: #666;
 `;
 
+/* ================= MODAL ================= */
+const ModalOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ModalBox = styled.div`
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+`;
+
+const ModalTitle = styled.h3`
+  margin-bottom: 1rem;
+  color: ${colors.primary};
+`;
+
+const ModalInput = styled.input`
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid ${colors.border};
+  margin-bottom: 1rem;
+`;
+
+const ModalActions = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const SaveBtn = styled.button`
+  flex: 1;
+  background: ${colors.primary};
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+`;
+
+const CancelBtn = styled.button`
+  flex: 1;
+  background: #eee;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+`;
+
 /* ================= COMPONENT ================= */
 const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [newPhone, setNewPhone] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -168,11 +227,23 @@ const Profile = () => {
     navigate("/login");
   };
 
-  if (loading) return <p style={{ color: "white" }}>Loading...</p>;
+  const updatePhone = async () => {
+    try {
+      const ref = doc(db, "users", userData.uid);
 
-  if (!userData) {
-    return <p style={{ color: "white" }}>No profile data found</p>;
-  }
+      await updateDoc(ref, {
+        phone: newPhone,
+      });
+
+      setUserData({ ...userData, phone: newPhone });
+      setShowModal(false);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  if (loading) return <p>Loading...</p>;
+  if (!userData) return <p>No profile data found</p>;
 
   return (
     <Page>
@@ -184,11 +255,16 @@ const Profile = () => {
           <Email>{userData.email}</Email>
 
           <InfoItem><FaIdCard /> ID: {userData.uid}</InfoItem>
-          <InfoItem><FaUser /> Role: User</InfoItem>
+          <InfoItem><FaUser /> Role: {userData.role}</InfoItem>
           <InfoItem><FaPhone /> Phone: {userData.phone || "N/A"}</InfoItem>
 
-          <EditButton onClick={() => navigate("/edit-profile") }>
-            <FaEdit /> Edit Profile
+          <EditButton
+            onClick={() => {
+              setNewPhone(userData.phone || "");
+              setShowModal(true);
+            }}
+          >
+            <FaEdit /> Edit Phone
           </EditButton>
         </ProfilePanel>
 
@@ -196,28 +272,42 @@ const Profile = () => {
         <ActionArea>
           <Title>Actions</Title>
           <Grid>
-
-            <ActionCard onClick={() => navigate('/forum')}>
+            <ActionCard onClick={() => navigate("/forum")}>
               <Icon><FaComments /></Icon>
               <Label>Forum</Label>
               <Desc>Join discussions</Desc>
             </ActionCard>
 
-            <ActionCard onClick={() => navigate('/edit-profile')}>
-              <Icon><FaEdit /></Icon>
-              <Label>Edit Profile</Label>
-              <Desc>Update your details</Desc>
-            </ActionCard>
-
             <ActionCard onClick={handleLogout}>
-              <Icon style={{ color: 'red' }}><FaSignOutAlt /></Icon>
+              <Icon style={{ color: "red" }}><FaSignOutAlt /></Icon>
               <Label>Logout</Label>
               <Desc>Sign out securely</Desc>
             </ActionCard>
-
           </Grid>
         </ActionArea>
       </Wrapper>
+
+      {/* MODAL */}
+      {showModal && (
+        <ModalOverlay>
+          <ModalBox>
+            <ModalTitle>Edit Phone Number</ModalTitle>
+
+            <ModalInput
+              value={newPhone}
+              onChange={(e) => setNewPhone(e.target.value)}
+              placeholder="Enter new phone number"
+            />
+
+            <ModalActions>
+              <SaveBtn onClick={updatePhone}>Save</SaveBtn>
+              <CancelBtn onClick={() => setShowModal(false)}>
+                Cancel
+              </CancelBtn>
+            </ModalActions>
+          </ModalBox>
+        </ModalOverlay>
+      )}
     </Page>
   );
 };

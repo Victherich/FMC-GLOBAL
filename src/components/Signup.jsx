@@ -119,13 +119,14 @@ const UserSignup = () => {
 
       await updateProfile(user, { displayName: name });
 
-      await setDoc(doc(db, "users", user.uid), {
-        uid: user.uid,
-        name,
-        email,
-        phone,
-        createdAt: new Date(),
-      });
+   await setDoc(doc(db, "users", user.uid), {
+  uid: user.uid,
+  name,
+  email,
+  phone,
+  role: "admin", // ✅ default role added
+  createdAt: new Date(),
+});
 
       Swal.fire("Success 🎉", "Account created successfully", "success");
       navigate("/login");
