@@ -31,7 +31,7 @@ const Hero = styled.section`
 
 const HeroTitle = styled.h1`
   font-size:2.8rem;
-
+  text-shadow: 0 5px 15px rgba(0,0,0,1);
   span{
     color:#d4af37;
   }
@@ -40,6 +40,7 @@ const HeroTitle = styled.h1`
 const HeroText = styled.p`
   margin-top:10px;
   color:#cbd5e1;
+    text-shadow: 0 5px 15px rgba(0,0,0,1);
 `;
 
 /* ---------- CONTAINER ---------- */

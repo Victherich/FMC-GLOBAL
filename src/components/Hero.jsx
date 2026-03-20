@@ -452,6 +452,7 @@ font-style:italic;
 color:#ddd;
 font-size:15px;
 opacity:0.9;
+  text-shadow: 0 5px 15px rgba(0,0,0,1);
 `;
 
 export default function HeroSection(){

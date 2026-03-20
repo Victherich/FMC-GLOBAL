@@ -20,6 +20,7 @@ const Hero = styled.section`
 const HeroTitle = styled.h1`
   font-size:3rem;
   margin-bottom:15px;
+    text-shadow: 0 5px 15px rgba(0,0,0,1);
 
   span{
     color:#d4af37;
@@ -30,6 +31,7 @@ const HeroText = styled.p`
   max-width:700px;
   margin:auto;
   color:#e2e8f0;
+    text-shadow: 0 5px 15px rgba(0,0,0,1);
 `;
 
 /* ---------- CONTAINER ---------- */

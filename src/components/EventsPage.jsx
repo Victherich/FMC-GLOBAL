@@ -2,6 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Slide, Zoom, Flip } from "react-awesome-reveal";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import ehero from '../Images/ehero.png'
 
 /* ---------- PAGE ---------- */
 
@@ -11,15 +15,31 @@ const Page = styled.div`
 
 /* ---------- HERO ---------- */
 
+// const Hero = styled.section`
+//   padding:110px 20px;
+//   text-align:center;
+//   background:linear-gradient(135deg,#001233,#002855);
+//   color:white;
+// `;
+
+
 const Hero = styled.section`
-  padding:110px 20px;
+  padding:170px 20px;
   text-align:center;
-  background:linear-gradient(135deg,#001233,#002855);
-  color:white;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url(${ehero});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
 `;
 
 const HeroTitle = styled.h1`
   font-size:2.8rem;
+    text-shadow: 0 5px 15px rgba(0,0,0,1);
 
   span{
     color:#d4af37;
@@ -29,6 +49,7 @@ const HeroTitle = styled.h1`
 const HeroText = styled.p`
   margin-top:10px;
   color:#cbd5e1;
+    text-shadow: 0 5px 15px rgba(0,0,0,1);
 `;
 
 /* ---------- CONTAINER ---------- */
@@ -104,7 +125,7 @@ const FeaturedContent = styled.div`
 
 const Title = styled.h3`
   font-size:1.8rem;
-  color:#001233;
+  color: #0033a0;
   margin-bottom:10px;
 `;
 
@@ -112,6 +133,7 @@ const Meta = styled.div`
   font-size:0.9rem;
   color:#64748b;
   margin-bottom:10px;
+  font-weight:bold;
 `;
 
 const Text = styled.p`
@@ -168,7 +190,7 @@ const CardImageWrap = styled.div`
 
 const CardImg = styled.img`
   width:100%;
-  height:180px;
+  // height:180px;
   object-fit:cover;
 `;
 
@@ -176,15 +198,16 @@ const CardBody = styled.div`
   padding:18px;
 `;
 
-const CardTitle = styled.h4`
+const CardTitle = styled.h3`
   margin-bottom:5px;
-  color:#0f172a;
+  color: #0033a0;
 `;
 
 const CardMeta = styled.div`
-  font-size:0.8rem;
-  color:#94a3b8;
+  font-size:0.9rem;
+  color: #666;
   margin-bottom:8px;
+  font-weight:bold;
 `;
 
 const CardText = styled.p`
@@ -220,6 +243,50 @@ const CTAText = styled.p`
 
 export default function EventsPage(){
     const navigate = useNavigate();
+    const [events, setEvents] = useState([]);
+
+
+useEffect(() => {
+  const fetchEvents = async () => {
+    const snap = await getDocs(collection(db, "events"));
+
+    const list = snap.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    // sort: latest first
+    list.sort((a, b) => {
+      const aTime = a.createdAt?.seconds || 0;
+      const bTime = b.createdAt?.seconds || 0;
+      return bTime - aTime;
+    });
+
+    setEvents(list);
+  };
+
+  fetchEvents();
+}, []);
+
+
+
+
+const getDateParts = (date) => {
+  if (!date) return { day: "", month: "" };
+
+  const d = new Date(date);
+  return {
+    day: d.getDate(),
+    month: d.toLocaleString("en-US", { month: "short" }).toUpperCase(),
+  };
+};
+
+
+
+const featured = events[0];
+
+
+
 
 return(
 
@@ -231,7 +298,7 @@ return(
 
 <Flip triggerOnce={false} duration={4000}>
 <HeroTitle>
-Upcoming <span>Events</span>
+Our <span>Events</span>
 </HeroTitle>
 </Flip>
 
@@ -249,32 +316,40 @@ Be part of our services, conferences, and life-changing programs.
 {/* ---------- FEATURED EVENT ---------- */}
 
 
-
 <Featured>
 
 <FeaturedImage>
-<Img src="/images/event-main.jpg"/>
+<Img src={featured?.image || "/images/event-main.jpg"} />
 
-<DateBadge>
-<Month>MAR</Month>
-<Day>25</Day>
-</DateBadge>
+{featured?.date && (
+  <DateBadge>
+    <Month>{getDateParts(featured.date).month}</Month>
+    <Day>{getDateParts(featured.date).day}</Day>
+  </DateBadge>
+)}
 
 </FeaturedImage>
 
 <FeaturedContent>
 <Zoom triggerOnce={false} duration={4000}>
-<Title>Annual Revival Conference</Title>
+<Title>{featured?.title || "Event Title"}</Title>
+
+
 </Zoom>
 
-<Meta>5:00 PM • Main Auditorium</Meta>
+<Meta>
+  Venue: {featured?.venue}
+</Meta>
+
+<Meta>
+ Date: {featured?.date} • Time: {featured?.time}
+</Meta>
 
 <Text>
-A powerful gathering of worship, word, and divine encounter.
-Come and experience transformation.
+  {featured?.description}
 </Text>
 
-<Button>View Details</Button>
+{/* <Button>View Details</Button> */}
 
 </FeaturedContent>
 
@@ -282,124 +357,51 @@ Come and experience transformation.
 
 
 
-
 {/* ---------- UPCOMING ---------- */}
 
-<SectionTitle>Upcoming Events</SectionTitle>
-
+<SectionTitle>More Events</SectionTitle>
 
 
 <Grid>
 
-<Card>
+{events.slice(1).map((item) => (
+  <Card key={item.id}>
 
-<CardImageWrap>
-<CardImg src="/images/event1.jpg"/>
+    <CardImageWrap>
+      <CardImg src={item.image} />
 
-<DateBadge>
-<Month>MAR</Month>
-<Day>20</Day>
-</DateBadge>
+      {item.date && (
+        <DateBadge>
+          <Month>{getDateParts(item.date).month}</Month>
+          <Day>{getDateParts(item.date).day}</Day>
+        </DateBadge>
+      )}
+    </CardImageWrap>
 
-</CardImageWrap>
+    <CardBody>
+      <Zoom triggerOnce={false} duration={4000}>
+        <CardTitle>{item.title}</CardTitle>
+      </Zoom>
 
-<CardBody>
-    <Zoom triggerOnce={false} duration={4000}>
-<CardTitle>Sunday Worship</CardTitle>
-</Zoom>
-<CardMeta>9:00 AM</CardMeta>
-<CardText>Join us for a powerful worship experience.</CardText>
-</CardBody>
+      {/* <CardMeta>Time: {item.time}</CardMeta> */}
+<CardMeta>
+  Venue: {item.venue}
+</CardMeta>
 
-</Card>
+<CardMeta>
+ Date: {item.date} • Time: {item.time}
+</CardMeta>
 
+      <CardText>{item.description}</CardText>
+    </CardBody>
 
-<Card>
-
-<CardImageWrap>
-<CardImg src="/images/event2.jpg"/>
-
-<DateBadge>
-<Month>MAR</Month>
-<Day>22</Day>
-</DateBadge>
-
-</CardImageWrap>
-
-<CardBody>
-    <Zoom triggerOnce={false} duration={4000}>
-<CardTitle>Youth Fellowship</CardTitle>
-</Zoom>
-<CardMeta>5:00 PM</CardMeta>
-<CardText>Empowering young people for greatness.</CardText>
-</CardBody>
-
-</Card>
-
-
-<Card>
-
-<CardImageWrap>
-<CardImg src="/images/event3.jpg"/>
-
-<DateBadge>
-<Month>MAR</Month>
-<Day>24</Day>
-</DateBadge>
-
-</CardImageWrap>
-
-<CardBody>
-<CardTitle>Prayer Night</CardTitle>
-<CardMeta>10:00 PM</CardMeta>
-<CardText>A night of deep spiritual encounter.</CardText>
-</CardBody>
-
-</Card>
+  </Card>
+))}
 
 </Grid>
 
 
 
-
-{/* ---------- PAST EVENTS ---------- */}
-
-<SectionTitle>Past Events</SectionTitle>
-
-<Slide direction="right" triggerOnce>
-
-<Grid>
-
-<Card>
-<CardImg src="/images/event1.jpg"/>
-<CardBody>
-<CardTitle>Christmas Service</CardTitle>
-<CardMeta>Dec 2025</CardMeta>
-<CardText>Celebrating Christ together.</CardText>
-</CardBody>
-</Card>
-
-<Card>
-<CardImg src="/images/event2.jpg"/>
-<CardBody>
-<CardTitle>Thanksgiving</CardTitle>
-<CardMeta>Nov 2025</CardMeta>
-<CardText>A service full of gratitude.</CardText>
-</CardBody>
-</Card>
-
-<Card>
-<CardImg src="/images/event3.jpg"/>
-<CardBody>
-<CardTitle>Family Weekend</CardTitle>
-<CardMeta>Oct 2025</CardMeta>
-<CardText>Strengthening families in Christ.</CardText>
-</CardBody>
-</Card>
-
-</Grid>
-
-</Slide>
 
 
 {/* ---------- CTA ---------- */}

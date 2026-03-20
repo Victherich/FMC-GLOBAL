@@ -50,6 +50,7 @@ const Title = styled.h2`
   font-size:2.6rem;
   color:#001233;
   margin-bottom:10px;
+    text-shadow: 0 5px 15px rgba(255,255,255,1);
   span {
     color:#b8860b;
   }
@@ -58,6 +59,7 @@ const Title = styled.h2`
 const Subtitle = styled.p`
   color:#111;
   font-size:1rem;
+    text-shadow: 0 5px 15px rgba(0,0,0,1);
 `;
 
 /* ---------- FORM ---------- */

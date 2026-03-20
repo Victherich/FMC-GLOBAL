@@ -47,7 +47,7 @@ padding:20px;
 const HeroTitle = styled.h1`
 font-size:4rem;
 font-weight:800;
-
+  text-shadow: 0 5px 15px rgba(0,0,0,1);
 span{
 color:#ffd700;
 }
@@ -63,6 +63,7 @@ font-size:1.3rem;
 color:#ddd;
 line-height:1.7;
 font-weight:bold;
+  text-shadow: 0 5px 15px rgba(0,0,0,1);
 `
 
 const GlowCircle = styled.div`

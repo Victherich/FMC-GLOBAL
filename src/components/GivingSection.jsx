@@ -55,7 +55,7 @@ const Glow = styled.div`
 
 const HeroTitle = styled.h1`
   font-size:3rem;
-
+  text-shadow: 0 5px 15px rgba(0,0,0,1);
   span{
     color:#d4af37;
   }
@@ -67,6 +67,7 @@ const HeroText = styled.p`
   max-width:600px;
   margin-left:auto;
   margin-right:auto;
+    text-shadow: 0 5px 15px rgba(0,0,0,1);
 `;
 
 const Button = styled.button`
