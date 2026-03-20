@@ -10,7 +10,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { FaPlus, FaTrash, FaEdit } from "react-icons/fa";
-import TestimonyModal from "./TestimonyModal";
+import InspirationModal from "./InspirationModal";
 import Swal from "sweetalert2";
 
 /* ================= STYLES ================= */
@@ -19,12 +19,12 @@ const Page = styled.div`
   padding: 2rem;
   background: #f8fafc;
   min-height: 100vh;
-  position:relative;
+  position: relative;
 `;
 
 const Title = styled.h2`
   margin-bottom: 20px;
-  color:#0a3cff;
+  color: #0a3cff;
 `;
 
 const Grid = styled.div`
@@ -65,7 +65,6 @@ const Actions = styled.div`
   margin-top: 10px;
   display: flex;
   gap: 10px;
-
 `;
 
 const Btn = styled.button`
@@ -73,14 +72,14 @@ const Btn = styled.button`
   padding: 8px;
   cursor: pointer;
   border-radius: 8px;
-    color: #0a3cff;
+  color: #0a3cff;
 `;
 
 const AddButton = styled.button`
-  position:absolute;
+  position: absolute;
   top: 30px;
   right: 30px;
-  background:  #0a3cff;
+  background: #0a3cff;
   color: white;
   border: none;
   padding: 5px;
@@ -90,7 +89,7 @@ const AddButton = styled.button`
 
 /* ================= COMPONENT ================= */
 
-export default function ManageTestimonies() {
+export default function ManageInspirations() {
   const [data, setData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [editingId, setEditingId] = useState(null);
@@ -98,15 +97,14 @@ export default function ManageTestimonies() {
 
   const [form, setForm] = useState({
     title: "",
-    name: "",
     category: "",
-    text: "",
+    content: "",
   });
 
-  const testimoniesRef = collection(db, "testimonies");
+  const ref = collection(db, "inspirations");
 
   const fetchData = async () => {
-    const snap = await getDocs(testimoniesRef);
+    const snap = await getDocs(ref);
     const list = snap.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -118,53 +116,45 @@ export default function ManageTestimonies() {
     fetchData();
   }, []);
 
+  const handleSave = async () => {
+    try {
+      Swal.fire({
+        title: "Saving...",
+        allowOutsideClick: false,
+        didOpen: () => Swal.showLoading(),
+      });
 
+      if (editingId) {
+        await updateDoc(doc(db, "inspirations", editingId), form);
+      } else {
+        await addDoc(ref, {
+          ...form,
+          createdAt: new Date(),
+        });
+      }
 
-const handleSave = async () => {
-  try {
-    // Show loading alert
-    Swal.fire({
-      title: "Saving...",
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-    });
+      Swal.close();
 
-    if (editingId) {
-      await updateDoc(doc(db, "testimonies", editingId), form);
-    } else {
-      await addDoc(testimoniesRef, {
-        ...form,
-        createdAt: new Date(),
+      Swal.fire({
+        icon: "success",
+        title: "Saved!",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      setShowModal(false);
+      setForm({ title: "", category: "", content: "" });
+      setEditingId(null);
+      fetchData();
+    } catch (error) {
+      Swal.close();
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: error.message || "Something went wrong!",
       });
     }
-
-    // Close loading alert
-    Swal.close();
-
-    // Success feedback (optional)
-    Swal.fire({
-      icon: "success",
-      title: "Saved!",
-      timer: 1500,
-      showConfirmButton: false,
-    });
-
-    setShowModal(false);
-    setForm({ title: "", name: "", category: "", text: "" });
-    setEditingId(null);
-    fetchData();
-  } catch (error) {
-    // Close loading alert in case of error
-    Swal.close();
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: error.message || "Something went wrong!",
-    });
-  }
-};
+  };
 
   const handleEdit = (item) => {
     setForm(item);
@@ -172,35 +162,25 @@ const handleSave = async () => {
     setShowModal(true);
   };
 
-
-
-const handleDelete = async (id) => {
-  try {
-    // Confirm before deleting
+  const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: "Are you sure?",
-      text: "This item will be permanently deleted.",
+      text: "This will be deleted permanently.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
     });
 
     if (!result.isConfirmed) return;
 
-    // Show loading
     Swal.fire({
       title: "Deleting...",
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
+      didOpen: () => Swal.showLoading(),
     });
 
-    await deleteDoc(doc(db, "testimonies", id));
+    await deleteDoc(doc(db, "inspirations", id));
 
     Swal.close();
 
-    // Success message
     Swal.fire({
       icon: "success",
       title: "Deleted!",
@@ -209,66 +189,50 @@ const handleDelete = async (id) => {
     });
 
     fetchData();
-  } catch (error) {
-    Swal.close();
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: error.message || "Failed to delete",
-    });
-  }
-};
+  };
 
-  // 📅 FORMAT DATE
   const formatDate = (date) => {
     if (!date) return "";
     const d = date.seconds ? new Date(date.seconds * 1000) : new Date(date);
+
     return d.toLocaleString("en-US", {
-      month: "short",
+      month: "long", // 👈 shows full month (e.g. March)
       year: "numeric",
     });
   };
 
-
   const filteredData = data.filter((item) => {
-  const name = `${item.title || ""} ${item.name || ""}`.toLowerCase();
-  const category = (item.category || "").toLowerCase();
-  const query = search.toLowerCase();
-
-  return name.includes(query) || category.includes(query);
-});
-
-
+    const text = `${item.title || ""} ${item.category || ""}`.toLowerCase();
+    return text.includes(search.toLowerCase());
+  });
 
   return (
     <Page>
-      <Title>Manage<br/> Testimonies</Title>
-<input
-  type="text"
-  placeholder="Search by name or category..."
-  value={search}
-  onChange={(e) => setSearch(e.target.value)}
-  style={{
-    padding: "10px",
-    marginBottom: "20px",
-    width: "100%",
-    borderRadius: "8px",
-    border: "1px solid #ddd",
-    outline:'none'
-  }}
-/>
+      <Title>Manage Inspirations</Title>
+
+      <input
+        type="text"
+        placeholder="Search..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{
+          padding: "10px",
+          marginBottom: "20px",
+          width: "100%",
+          borderRadius: "8px",
+          border: "1px solid #ddd",
+          outline: "none",
+        }}
+      />
+
       <Grid>
         {filteredData.map((item) => (
           <Card key={item.id}>
-           <Category>
-  {item.category.toUpperCase()}
-</Category>
+            <Category>{item.category.toUpperCase()}</Category>
 
-           <Name>
-  {`${item.title ? item.title.charAt(0).toUpperCase() + item.title.slice(1) : ""} ${item.name ? item.name.charAt(0).toUpperCase() + item.name.slice(1) : ""}`}
-</Name>
+            <Name>{item.title}</Name>
 
-            <Text>{item.text}</Text>
+            <Text>{item.content}</Text>
 
             <Meta>{formatDate(item.createdAt)}</Meta>
 
@@ -288,19 +252,14 @@ const handleDelete = async (id) => {
         onClick={() => {
           setShowModal(true);
           setEditingId(null);
-          setForm({
-            title: "",
-            name: "",
-            category: "",
-            text: "",
-          });
+          setForm({ title: "", category: "", content: "" });
         }}
       >
         Add <FaPlus />
       </AddButton>
 
       {showModal && (
-        <TestimonyModal
+        <InspirationModal
           form={form}
           setForm={setForm}
           onClose={() => setShowModal(false)}

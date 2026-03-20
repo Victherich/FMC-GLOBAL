@@ -69,7 +69,7 @@ const slideFastContinuous = keyframes`
 const HeaderContainer = styled.header`
 position:sticky;
 top:0;
-z-index:999;
+z-index:3;
 width:100%;
 padding:15px 10px;
 
@@ -101,6 +101,7 @@ letter-spacing:1px;
 display:flex;
 justify-content:center;
 align-items:center;
+cursor:pointer;
 
 p {
   animation: ${slideFastContinuous} 8s linear infinite;
@@ -339,7 +340,7 @@ return (
 
 <FloatingLight/>
 
-<Logo>
+<Logo onClick={()=>navigate('/')}>
     <img src={logo} alt='logo'/>
     <CarContainer>
 <p>FMC <span>GLOBAL</span></p>
@@ -387,13 +388,13 @@ Give
   <p  
     key={i} 
     style={{ color: location.pathname === menu.link ? "#ffd700" : "white", fontWeight: location.pathname === menu.link ? 600 : 400 }}
-    onClick={()=>navigate(`${menu.link}`)}
+    onClick={()=>{navigate(`${menu.link}`); setOpen(false)}}
   >
     {menu.title}
   </p>
 ))}
 
-<DonateButton onClick={()=>navigate('/donations')}>
+<DonateButton onClick={()=>{navigate('/donations');setOpen(false)}}>
 Donate
 </DonateButton>
 

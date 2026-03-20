@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Slide, Zoom, Flip } from "react-awesome-reveal";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import testimonyhero from '../Images/testimonyhero.png'
 
 /* ---------- PAGE ---------- */
 
@@ -12,10 +16,17 @@ const Page = styled.div`
 /* ---------- HERO ---------- */
 
 const Hero = styled.section`
-  padding:110px 20px;
+  padding:170px 20px;
   text-align:center;
-  background:linear-gradient(135deg,#001233,#003566);
-  color:white;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url(${testimonyhero});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
 `;
 
 const HeroTitle = styled.h1`
@@ -161,6 +172,50 @@ const Button = styled.button`
 export default function TestimoniesPage(){
     const navigate = useNavigate();
 
+    const [data, setData] = useState([]);
+
+const testimoniesRef = collection(db, "testimonies");
+
+const fetchData = async () => {
+  const snap = await getDocs(testimoniesRef);
+
+  const list = snap.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  // ✅ sort so latest is first
+  const sorted = list.sort((a, b) => {
+    const dateA = a.createdAt?.seconds
+      ? new Date(a.createdAt.seconds * 1000)
+      : new Date(a.createdAt);
+
+    const dateB = b.createdAt?.seconds
+      ? new Date(b.createdAt.seconds * 1000)
+      : new Date(b.createdAt);
+
+    return dateB - dateA;
+  });
+
+  setData(sorted);
+};
+
+useEffect(() => {
+  fetchData();
+}, []);
+
+
+const formatDate = (date) => {
+  if (!date) return "";
+  const d = date.seconds ? new Date(date.seconds * 1000) : new Date(date);
+  return d.toLocaleString("en-US", {
+    month: "short",
+    year: "numeric",
+  });
+};
+
+
+
 return(
 
 <Page>
@@ -190,95 +245,55 @@ See what God is doing in the lives of His people.
 
 <Slide direction="left" triggerOnce>
 
-<Featured>
+{data[0] && (
+  <Featured>
+    <FeaturedTitle>
+      "{data[0].category}"
+    </FeaturedTitle>
 
-<FeaturedTitle>
-"Healed and Restored"
-</FeaturedTitle>
+    <FeaturedMeta>
+      By {data[0].title} {data[0].name} • {formatDate(data[0].createdAt)}
+    </FeaturedMeta>
 
-<FeaturedMeta>
-By Sister Grace • March 2026
-</FeaturedMeta>
-
-<FeaturedText>
-I came to church burdened with sickness and fear, but through
-prayer and faith, God healed me completely. Today I stand
-strong and full of joy. Truly, God is faithful!
-</FeaturedText>
-
-</Featured>
+    <FeaturedText>
+      {data[0].text}
+    </FeaturedText>
+  </Featured>
+)}
 
 </Slide>
 
 
 {/* ---------- TESTIMONIES GRID ---------- */}
 
-<Flip cascade damping={0.1} triggerOnce>
+
 
 <Grid>
+  {data.slice(1).map((item) => (
+    <Card key={item.id}>
+      <Category>{item.category}</Category>
 
-<Card>
-<Category>Healing</Category>
-<Name>Brother John</Name>
-<Text>
-God delivered me from years of pain. I am completely free!
-</Text>
-<Meta>Feb 2026</Meta>
-</Card>
+<Slide duration={4000} triggerOnce={false} direction="right">
+      <Name>
+        {`${item.title ? item.title.charAt(0).toUpperCase() + item.title.slice(1) : ""} ${
+          item.name ? item.name.charAt(0).toUpperCase() + item.name.slice(1) : ""
+        }`}
+      </Name>
+      </Slide>
 
-<Card>
-<Category>Breakthrough</Category>
-<Name>Sister Mary</Name>
-<Text>
-After months of waiting, God opened a door for my job.
-</Text>
-<Meta>Feb 2026</Meta>
-</Card>
+      <Text>{item.text}</Text>
 
-<Card>
-<Category>Provision</Category>
-<Name>Daniel K.</Name>
-<Text>
-God provided financially when I needed it the most.
-</Text>
-<Meta>Jan 2026</Meta>
-</Card>
-
-<Card>
-<Category>Restoration</Category>
-<Name>Faith A.</Name>
-<Text>
-My family has been restored. God answered our prayers.
-</Text>
-<Meta>Jan 2026</Meta>
-</Card>
-
-<Card>
-<Category>Healing</Category>
-<Name>Samuel T.</Name>
-<Text>
-I was healed after prayer. God still performs miracles!
-</Text>
-<Meta>Dec 2025</Meta>
-</Card>
-
-<Card>
-<Category>Salvation</Category>
-<Name>Esther L.</Name>
-<Text>
-I gave my life to Christ and everything has changed.
-</Text>
-<Meta>Dec 2025</Meta>
-</Card>
-
+      <Meta>{formatDate(item.createdAt)}</Meta>
+    </Card>
+  ))}
 </Grid>
 
-</Flip>
+
 
 
 {/* ---------- CTA ---------- */}
 
-<Zoom triggerOnce>
+<Zoom triggerOnce={false}>
 
 <CTA>
 

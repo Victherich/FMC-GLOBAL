@@ -27,7 +27,7 @@ const colors = {
 const Page = styled.div`
   min-height: 100vh;
   // background: ${colors.bg};
-  padding: 2rem;
+  padding: 1rem;
 `;
 
 const Wrapper = styled.div`
@@ -195,7 +195,7 @@ const CancelBtn = styled.button`
 `;
 
 /* ================= COMPONENT ================= */
-const Profile = () => {
+const Profile = ({setActivePage}) => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -272,10 +272,23 @@ const Profile = () => {
         <ActionArea>
           <Title>Actions</Title>
           <Grid>
-            <ActionCard onClick={() => navigate("/forum")}>
+
+              <ActionCard onClick={() => setActivePage('events')}>
               <Icon><FaComments /></Icon>
-              <Label>Forum</Label>
-              <Desc>Join discussions</Desc>
+              <Label>Manage Events</Label>
+              <Desc>Add, Edit and Delete events</Desc>
+            </ActionCard>
+
+            <ActionCard onClick={() => setActivePage('testimonies')}>
+              <Icon><FaComments /></Icon>
+              <Label>Manage Testimonies</Label>
+              <Desc>Add, Edit and Delete testimonies</Desc>
+            </ActionCard>
+
+              <ActionCard onClick={() => setActivePage('inspirationals')}>
+              <Icon><FaComments /></Icon>
+              <Label>Manage Inspirationals</Label>
+              <Desc>Add, Edit and Delete Inspirationals</Desc>
             </ActionCard>
 
             <ActionCard onClick={handleLogout}>

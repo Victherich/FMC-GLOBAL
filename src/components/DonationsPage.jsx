@@ -16,6 +16,10 @@ const Form = styled.div`
   padding:40px;
   border-radius:20px;
   box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+  h2 {
+  color:#0A3CFF;
+  }
 `;
 
 const Input = styled.input`

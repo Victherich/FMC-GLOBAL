@@ -258,6 +258,9 @@ import { auth } from "../firebaseConfig";
 import Profile from "./Profile";
 import Swal from "sweetalert2";
 import ManageTestimonies from './ManageTestimonies'
+import ManageInspirations from "./ManageInspirations";
+import DashboardHomeButton from "./DashboardHomeButton";
+import ManageEvents from "./ManageEvents";
 
 /* ================= THEME ================= */
 const colors = {
@@ -299,6 +302,7 @@ const TopBar = styled.div`
 const Hamburger = styled.div`
   font-size: 24px;
   cursor: pointer;
+  //  background: white;
 `;
 
 /* ================= SIDEBAR ================= */
@@ -386,7 +390,8 @@ const ContentArea = styled.div`
 `;
 
 const Header = styled.h2`
-  color: ${colors.textDark};
+  // color: ${colors.textDark};
+  color:#0a3cff;
   margin-bottom: 1rem;
 `;
 
@@ -429,10 +434,17 @@ const UserDashboard = () => {
   const renderPage = () => {
     switch (activePage) {
       case "profile":
-        return <Profile />;
+        return <Profile setActivePage={setActivePage}/>;
 
           case "testimonies":
         return <ManageTestimonies />;
+
+        
+          case "inspirationals":
+        return <ManageInspirations />;
+            
+          case "events":
+        return <ManageEvents />;
       default:
         return <Profile />;
     }
@@ -450,7 +462,7 @@ const UserDashboard = () => {
     <>
       <TopBar>
         <Hamburger onClick={() => setMenuOpen(true)}>☰</Hamburger>
-        <h3>Dashboard</h3>
+        {/* <h3>Dashboard</h3> */}
       </TopBar>
 
       <Overlay open={menuOpen} onClick={() => setMenuOpen(false)} />
@@ -468,29 +480,40 @@ const UserDashboard = () => {
             Profile
           </SidebarButton>
 
+           <SidebarButton
+            onClick={() => {
+              setActivePage("events");
+              setMenuOpen(false);
+            }}
+          >
+            Manage Events
+          </SidebarButton>
+
           <SidebarButton
             onClick={() => {
               setActivePage("testimonies");
               setMenuOpen(false);
             }}
           >
-            ManageTestimonies
+            Manage Testimonies
           </SidebarButton>
+
+          
 
           <SidebarButton
             onClick={() => {
-              setActivePage("history");
+              setActivePage("inspirationals");
               setMenuOpen(false);
             }}
           >
-            My Business Plans
+            Manage Inspirationals
           </SidebarButton>
 
           <LogoutButton onClick={handleLogout}>
             Logout
           </LogoutButton>
         </Sidebar>
-
+ <DashboardHomeButton onGoHome={() => setActivePage('profile')} />
         <ContentArea>
           <Header>Dashboard</Header>
           {renderPage()}

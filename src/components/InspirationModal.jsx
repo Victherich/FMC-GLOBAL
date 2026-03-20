@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 /* ================= THEME ================= */
+
 const colors = {
   primary: "#0A3CFF",
   secondary: "#D4AF37",
@@ -18,7 +19,7 @@ const Overlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index:4;
+  z-index: 4;
 `;
 
 const ModalBox = styled.div`
@@ -49,16 +50,7 @@ const Input = styled.input`
   margin-bottom: 12px;
   border-radius: 10px;
   border: 1px solid ${colors.border};
-  outline:none;
-`;
-
-const Select = styled.select`
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid ${colors.border};
-  outline:none;
+  outline: none;
 `;
 
 const TextArea = styled.textarea`
@@ -67,7 +59,7 @@ const TextArea = styled.textarea`
   margin-bottom: 15px;
   border-radius: 10px;
   border: 1px solid ${colors.border};
-  outline:none;
+  outline: none;
 `;
 
 const Actions = styled.div`
@@ -82,7 +74,7 @@ const SaveBtn = styled.button`
   padding: 12px;
   border-radius: 10px;
   border: none;
-  cursor:pointer;
+  cursor: pointer;
 `;
 
 const CancelBtn = styled.button`
@@ -91,19 +83,18 @@ const CancelBtn = styled.button`
   border: none;
   padding: 12px;
   border-radius: 10px;
-  cursor:pointer
+  cursor: pointer;
 `;
 
 /* ================= COMPONENT ================= */
 
-export default function TestimonyModal({
+export default function InspirationModal({
   form,
   setForm,
   onClose,
   onSave,
   editing,
 }) {
-
   const handleSubmit = (e) => {
     e.preventDefault();
     onSave();
@@ -113,31 +104,9 @@ export default function TestimonyModal({
     <Overlay>
       <ModalBox>
         <form onSubmit={handleSubmit}>
-          <Title>{editing ? "Edit Testimony" : "Add Testimony"}</Title>
+          <Title>{editing ? "Edit Inspiration" : "Add Inspiration"}</Title>
 
-          <Label>Title (Brother / Sister)</Label>
-          <Select
-            required
-            value={form.title}
-            onChange={(e) =>
-              setForm({ ...form, title: e.target.value })
-            }
-          >
-            <option value="">Select</option>
-            <option value="Brother">Brother</option>
-            <option value="Sister">Sister</option>
-          </Select>
-
-          <Label>Name</Label>
-          <Input
-            required
-            value={form.name}
-            onChange={(e) =>
-              setForm({ ...form, name: e.target.value })
-            }
-          />
-
-          <Label>Category (Eg: Healing, Breakthrough, Salvation etc) (30 characters max.)</Label>
+          <Label>Category (Eg: Faith, Breakthrough, Devotion etc) (30 characters max.)</Label>
           <Input
             required
             maxLength={30}
@@ -147,13 +116,23 @@ export default function TestimonyModal({
             }
           />
 
-          <Label>Testimony (200 characters max.)</Label>
+          <Label>Title (30 characters max.)</Label>
+          <Input
+            required
+             maxLength={30}
+            value={form.title}
+            onChange={(e) =>
+              setForm({ ...form, title: e.target.value })
+            }
+          />
+
+          <Label>Content (200 characters max.)</Label>
           <TextArea
             required
             maxLength={200}
-            value={form.text}
+            value={form.content}
             onChange={(e) =>
-              setForm({ ...form, text: e.target.value })
+              setForm({ ...form, content: e.target.value })
             }
           />
 
@@ -161,7 +140,9 @@ export default function TestimonyModal({
             <SaveBtn type="submit">
               {editing ? "Update" : "Create"}
             </SaveBtn>
-            <CancelBtn type="button" onClick={onClose}>Cancel</CancelBtn>
+            <CancelBtn type="button" onClick={onClose}>
+              Cancel
+            </CancelBtn>
           </Actions>
         </form>
       </ModalBox>
