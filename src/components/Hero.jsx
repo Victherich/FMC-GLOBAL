@@ -254,7 +254,7 @@ import h5 from '../Images/h5.jpeg'
 import h6 from '../Images/h6.jpeg'
 import h7 from '../Images/h7.jpeg'
 import h8 from '../Images/h8.jpeg'
-import h9 from '../Images/h9.jpeg'
+// import h9 from '../Images/h9.jpeg'
 import h10 from '../Images/h10.jpeg'
 import h11 from '../Images/h11.jpeg'
 import h12 from '../Images/h12.jpeg'
@@ -460,7 +460,7 @@ export default function HeroSection(){
   const navigate = useNavigate();
 
 const images = [
-h1,h2,h3,h5,h6,h7,h8,h9,h10,h11,h12
+h1,h2,h3,h5,h6,h7,h8,h10,h11,h12
 ];
 
 const animations = [

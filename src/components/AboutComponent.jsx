@@ -574,12 +574,12 @@ import styled, { keyframes } from "styled-components";
 import "animate.css/animate.min.css";
 import logo from "../Images/logo.png";
 
-import car10 from "../Images/logo.png";
-import car11 from "../Images/logo.png";
-import car12 from "../Images/logo.png";
-import car13 from "../Images/logo.png";
-import car14 from "../Images/logo.png";
-import car15 from "../Images/logo.png";
+import car10 from "../Images/p19.jpeg";
+import car11 from "../Images/p12.jpeg";
+import car12 from "../Images/p8.jpeg";
+import car13 from "../Images/p9.jpeg";
+import car14 from "../Images/p5.jpeg";
+import car15 from "../Images/h5.jpeg";
 
 import { NavLink, useNavigate } from "react-router-dom";
 

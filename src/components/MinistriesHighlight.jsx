@@ -177,7 +177,7 @@ const MiniCard = styled.div`
   overflow:hidden;
 
   background:#000;
-  cursor:pointer;
+  // cursor:pointer;
 
   box-shadow:0 10px 25px rgba(0,0,0,0.3);
 

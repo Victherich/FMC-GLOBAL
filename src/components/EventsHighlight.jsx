@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { Slide, Zoom } from "react-awesome-reveal";
 import youthexplosion from '../Images/youthexplosion1.png'
 import co1 from '../Images/co1.png'
+import { useEffect, useState } from "react";
+import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 
 /* ---------- SECTION ---------- */
 
@@ -166,6 +169,50 @@ const Button = styled.button`
 export default function EventsHighlight(){
 
 const navigate = useNavigate();
+const [events, setEvents] = useState([]);
+
+
+
+useEffect(() => {
+  const fetchEvents = async () => {
+    try {
+      const q = query(
+        collection(db, "events"),
+        orderBy("createdAt", "desc"),
+        limit(3)
+      );
+
+      const snap = await getDocs(q);
+
+      const list = snap.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setEvents(list);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  };
+
+  fetchEvents();
+}, []);
+
+
+
+
+
+const formatDateParts = (dateStr) => {
+  if (!dateStr) return { day: "", month: "" };
+
+  const d = new Date(dateStr);
+
+  return {
+    day: d.getDate(),
+    month: d.toLocaleString("en-US", { month: "short" }).toUpperCase(),
+  };
+};
+
 
 return(
 
@@ -189,86 +236,42 @@ Stay connected and be part of what God is doing in our community
 
 <Grid>
 
-{/* EVENT 1 */}
-<Card >
+{events.map((item) => {
+  const { day, month } = formatDateParts(item.date);
 
-<ImageWrapper>
+  return (
+    <Card key={item.id}>
+      <ImageWrapper>
+        <Image src={item.image} alt="Event" />
 
-<Image src="/images/event1.jpg" alt="Event"/>
+        <DateBadge>
+          {day} <br /> {month}
+        </DateBadge>
+      </ImageWrapper>
 
-<DateBadge>
-12 <br/> AUG
-</DateBadge>
+      <Content>
+        <Zoom triggerOnce={false} duration={4000}>
+          <EventTitle>{item.title}</EventTitle>
+        </Zoom>
 
-</ImageWrapper>
+        <EventText>{item.description}</EventText>
 
-<Content>
-<Zoom triggerOnce={false} duration={4000}>
-<EventTitle>Annual Revival Conference</EventTitle>
-</Zoom>
-<EventText>
-Join us for a powerful time of worship, prayer, and the Word.
-Experience revival like never before.
-</EventText>
+        {/* NEW INFO (venue, time, date) */}
+        <EventText>
+          <strong>Venue:</strong> {item.venue}
+        </EventText>
 
-</Content>
+        <EventText>
+          <strong>Time:</strong> {item.time}
+        </EventText>
 
-</Card>
-
-
-{/* EVENT 2 */}
-<Card>
-
-<ImageWrapper>
-
-<Image src={youthexplosion} alt="Event"/>
-
-<DateBadge>
-25 <br/> SEP
-</DateBadge>
-
-</ImageWrapper>
-
-<Content>
-<Zoom triggerOnce={false} duration={4000}>
-<EventTitle>Youth Explosion Night</EventTitle>
-</Zoom>
-
-<EventText>
-A night of music, dance, and empowerment for young people.
-Don’t miss this life-changing gathering.
-</EventText>
-
-</Content>
-
-</Card>
-
-
-{/* EVENT 3 */}
-<Card>
-
-<ImageWrapper>
-
-<Image src={co1} alt="Event"/>
-
-<DateBadge>
-05 <br/> OCT
-</DateBadge>
-
-</ImageWrapper>
-
-<Content>
-<Zoom triggerOnce={false} duration={4000}>
-<EventTitle>Community Outreach Day</EventTitle>
-</Zoom>
-<EventText>
-Serving our community with love through food, clothing,
-and support for families in need.
-</EventText>
-
-</Content>
-
-</Card>
+        <EventText>
+          <strong>Date:</strong> {item.date}
+        </EventText>
+      </Content>
+    </Card>
+  );
+})}
 
 </Grid>
 
