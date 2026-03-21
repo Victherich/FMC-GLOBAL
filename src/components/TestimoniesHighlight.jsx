@@ -2,7 +2,10 @@ import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Slide, Zoom } from "react-awesome-reveal";
-import testimony from '../Images/testimony1.png';
+import testimony from '../Images/testimonyimg2.png';
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 
 /* ---------- SECTION ---------- */
 
@@ -158,6 +161,45 @@ export default function TestimoniesHighlight(){
 
 const navigate = useNavigate();
 
+const [data, setData] = useState([]);
+
+const testimoniesRef = collection(db, "testimonies");
+
+const fetchData = async () => {
+  const snap = await getDocs(testimoniesRef);
+
+  const list = snap.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  const sorted = list.sort((a, b) => {
+    const dateA = a.createdAt?.seconds
+      ? new Date(a.createdAt.seconds * 1000)
+      : new Date(a.createdAt);
+
+    const dateB = b.createdAt?.seconds
+      ? new Date(b.createdAt.seconds * 1000)
+      : new Date(b.createdAt);
+
+    return dateB - dateA;
+  });
+
+  // 🔥 only 4
+  setData(sorted.slice(0, 4));
+};
+
+useEffect(() => {
+  fetchData();
+}, []);
+
+
+const featured = data[0];
+const others = data.slice(1);
+
+
+
+
 return(
 
 <Section>
@@ -186,12 +228,12 @@ are living proof of His goodness, faithfulness, and power.
 <Featured>
 
 <Quote>
-“I came broken and without direction, but through God's Word
-and prayers, my life was completely transformed. Today I walk
-in peace and purpose.”
+{featured?.text}
 </Quote>
 
-<Author>— Grace A.</Author>
+<Author>
+— {featured?.name || "Anonymous"}
+</Author>
 
 </Featured>
 
@@ -205,31 +247,21 @@ Read More Testimonies
 
 
 {/* ---------- GRID ---------- */}
-
 <Grid>
 
-<Card>
-<Quote>
-“God healed me from a long-term illness doctors said was impossible.
-Today I am completely restored.”
-</Quote>
-<Author>— Daniel K.</Author>
-</Card>
+{others.map((item) => (
+  <Card key={item.id}>
 
-<Card>
-<Quote>
-“My finances were restored after years of struggle.
-God truly made a way.”
-</Quote>
-<Author>— Esther M.</Author>
-</Card>
+    <Quote>
+      {item.text}
+    </Quote>
 
-<Card>
-<Quote>
-“My family is now united again. God restored love in our home.”
-</Quote>
-<Author>— The Johnsons</Author>
-</Card>
+    <Author>
+      — {item.name || "Anonymous"}
+    </Author>
+
+  </Card>
+))}
 
 </Grid>
 

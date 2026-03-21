@@ -1,16 +1,29 @@
 
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import dragon1 from '../Images/f1.png';
-import dragon2 from '../Images/f2.png';
-import dragon3 from '../Images/f3.png';
-import dragon4 from '../Images/f4.png';
-import dragon5 from '../Images/f5.png';
-import dragon6 from '../Images/fp6.png';
-import dragon7 from '../Images/f1.png';
-import dragon8 from '../Images/f2.png';
-import dragon9 from '../Images/f3.png';
-import dragon10 from '../Images/f4.png';
+import p1 from '../Images/P1.jpeg';
+import p2 from '../Images/p2.jpeg';
+import p3 from '../Images/p3.jpeg';
+import p4 from '../Images/p4.jpeg';
+import p5 from '../Images/p5.jpeg';
+import p6 from '../Images/p6.jpeg';
+import p7 from '../Images/p7.jpeg';
+import p8 from '../Images/p8.jpeg';
+import p9 from '../Images/p9.jpeg';
+import p10 from '../Images/p10.jpeg';
+
+import p11 from '../Images/p11.jpeg';
+import p12 from '../Images/p12.jpeg';
+import p14 from '../Images/p14.jpeg';
+import p15 from '../Images/p15.jpeg';
+import p16 from '../Images/p16.jpeg';
+import p17 from '../Images/p17.jpeg';
+import p18 from '../Images/p18.jpeg';
+
+
+
+
+
 import bgImg from '../Images/galaxy.gif';
 import modelImg from '../Images/logo.png';
 
@@ -143,14 +156,14 @@ const Model = styled.div`
 `;
 
 const Hero2 = () => {
-  const images = [dragon1, dragon2, dragon3, dragon4, dragon5, dragon6, dragon7, dragon8, dragon9, dragon10];
+  const images = [p1,  p3, p6, p7, p8, p9, p10,p12,p14,p15,p17,p18];
   return (
     <GlobalBackground>
       <Banner>
         <Slider style={{ '--quantity': images.length }}>
           {images.map((img, i) => (
             <Item key={i} style={{ '--position': i + 1 }}>
-              <img src={img} alt={`dragon_${i + 1}`} />
+              <img src={img} alt={`p_${i + 1}`} />
             </Item>
           ))}
         </Slider>

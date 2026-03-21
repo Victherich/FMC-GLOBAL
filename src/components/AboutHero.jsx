@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled, { keyframes } from "styled-components"
 import { Fade, Slide, Flip } from "react-awesome-reveal"
-import m1 from '../Images/a1.png'
+import m1 from '../Images/h11.jpeg'
 
 const fade = keyframes`
 0%{opacity:0}

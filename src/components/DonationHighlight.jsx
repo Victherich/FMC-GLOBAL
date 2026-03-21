@@ -2,7 +2,7 @@ import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Slide, Zoom } from "react-awesome-reveal";
-import give from '../Images/give.png'
+import give from '../Images/donation2.png'
 
 /* ---------- SECTION ---------- */
 

@@ -23,6 +23,7 @@ import EventsPage from './components/EventsPage';
 import InspirationalPage from './components/InspirationalPage';
 import TestimoniesPage from './components/TestimoniesPage';
 import DonationsPage from './components/DonationsPage';
+import wp from './Images/whatsapplogo.png'
 
 
 function App() {
@@ -53,6 +54,8 @@ function App() {
  <WordFromPastor/>
  <SalvationExperience/>
   <ContactCTA/>
+   <a><img src={wp} alt="logo" className="WhatsAppIcon" onClick={() => window.open("https://wa.me/2347036434618", "_blank")} /></a> 
+   
  <Hero2/>
  
   <Footer/>

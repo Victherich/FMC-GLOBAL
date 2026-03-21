@@ -2,6 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { Zoom, Slide } from "react-awesome-reveal";
 import { useLocation } from "react-router-dom";
+import p7 from '../Images/p7.jpeg'
 
 /* =========================
 ANIMATIONS
@@ -218,7 +219,7 @@ return(
 <Portraits>
 
 <PortraitCard>
-<Portrait src="/bishop.jpg"/>
+<Portrait src={p7} alt='Pastor'/>
 <PastorName>Bishop Taiwo Kuku & Pastor Sade Kuku</PastorName>
 <Role>Founder & General Overseer</Role>
 </PortraitCard>

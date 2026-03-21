@@ -15,7 +15,7 @@ const AboutPage = ()=>{
 <AboutChurch/>
 <AnimatedImage/>
 <WhyWeExistPremium/>
-<AnimatedImage/>
+<AnimatedImage />
 <WhatWeBelieve/>
 <MembershipAndCovenant/>
 <AnimatedImage/>

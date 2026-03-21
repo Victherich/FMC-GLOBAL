@@ -193,14 +193,15 @@ export default function Footer(){
 const links = [
   { title: "Home", link: "/" },
   { title: "About Us", link: "/about" },
-  { title: "Contact", link: "/contact" },
+
   { title: "Ministries", link: "/ministries" },
   { title: "Sermons & Media", link: "/sermons" },
   { title: "Events", link: "/events" },
   { title: "Donations & Tithes", link: "/donations" },
-  { title: "Gallery", link: "/gallery" },
-  { title: "Blog", link: "/blog" },
-  { title: "Testimonials", link: "/testimonials" }
+
+  { title: "Inspirationals", link: "/inspirationals" },
+  { title: "Testimonies", link: "/testimonies" },
+    { title: "Contact", link: "/contact" },
 ];
 
 return (
@@ -276,7 +277,7 @@ in Christ.
 </Column>
 
 
-<Column>
+{/* <Column>
 
 <Title>Newsletter</Title>
 
@@ -290,7 +291,7 @@ Receive sermons, devotionals and church updates weekly.
 Subscribe
 </SubscribeBtn>
 
-</Column>
+</Column> */}
 
 </FooterGrid>
 
@@ -309,8 +310,8 @@ the evidence of things not seen.” — Hebrews 11:1
 © {new Date().getFullYear()} Faith and Miracle Center Church. All Rights Reserved.
 </div>
 
-<div>
-Designed for FMC Global Ministry
+<div onClick={()=>window.open('https://www.echobyteconcept.com', "_blank")} style={{cursor:"pointer"}}>
+POWERED BY ECHOBYTE CONCEPT
 </div>
 
 </BottomBar>

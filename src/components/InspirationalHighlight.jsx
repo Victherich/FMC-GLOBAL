@@ -2,6 +2,10 @@ import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
 import {Zoom, Slide} from 'react-awesome-reveal'
+import insp from '../Images/insp.png'
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 
 
 
@@ -169,6 +173,37 @@ const CardAuthor = styled.div`
 export default function InspirationalHighlight(){
 
 const navigate = useNavigate();
+const [data, setData] = useState([]);
+
+useEffect(() => {
+  const fetchData = async () => {
+    const snap = await getDocs(collection(db, "inspirations"));
+
+    let list = snap.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+
+    // sort newest first
+    list.sort((a, b) => {
+      const aTime = a.createdAt?.seconds || 0;
+      const bTime = b.createdAt?.seconds || 0;
+      return bTime - aTime;
+    });
+
+    // 🔥 take only last 4
+    setData(list.slice(0, 4));
+  };
+
+  fetchData();
+}, []);
+
+
+
+const featured = data[0];
+const others = data.slice(1);
+
+
 
 return(
 
@@ -199,24 +234,22 @@ inspirationals from our Pastor.
 
 <Featured>
 
-<Image src="/images/pastor.jpg" alt="Pastor"/>
+<Image src={insp} alt="Pastor"/>
 
 <Content>
 
 <MessageTitle>
-Walking in Faith, Not by Sight
+{featured?.title}
 </MessageTitle>
 
 <MessageText>
-In moments of uncertainty, God calls us to trust Him completely.
-Faith is not about what we see, but about believing that He is
-working behind the scenes for our good.
+{featured?.content}
 </MessageText>
 
-<Author>— Pastor John Doe</Author>
+<Author>— {featured?.category || "Pastor"}</Author>
 
-<Button>
-Read Full Message
+<Button onClick={()=>navigate('/inspirationals')}>
+Read More Inspirationals
 </Button>
 
 </Content>
@@ -227,50 +260,23 @@ Read Full Message
 {/* ---------- OTHER MESSAGES ---------- */}
 
 <Grid>
+{others.map(item => (
+<Card key={item.id}>
 
-<Card>
 <Zoom triggerOnce={false} duration={4000}>
-<CardTitle>Trusting God in Difficult Times</CardTitle>
-</Zoom>
-<CardText>
-Even in the storms of life, God remains faithful. Learn how to
-stand firm and trust Him through every challenge.
-</CardText>
-
-<CardAuthor>— Pastor John Doe</CardAuthor>
-
-</Card>
-
-
-<Card>
-<Zoom triggerOnce={false} duration={4000}>
-<CardTitle>The Power of Prayer</CardTitle>
+<CardTitle>{item.title}</CardTitle>
 </Zoom>
 
 <CardText>
-Prayer is a direct connection to God. Discover how a consistent
-prayer life can transform everything around you.
+{item.content}
 </CardText>
 
-<CardAuthor>— Pastor John Doe</CardAuthor>
+<CardAuthor>
+— {item.category || "Pastor"}
+</CardAuthor>
 
 </Card>
-
-
-<Card>
-
-<Zoom triggerOnce={false} duration={4000}>
-<CardTitle>Living a Purposeful Life</CardTitle>
-</Zoom>
-<CardText>
-You were created with purpose. Step into your calling and begin
-to live the life God has designed for you.
-</CardText>
-
-<CardAuthor>— Pastor John Doe</CardAuthor>
-
-</Card>
-
+))}
 </Grid>
 
 </Container>

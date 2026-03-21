@@ -2,6 +2,7 @@ import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Slide, Zoom } from "react-awesome-reveal";
+import sermonImg from '../Images/p8.jpeg'
 
 /* ---------- SECTION ---------- */
 
@@ -162,7 +163,7 @@ return(
 
 <ImageWrapper onClick={()=>navigate("/sermons")}>
 
-<Image src="/images/sermon.jpg" alt="Sermons"/>
+<Image src={sermonImg} alt="Sermons"/>
 
 <Overlay/>
 
