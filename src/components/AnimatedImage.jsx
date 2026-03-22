@@ -113,7 +113,7 @@ animation:${shimmer} 1.2s ease;
 COMPONENT
 ========================= */
 
-export default function AnimatedImage(){
+export default function AnimatedImage({imageSource}){
 
 return(
 
@@ -121,7 +121,7 @@ return(
 
 <ImageBox>
 
-<Img src={img||"https://images.unsplash.com/photo-1507692049790-de58290a4334"} />
+<Img src={imageSource || "https://images.unsplash.com/photo-1507692049790-de58290a4334"} />
 
 <Glow/>
 <Shimmer/>

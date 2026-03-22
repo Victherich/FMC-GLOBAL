@@ -105,10 +105,16 @@ color:#ffd700;
 }
 `;
 
+// const Text = styled.p`
+// font-size:14px;
+// color:#ccc;
+// line-height:1.6;
+// `;
+
 const Text = styled.p`
-font-size:14px;
-color:#ccc;
-line-height:1.6;
+  font-size:13px;
+  color:#ccc;
+  line-height:1.5;
 `;
 
 const SocialRow = styled.div`
@@ -255,24 +261,59 @@ in Christ.
 
 
 <Column>
+  <Title>Locations</Title>
 
-<Title>Service Times</Title>
+  <Text><strong>USA</strong></Text>
 
-<Text>Sunday Worship: 9:00 AM</Text>
-<Text>Midweek Service: Wednesday 6:00 PM</Text>
-<Text>Youth Fellowship: Friday 5:00 PM</Text>
+  <Text>Georgia</Text>
+  <Text>3771 Floyd Rd, Marietta GA 30060.</Text>
+  <Text>Tel- 770 310 3539.</Text>
+
+  <Text style={{marginTop:"10px"}}>Texas</Text>
+  <Text>11160 Southwest Freeway Houston TX 77031</Text>
+
+  <Text style={{marginTop:"10px"}}><strong>Lagos Headquarters</strong></Text>
+  <Text>Solution House</Text>
+  <Text>1 Opa Aro Close</Text>
+  <Text>Off Tunji Adebayo street, fagba Lagos</Text>
+  <Text>0703 643 4618</Text>
+
+  <Text style={{marginTop:"10px"}}><strong>Miracle House</strong></Text>
+  <Text>3 Sholanke street ifako Agege Lagos</Text>
+  <Text>0703 643 4618</Text>
 
 </Column>
 
 
 <Column>
+  <Title>Service Times</Title>
 
-<Title>Contact Us</Title>
+  <Text><strong>USA locations</strong></Text>
+  <Text>Sunday 10am</Text>
+  <Text>Wednesday 6pm</Text>
 
-<Text>Faith and Miracle Center Church</Text>
-<Text>Lagos, Nigeria</Text>
-<Text>Email: info@fmcchurch.org</Text>
-<Text>Phone: +234 000 000 000</Text>
+  <Text style={{marginTop:"10px"}}><strong>Lagos locations</strong></Text>
+  <Text>Sunday 9am</Text>
+  <Text>Wednesday 6pm</Text>
+
+  <Text style={{marginTop:"10px"}}><strong>Second Saturday</strong></Text>
+  <Text>Mountain Moving Miracle Service 9am</Text>
+
+  <Text style={{marginTop:"10px"}}><strong>Quarterly program</strong></Text>
+  <Text>Solution Night</Text>
+  <Text>3rd Friday 10pm.</Text>
+
+</Column>
+
+
+<Column>
+  <Title>Contact</Title>
+
+  <Text>New emails needs to be generated from the new web name.</Text>
+
+  <Text style={{marginTop:"10px"}}>info@yourdomain.com</Text>
+  <Text>support@yourdomain.com</Text>
+  <Text>prayer@yourdomain.com</Text>
 
 </Column>
 

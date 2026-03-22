@@ -321,9 +321,13 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Slide, Zoom, Flip } from "react-awesome-reveal";
 import { useNavigate } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import inspirationalhero from '../Images/P1.jpeg'
+import { useMemo } from "react";
+
+
+
 
 /* ---------- PAGE ---------- */
 
@@ -494,29 +498,37 @@ export default function InspirationalPage(){
 
   const [data, setData] = useState([]);
 
-  const ref = collection(db, "inspirations");
+const ref = useMemo(() => collection(db, "inspirations"), []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const snap = await getDocs(ref);
 
-      const list = snap.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
 
-      // 🔥 sort latest first
-      list.sort((a, b) => {
-        const aTime = a.createdAt?.seconds || 0;
-        const bTime = b.createdAt?.seconds || 0;
-        return bTime - aTime;
-      });
 
-      setData(list);
-    };
+useEffect(() => {
 
-    fetchData();
-  }, []);
+  const unsubscribe = onSnapshot(ref, (snap) => {
+
+    const list = snap.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+
+    // 🔥 sort latest first
+    list.sort((a, b) => {
+      const aTime = a.createdAt?.seconds || 0;
+      const bTime = b.createdAt?.seconds || 0;
+      return bTime - aTime;
+    });
+
+    setData(list);
+  });
+
+  // cleanup when component unmounts
+  return () => unsubscribe();
+
+}, [ref]);
+
+
+
 
   // 📅 format month
   const formatDate = (date) => {

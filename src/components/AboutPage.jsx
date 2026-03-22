@@ -6,6 +6,8 @@ import AboutChurch from './AboutChurch'
 import WhyWeExistPremium from './WhyWeExistPremium'
 import AnimatedImage from './AnimatedImage'
 import WhatWeBelieve from './WhatWeBelieve'
+import h5 from '../Images/h5.jpeg'
+import h1 from '../Images/h1.jpeg'
 
 
 const AboutPage = ()=>{
@@ -15,10 +17,10 @@ const AboutPage = ()=>{
 <AboutChurch/>
 <AnimatedImage/>
 <WhyWeExistPremium/>
-<AnimatedImage />
+<AnimatedImage imageSource={h5}/>
 <WhatWeBelieve/>
 <MembershipAndCovenant/>
-<AnimatedImage/>
+<AnimatedImage imageSource={h1}/>
 <FoundersSection/>
         </div>
     )

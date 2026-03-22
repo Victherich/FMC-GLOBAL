@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { Slide, Zoom, Flip } from "react-awesome-reveal";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs , onSnapshot} from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import ehero from '../Images/ehero.png'
+
 
 /* ---------- PAGE ---------- */
 
@@ -246,9 +247,34 @@ export default function EventsPage(){
     const [events, setEvents] = useState([]);
 
 
+// useEffect(() => {
+//   const fetchEvents = async () => {
+//     const snap = await getDocs(collection(db, "events"));
+
+//     const list = snap.docs.map(doc => ({
+//       id: doc.id,
+//       ...doc.data(),
+//     }));
+
+//     // sort: latest first
+//     list.sort((a, b) => {
+//       const aTime = a.createdAt?.seconds || 0;
+//       const bTime = b.createdAt?.seconds || 0;
+//       return bTime - aTime;
+//     });
+
+//     setEvents(list);
+//   };
+
+//   fetchEvents();
+// }, []);
+
+
+
+
+
 useEffect(() => {
-  const fetchEvents = async () => {
-    const snap = await getDocs(collection(db, "events"));
+  const unsubscribe = onSnapshot(collection(db, "events"), (snap) => {
 
     const list = snap.docs.map(doc => ({
       id: doc.id,
@@ -263,11 +289,12 @@ useEffect(() => {
     });
 
     setEvents(list);
-  };
+  });
 
-  fetchEvents();
+  // cleanup listener when component unmounts
+  return () => unsubscribe();
+
 }, []);
-
 
 
 

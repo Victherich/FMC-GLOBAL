@@ -12,6 +12,7 @@ import {
   FaSignOutAlt,
   FaEdit,
 } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 /* ================= THEME ================= */
 const colors = {
@@ -222,10 +223,28 @@ const Profile = ({setActivePage}) => {
     return () => unsubscribe();
   }, []);
 
-  const handleLogout = async () => {
-    await signOut(auth);
-    navigate("/login");
+  // const handleLogout = async () => {
+  //   await signOut(auth);
+  //   navigate("/login");
+  // };
+
+ const handleLogout = async () => {
+    const result = await Swal.fire({
+      title: "Logout?",
+      text: "You will be signed out.",
+      icon: "warning",
+      confirmButtonColor: colors.primary,
+      cancelButtonColor: colors.secondary,
+      showCancelButton: true,
+      confirmButtonText: "Yes, logout",
+    });
+
+    if (result.isConfirmed) {
+      await signOut(auth);
+      navigate("/login");
+    }
   };
+
 
   const updatePhone = async () => {
     try {
@@ -289,6 +308,14 @@ const Profile = ({setActivePage}) => {
               <Icon><FaComments /></Icon>
               <Label>Manage Inspirationals</Label>
               <Desc>Add, Edit and Delete Inspirationals</Desc>
+            </ActionCard>
+
+      
+
+              <ActionCard onClick={() => setActivePage('sermons')}>
+              <Icon><FaComments /></Icon>
+              <Label>Manage Sermons</Label>
+              <Desc>Add, Edit and Delete Sermons</Desc>
             </ActionCard>
 
             <ActionCard onClick={handleLogout}>

@@ -261,6 +261,7 @@ import ManageTestimonies from './ManageTestimonies'
 import ManageInspirations from "./ManageInspirations";
 import DashboardHomeButton from "./DashboardHomeButton";
 import ManageEvents from "./ManageEvents";
+import ManageSermons from './ManageSermons';
 
 /* ================= THEME ================= */
 const colors = {
@@ -445,6 +446,9 @@ const UserDashboard = () => {
             
           case "events":
         return <ManageEvents />;
+
+          case "sermons":
+        return <ManageSermons />;
       default:
         return <Profile />;
     }
@@ -496,6 +500,15 @@ const UserDashboard = () => {
             }}
           >
             Manage Testimonies
+          </SidebarButton>
+
+          <SidebarButton
+            onClick={() => {
+              setActivePage("sermons");
+              setMenuOpen(false);
+            }}
+          >
+            Manage Sermons 
           </SidebarButton>
 
           

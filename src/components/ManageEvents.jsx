@@ -231,11 +231,11 @@ const handleSave = async () => {
 
       const data = new FormData();
       data.append("file", compressedBlob, "event.jpg");
-      data.append("upload_preset", "echobyte_digital_store_upload");
+      data.append("upload_preset", "fmc_global");
       data.append("folder", "events");
 
       const res = await fetch(
-        "https://api.cloudinary.com/v1_1/ddh4wrbok/image/upload",
+        "https://api.cloudinary.com/v1_1/dyo31jpty/image/upload",
         {
           method: "POST",
           body: data,

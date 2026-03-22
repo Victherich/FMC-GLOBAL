@@ -79,17 +79,17 @@ export default function FAQSection(){
   const refs = useRef([]);
 
   const faqs = [
-    {
-      question:"What are your service times?",
-      answer:`Sunday Worship: 9:00 AM & 11:00 AM
-Midweek Service: Wednesday 6:00 PM
-Youth Fellowship: Friday 5:00 PM`
-    },
-    {
-      question:"Where is the church located?",
-      answer:`Faith and Miracle Center Church
-Lagos, Nigeria`
-    },
+//     {
+//       question:"What are your service times?",
+//       answer:`Sunday Worship: 9:00 AM & 11:00 AM
+// Midweek Service: Wednesday 6:00 PM
+// Youth Fellowship: Friday 5:00 PM`
+//     },
+//     {
+//       question:"Where is the church located?",
+//       answer:`Faith and Miracle Center Church
+// Lagos, Nigeria`
+//     },
     {
       question:"How can I get involved in ministries?",
       answer:`You can join our various ministries including Youth, Outreach, Music, Media, and Prayer by visiting the ministries page or contacting us directly.`

@@ -121,10 +121,18 @@ const Info = styled.div`
   gap:20px;
 `;
 
+// const InfoItem = styled.div`
+//   display:flex;
+//   flex-direction:column;
+//   color:#111;
+// `;
+
 const InfoItem = styled.div`
   display:flex;
   flex-direction:column;
-  color:#111;
+  gap:5px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(0,0,0,0.1);
 `;
 
 const Label = styled.span`
@@ -168,26 +176,66 @@ export default function ContactSection(){
         </Form>
 
         {/* ---------- CONTACT INFO ---------- */}
-        <Slide duration={4000} triggerOnce={false} direction="right">
-        <Info>
-          <InfoItem>
-            <Label>Address:</Label>
-            <Value>Faith and Miracle Center Church, Lagos, Nigeria</Value>
-          </InfoItem>
-          <InfoItem>
-            <Label>Email:</Label>
-            <Value>info@fmcchurch.org</Value>
-          </InfoItem>
-          <InfoItem>
-            <Label>Phone:</Label>
-            <Value>+234 000 000 000</Value>
-          </InfoItem>
-          <InfoItem>
-            <Label>Office Hours:</Label>
-            <Value>Mon - Fri: 9:00 AM - 5:00 PM</Value>
-          </InfoItem>
-        </Info>
-        </Slide>
+     <Slide duration={4000} triggerOnce={false} direction="right">
+<Info>
+
+  {/* ---------- EMAILS ---------- */}
+  <InfoItem>
+    <Label>Emails:</Label>
+    <Value>info@yournewdomain.com</Value>
+    <Value>support@yournewdomain.com</Value>
+    <Value>prayer@yournewdomain.com</Value>
+  </InfoItem>
+
+  {/* ---------- USA LOCATIONS ---------- */}
+  <InfoItem>
+    <Label>USA - Georgia:</Label>
+    <Value>3771 Floyd Rd, Marietta GA 30060</Value>
+    <Value>Tel: 770 310 3539</Value>
+  </InfoItem>
+
+  <InfoItem>
+    <Label>USA - Texas:</Label>
+    <Value>11160 Southwest Freeway, Houston TX 77031</Value>
+  </InfoItem>
+
+  {/* ---------- LAGOS LOCATIONS ---------- */}
+  <InfoItem>
+    <Label>Lagos Headquarters:</Label>
+    <Value>Solution House</Value>
+    <Value>1 Opa Aro Close</Value>
+    <Value>Off Tunji Adebayo Street, Fagba, Lagos</Value>
+    <Value>0703 643 4618</Value>
+  </InfoItem>
+
+  <InfoItem>
+    <Label>Miracle House:</Label>
+    <Value>3 Sholanke Street, Ifako Agege, Lagos</Value>
+    <Value>0703 643 4618</Value>
+  </InfoItem>
+
+  {/* ---------- SERVICE TIMES ---------- */}
+  <InfoItem>
+    <Label>Service Times (USA):</Label>
+    <Value>Sunday: 10:00 AM</Value>
+    <Value>Wednesday: 6:00 PM</Value>
+  </InfoItem>
+
+  <InfoItem>
+    <Label>Service Times (Lagos):</Label>
+    <Value>Sunday: 9:00 AM</Value>
+    <Value>Wednesday: 6:00 PM</Value>
+  </InfoItem>
+
+  {/* ---------- SPECIAL PROGRAMS ---------- */}
+  <InfoItem>
+    <Label>Special Programs:</Label>
+    <Value>Second Saturday: Mountain Moving Miracle Service – 9:00 AM</Value>
+    <Value>Quarterly: Solution Night – 3rd Friday, 10:00 PM</Value>
+  </InfoItem>
+
+</Info>
+</Slide>
 
       </Container>
 

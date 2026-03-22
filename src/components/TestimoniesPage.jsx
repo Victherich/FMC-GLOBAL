@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { Slide, Zoom, Flip } from "react-awesome-reveal";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import testimonyhero from '../Images/testimonyhero.png'
+import { useMemo} from "react";
 
 /* ---------- PAGE ---------- */
 
@@ -174,36 +175,38 @@ export default function TestimoniesPage(){
     const navigate = useNavigate();
 
     const [data, setData] = useState([]);
-
-const testimoniesRef = collection(db, "testimonies");
-
-const fetchData = async () => {
-  const snap = await getDocs(testimoniesRef);
-
-  const list = snap.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-
-  // ✅ sort so latest is first
-  const sorted = list.sort((a, b) => {
-    const dateA = a.createdAt?.seconds
-      ? new Date(a.createdAt.seconds * 1000)
-      : new Date(a.createdAt);
-
-    const dateB = b.createdAt?.seconds
-      ? new Date(b.createdAt.seconds * 1000)
-      : new Date(b.createdAt);
-
-    return dateB - dateA;
-  });
-
-  setData(sorted);
-};
+const testimoniesRef = useMemo(() => collection(db, "testimonies"), []);
 
 useEffect(() => {
-  fetchData();
-}, []);
+
+  const unsubscribe = onSnapshot(testimoniesRef, (snap) => {
+
+    const list = snap.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    // ✅ sort latest first
+    const sorted = list.sort((a, b) => {
+      const dateA = a.createdAt?.seconds
+        ? new Date(a.createdAt.seconds * 1000)
+        : new Date(a.createdAt);
+
+      const dateB = b.createdAt?.seconds
+        ? new Date(b.createdAt.seconds * 1000)
+        : new Date(b.createdAt);
+
+      return dateB - dateA;
+    });
+
+    console.log("Realtime testimonies:", sorted); // 🔥 debug
+
+    setData(sorted);
+  });
+
+  return () => unsubscribe();
+
+}, [testimoniesRef]);
 
 
 const formatDate = (date) => {

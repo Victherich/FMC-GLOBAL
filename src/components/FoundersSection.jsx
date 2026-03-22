@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { Zoom,Slide } from "react-awesome-reveal";
+import p10a from '../Images/p10a.jpeg'
+import p6 from '../Images/p6.jpeg'
 
 /* =========================
 ANIMATIONS
@@ -181,7 +183,7 @@ const founders = [
   {
     name: "Bishop Taiwo Kuku",
     position: "Founder & General Overseer, Faith and Miracle Center Worldwide",
-    image: "https://via.placeholder.com/160",
+    image: p10a,
     bio: `Bishop Taiwo Kuku is the Founder and General Overseer of  The Faith and Miracle Center (FMC) Worldwide, an apostolic ministry with a growing global presence and church expressions in the United States and Nigeria. He is widely regarded as a dynamic preacher, prayer leader, and apostolic–prophetic voice called to equip believers and strengthen the global Church through the uncompromised teaching of God’s Word and the power of strategic prayer.
 With a divine mandate to minister to the whole person—spirit, soul, and body, Bishop Kuku’s ministry emphasizes prayer, faith, family, and spiritual maturity. His teaching is deeply rooted in Scripture and marked by clarity, prophetic insight, and practical application, empowering believers to live disciplined, purpose-driven lives and walk in sustained spiritual victory.
 Bishop Kuku carries a strong anointing in the ministry gifts of healing, deliverance, prophecy, preaching, and teaching. Through his apostolic leadership, many have experienced spiritual transformation, deliverance, and renewed alignment with their God-given destiny.
@@ -193,7 +195,7 @@ Bishop Taiwo Kuku resides in Atlanta, Georgia, with his wife, Pastor Sade Kuku, 
   {
     name: "Pastor Sade Kuku",
     position: "Co-Pastor & Co-Founder, Faith and Miracle Center Worldwide",
-    image: "https://via.placeholder.com/160",
+    image: p6,
     bio: `Pastor Sade Kuku is a woman of faith, wisdom, and divine purpose. She serves as the Co-Pastor and Co-Founder of Faith and Miracle Center Global, headquartered in Atlanta, Georgia, USA, alongside her husband, Bishop Taiwo Kuku, Founder and General Overseer of Faith and Miracle Center Global. Together, they bring healing, hope, and transformation to lives through the preaching of the Word and the demonstration of God’s power.
 Pastor Sade is a Certified Women’s Biblical Counselor and Certified Life Coach, blending spiritual insight with practical guidance to help believers walk in wholeness. She is also a Registered Nurse and a Midwife with a Master of Science in Nursing and Public Health (MSNPH)—credentials that reveal her compassion for both physical and spiritual healing. Her education includes training from several theological institutions, including the Moody Bible Institute, where she deepened her foundation in ministry and biblical leadership.
 A visionary leader, Pastor Sade is the President and Founder of Women of Faith Global and the Billion Women Global, global movements designed to empower, equip, and unite women to fulfill their divine purpose. Through conferences, mentorship programs, and prayer fellowships, she has inspired countless women to rise as vessels of excellence, virtue, and influence in their homes, churches, and communities.
