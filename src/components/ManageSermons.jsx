@@ -106,93 +106,234 @@ export default function ManageSermons() {
     fetchData();
   }, []);
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
 
-    if (file) {
-      if (file.size > 50 * 1024 * 1024) {
-        return Swal.fire("Video too large (max 50MB)");
-      }
+  //   if (file) {
+  //     if (file.size > 50 * 1024 * 1024) {
+  //       return Swal.fire("Video too large (max 50MB)");
+  //     }
 
-      setVideoFile(file);
-      setPreviewUrl(URL.createObjectURL(file));
+  //     setVideoFile(file);
+  //     setPreviewUrl(URL.createObjectURL(file));
+  //   }
+  // };
+
+  // const handleSave = async () => {
+  //   try {
+  //     if (!editingId && !videoFile) {
+  //       return Swal.fire("Please select a video");
+  //     }
+
+  //     Swal.fire({
+  //       title: "Uploading video...",
+  //       allowOutsideClick: false,
+  //       didOpen: () => Swal.showLoading(),
+  //     });
+
+  //     let videoUrl = form.video;
+
+  //     if (videoFile) {
+  //       const data = new FormData();
+  //       data.append("file", videoFile);
+  //       data.append("upload_preset", "fmc_global");
+  //       data.append("folder", "sermons");
+
+  //       const res = await fetch(
+  //         "https://api.cloudinary.com/v1_1/dyo31jpty/video/upload",
+  //         {
+  //           method: "POST",
+  //           body: data,
+  //         }
+  //       );
+
+  //       const result = await res.json();
+
+  //       if (!res.ok) {
+  //         throw new Error(result.error?.message || "Upload failed");
+  //       }
+
+  //       videoUrl = result.secure_url;
+  //     }
+
+  //     const payload = {
+  //       title: form.title,
+  //       description: form.description,
+  //       video: videoUrl,
+  //     };
+
+  //     if (editingId) {
+  //       await updateDoc(doc(db, "sermons", editingId), payload);
+  //     } else {
+  //       await addDoc(refCollection, {
+  //         ...payload,
+  //         createdAt: new Date(),
+  //       });
+  //     }
+
+  //     Swal.close();
+
+  //     Swal.fire({
+  //       icon: "success",
+  //       title: "Saved!",
+  //       timer: 1500,
+  //       showConfirmButton: false,
+  //     });
+
+  //     setShowModal(false);
+  //     setForm({ title: "", description: "", video: "" });
+  //     setVideoFile(null);
+  //     setPreviewUrl(null);
+  //     setEditingId(null);
+
+  //     fetchData();
+  //   } catch (error) {
+  //     Swal.close();
+  //     Swal.fire("Error", error.message, "error");
+  //   }
+  // };
+
+ 
+ 
+ const handleFileChange = (e) => {
+  const file = e.target.files[0];
+
+  if (file) {
+    if (file.size > 90 * 1024 * 1024) {
+      return Swal.fire({
+        icon: "error",
+        title: "File too large",
+        text: "Maximum allowed size is 90MB",
+      });
     }
-  };
 
-  const handleSave = async () => {
-    try {
-      if (!editingId && !videoFile) {
-        return Swal.fire("Please select a video");
-      }
+    setVideoFile(file);
+    setPreviewUrl(URL.createObjectURL(file));
+  }
+};
 
+
+
+
+
+
+const handleSave = async () => {
+  try {
+    if (!editingId && !videoFile) {
+      return Swal.fire("Please select a video");
+    }
+
+    let videoUrl = form.video;
+
+    if (videoFile) {
+      const data = new FormData();
+      data.append("file", videoFile);
+      data.append("upload_preset", "fmc_global");
+      data.append("folder", "sermons");
+
+      // 🔥 Create progress UI
       Swal.fire({
         title: "Uploading video...",
+        html: `
+          <div style="width:100%;background:#eee;border-radius:10px;">
+            <div id="progress-bar" style="
+              width:0%;
+              height:10px;
+              background:#0A3CFF;
+              border-radius:10px;
+            "></div>
+          </div>
+          <p id="progress-text" style="margin-top:10px;">0%</p>
+        `,
         allowOutsideClick: false,
-        didOpen: () => Swal.showLoading(),
-      });
-
-      let videoUrl = form.video;
-
-      if (videoFile) {
-        const data = new FormData();
-        data.append("file", videoFile);
-        data.append("upload_preset", "fmc_global");
-        data.append("folder", "sermons");
-
-        const res = await fetch(
-          "https://api.cloudinary.com/v1_1/dyo31jpty/video/upload",
-          {
-            method: "POST",
-            body: data,
-          }
-        );
-
-        const result = await res.json();
-
-        if (!res.ok) {
-          throw new Error(result.error?.message || "Upload failed");
-        }
-
-        videoUrl = result.secure_url;
-      }
-
-      const payload = {
-        title: form.title,
-        description: form.description,
-        video: videoUrl,
-      };
-
-      if (editingId) {
-        await updateDoc(doc(db, "sermons", editingId), payload);
-      } else {
-        await addDoc(refCollection, {
-          ...payload,
-          createdAt: new Date(),
-        });
-      }
-
-      Swal.close();
-
-      Swal.fire({
-        icon: "success",
-        title: "Saved!",
-        timer: 1500,
         showConfirmButton: false,
       });
 
-      setShowModal(false);
-      setForm({ title: "", description: "", video: "" });
-      setVideoFile(null);
-      setPreviewUrl(null);
-      setEditingId(null);
+      const uploadPromise = new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
 
-      fetchData();
-    } catch (error) {
-      Swal.close();
-      Swal.fire("Error", error.message, "error");
+        xhr.open(
+          "POST",
+          "https://api.cloudinary.com/v1_1/dyo31jpty/video/upload"
+        );
+
+        // ✅ Track progress
+        xhr.upload.onprogress = (event) => {
+          if (event.lengthComputable) {
+            const percent = Math.round(
+              (event.loaded / event.total) * 100
+            );
+
+            const bar = document.getElementById("progress-bar");
+            const text = document.getElementById("progress-text");
+
+            if (bar) bar.style.width = percent + "%";
+            if (text) text.innerText = percent + "%";
+          }
+        };
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            resolve(JSON.parse(xhr.response));
+          } else {
+            reject(new Error("Upload failed"));
+          }
+        };
+
+        xhr.onerror = () => reject(new Error("Upload error"));
+
+        xhr.send(data);
+      });
+
+      const result = await uploadPromise;
+      videoUrl = result.secure_url;
     }
-  };
 
+    const payload = {
+      title: form.title,
+      description: form.description,
+      video: videoUrl,
+    };
+
+    if (editingId) {
+      await updateDoc(doc(db, "sermons", editingId), payload);
+    } else {
+      await addDoc(refCollection, {
+        ...payload,
+        createdAt: new Date(),
+      });
+    }
+
+    Swal.close();
+
+    Swal.fire({
+      icon: "success",
+      title: "Saved!",
+      timer: 1500,
+      showConfirmButton: false,
+    });
+
+    setShowModal(false);
+    setForm({ title: "", description: "", video: "" });
+    setVideoFile(null);
+    setPreviewUrl(null);
+    setEditingId(null);
+
+    fetchData();
+  } catch (error) {
+    Swal.close();
+    Swal.fire("Error", error.message, "error");
+  }
+};
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   const handleEdit = (item) => {
     setForm(item);
     setEditingId(item.id);

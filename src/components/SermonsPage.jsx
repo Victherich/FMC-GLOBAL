@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Slide, Zoom, Flip } from "react-awesome-reveal";
+import { useEffect, useState } from "react";
+import { collection, getDocs, onSnapshot, query, orderBy  } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import sermonhero from '../Images/insp.png'
+
 
 /* ---------- PAGE ---------- */
 
@@ -10,11 +15,25 @@ const Page = styled.div`
 
 /* ---------- HERO ---------- */
 
+// const Hero = styled.section`
+//   padding:120px 20px;
+//   text-align:center;
+//   background:linear-gradient(135deg,#001233,#002855);
+//   color:white;
+// `;
+
 const Hero = styled.section`
-  padding:120px 20px;
+  padding:170px 20px;
   text-align:center;
-  background:linear-gradient(135deg,#001233,#002855);
-  color:white;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url(${sermonhero});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
 `;
 
 const HeroTitle = styled.h1`
@@ -111,13 +130,13 @@ const Category = styled.div`
   border-radius:30px;
   background:white;
   box-shadow:0 5px 15px rgba(0,0,0,0.08);
-  cursor:pointer;
+//   cursor:pointer;
   font-weight:500;
 
-  &:hover{
-    background:#d4af37;
-    color:white;
-  }
+//   &:hover{
+//     background:#d4af37;
+//     color:white;
+//   }
 `;
 
 /* ---------- GRID ---------- */
@@ -201,6 +220,53 @@ const Button = styled.button`
 
 export default function SermonsPage(){
 
+
+    const [sermons, setSermons] = useState([]);
+const [loading, setLoading] = useState(true);
+
+
+
+useEffect(() => {
+  setLoading(true);
+
+  const q = query(
+    collection(db, "sermons"),
+    orderBy("createdAt", "desc") // 🔥 sorted from Firestore directly
+  );
+
+  const unsubscribe = onSnapshot(
+    q,
+    (snapshot) => {
+      const list = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setSermons(list);
+      setLoading(false);
+    },
+    (error) => {
+      console.error(error);
+      setLoading(false);
+    }
+  );
+
+  // ✅ VERY IMPORTANT: cleanup listener
+  return () => unsubscribe();
+}, []);
+
+
+
+
+const featured = sermons[0];
+
+
+
+{loading && (
+  <p style={{ textAlign: "center" }}>Loading sermons...</p>
+)}
+
+
 return(
 
 <Page>
@@ -229,25 +295,24 @@ return(
 
 
 
-<Featured>
+{featured && (
+  <Featured>
+    <VideoBox>
+      <video
+        src={featured.video}
+        controls
+        style={{ width: "100%", borderRadius: "20px" }}
+      />
+    </VideoBox>
 
-<VideoBox>
-  <Image src="/images/sermon-main.jpg" />
-  <Play>▶</Play>
-</VideoBox>
-
-<Content>
-     <Zoom triggerOnce={false} duration={4000}>
-  <Title>Walking by Faith</Title>
-  </Zoom>
-  <Text>
-    A powerful message reminding believers to trust God beyond
-    what they see and step boldly into His promises.
-  </Text>
-</Content>
-
-</Featured>
-
+    <Content>
+      <Zoom triggerOnce duration={1500}>
+        <Title>{featured.title}</Title>
+      </Zoom>
+      <Text>{featured.description}</Text>
+    </Content>
+  </Featured>
+)}
 
 
 {/* ---------- CATEGORIES ---------- */}
@@ -255,10 +320,11 @@ return(
 <Slide direction="right" triggerOnce>
 
 <CategoryRow>
-  <Category>All</Category>
+    <Category>More Sermons</Category>
+  {/* <Category>All</Category>
   <Category>Video Sermons</Category>
   <Category>Audio Messages</Category>
-  <Category>Devotionals</Category>
+  <Category>Devotionals</Category> */}
 </CategoryRow>
 
 </Slide>
@@ -269,76 +335,36 @@ return(
 
 
 <Grid>
+  {sermons.map((item) => (
+    <Card key={item.id}>
+      {item.video && (
+        <video
+          src={item.video}
+          controls
+          style={{
+            width: "100%",
+            height: "200px",
+            objectFit: "cover",
+          }}
+        />
+      )}
 
-<Card>
-<CardImage src="/images/sermon1.jpg"/>
-<CardBody>
-     <Zoom triggerOnce={false} duration={4000}>
-<CardTitle>Faith Over Fear</CardTitle>
-</Zoom>
-<CardMeta>Sunday Service • 45 mins</CardMeta>
-<CardText>Overcome fear and walk in bold faith.</CardText>
-</CardBody>
-</Card>
+      <CardBody>
+        <Zoom triggerOnce duration={1200}>
+          <CardTitle>{item.title}</CardTitle>
+        </Zoom>
 
-<Card>
-<CardImage src="/images/sermon2.jpg"/>
-<CardBody>
-     <Zoom triggerOnce={false} duration={4000}>
-<CardTitle>Power of Prayer</CardTitle>
-</Zoom>
-<CardMeta>Midweek • 38 mins</CardMeta>
-<CardText>Unlock the power of consistent prayer.</CardText>
-</CardBody>
-</Card>
+        <CardMeta>
+          {item.createdAt?.seconds
+            ? new Date(item.createdAt.seconds * 1000).toLocaleDateString()
+            : ""}
+        </CardMeta>
 
-<Card>
-<CardImage src="/images/sermon3.jpg"/>
-<CardBody>
-     <Zoom triggerOnce={false} duration={4000}>
-<CardTitle>Purpose Driven Life</CardTitle>
-</Zoom>
-<CardMeta>Sunday • 50 mins</CardMeta>
-<CardText>Discover your God-given purpose.</CardText>
-</CardBody>
-</Card>
-
-<Card>
-<CardImage src="/images/sermon1.jpg"/>
-<CardBody>
-     <Zoom triggerOnce={false} duration={4000}>
-<CardTitle>Grace & Mercy</CardTitle>
-</Zoom>
-<CardMeta>Special Service • 40 mins</CardMeta>
-<CardText>Understanding God's grace deeply.</CardText>
-</CardBody>
-</Card>
-
-<Card>
-<CardImage src="/images/sermon2.jpg"/>
-<CardBody>
-     <Zoom triggerOnce={false} duration={4000}>
-<CardTitle>Victory in Christ</CardTitle>
-</Zoom>
-<CardMeta>Sunday • 42 mins</CardMeta>
-<CardText>Living in victory every day.</CardText>
-</CardBody>
-</Card>
-
-<Card>
-<CardImage src="/images/sermon3.jpg"/>
-<CardBody>
-     <Zoom triggerOnce={false} duration={4000}>
-<CardTitle>Spiritual Growth</CardTitle>
-</Zoom>
-<CardMeta>Midweek • 36 mins</CardMeta>
-<CardText>Grow deeper in your walk with God.</CardText>
-</CardBody>
-</Card>
-
+        <CardText>{item.description}</CardText>
+      </CardBody>
+    </Card>
+  ))}
 </Grid>
-
-
 
 
 {/* ---------- LOAD MORE ---------- */}

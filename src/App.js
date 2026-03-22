@@ -24,11 +24,16 @@ import InspirationalPage from './components/InspirationalPage';
 import TestimoniesPage from './components/TestimoniesPage';
 import DonationsPage from './components/DonationsPage';
 import wp from './Images/whatsapplogo.png'
+import logo from './Images/p19.jpeg'
+import AppUpdate from './components/AppUpdate';
+import HostingExpiryGuard from './components/HostingExpiryGuard';
 
 
 function App() {
   return (
  <BrowserRouter>
+ <HostingExpiryGuard/>
+ <AppUpdate/>
    <AutoAudioPlayer src={worshipMusic}/>
  <Header/>
  <ScrollToTop/>
@@ -55,7 +60,8 @@ function App() {
  <SalvationExperience/>
   <ContactCTA/>
    <a><img src={wp} alt="logo" className="WhatsAppIcon" onClick={() => window.open("https://wa.me/2347036434618", "_blank")} /></a> 
-   
+    <a><img src={logo} alt="logo" className="WhatsAppIcon2" /></a> 
+  
  <Hero2/>
  
   <Footer/>

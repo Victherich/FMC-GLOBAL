@@ -53,29 +53,40 @@
 .WhatsAppIcon{
   position: fixed;
   z-index: 99;
-  /* bottom: 50px; */
-  /* right: 50px; */
- bottom: 5%;
- right: 2%; 
+ bottom: 1%;
+ right: 1%; 
   width: 70px;
   box-shadow: 0px 4px 5px;
   border-radius: 50%;
   cursor: pointer;
 }
 
-/* @media screen and (max-width:768px) {
-  .WhatsAppIcon{
-      width: 50px;
-      bottom: 120px;
-      right: 30px;
-  }
 
-  
+/* WhatsApp icon styling with continuous flip */
+.WhatsAppIcon2 {
+  position: fixed;
+  z-index: 99;
+  bottom: 1%;
+  left: 1%; 
+  width: 70px;
+  box-shadow: 0px 4px 5px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  /* Animation properties */
+  animation: flip 5s linear infinite; /* 2 seconds per flip, continuous */
+ 
 }
 
-@media screen and (max-width:428px) {
-  .WhatsAppIcon{
-      bottom: 5%;
-      right: 5%;
+/* Keyframes for flipping animation */
+@keyframes flip {
+  0% {
+    transform: rotateY(0deg);
   }
-} */
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}

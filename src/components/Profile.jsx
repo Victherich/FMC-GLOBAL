@@ -318,6 +318,12 @@ const Profile = ({setActivePage}) => {
               <Desc>Add, Edit and Delete Sermons</Desc>
             </ActionCard>
 
+                <ActionCard onClick={() => setActivePage('hosting')}>
+              <Icon><FaComments /></Icon>
+              <Label>Manage Site Hosting</Label>
+              {/* <Desc>Add, Edit and Delete Sermons</Desc> */}
+            </ActionCard>
+
             <ActionCard onClick={handleLogout}>
               <Icon style={{ color: "red" }}><FaSignOutAlt /></Icon>
               <Label>Logout</Label>

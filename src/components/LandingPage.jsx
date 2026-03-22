@@ -10,6 +10,7 @@ import DonationHighlight from './DonationHighlight';
 import TestimoniesHighlight from './TestimoniesHighlight';
 import InspirationalHighlight from './InspirationalHighlight';
 import ContactCTA from './ContactUsCTA';
+import InfoLandingSection from './InfoLandingSection';
 
 const LandingPage = ()=>{
 
@@ -60,7 +61,7 @@ const LandingPage = ()=>{
              <TestimoniesHighlight/>
              <DonationHighlight/>
              <InspirationalHighlight/>
-            
+            <InfoLandingSection/>
         </Container>
     )
 }

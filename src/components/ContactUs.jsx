@@ -3,6 +3,8 @@ import styled from "styled-components";
 import contactus from '../Images/contactus.png'
 import { Zoom,Slide } from "react-awesome-reveal";
 import FAQSection from "./FAQSection";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 /* ---------- SECTION ---------- */
 
@@ -149,6 +151,61 @@ const Value = styled.span`
 /* ---------- COMPONENT ---------- */
 
 export default function ContactSection(){
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  message: ""
+});
+
+const handleChange = (e) => {
+  const { name, value } = e.target;
+  setFormData((prev) => ({
+    ...prev,
+    [name]: value
+  }));
+};
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  Swal.fire({ text: "Please wait..." });
+  Swal.showLoading();
+
+  const payload = {
+    ...formData,
+    recipientEmail: "faithandmiraclecenter@gmail.com",
+    websiteName: "FMC GLOBAL"
+  };
+
+  console.log(payload)
+
+  try {
+    // const response = await fetch("http://localhost:3000/api/contact", {
+          const response = await fetch("https://backend-mailer-1.vercel.app/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      Swal.fire({ text: "✅ Your message has been sent successfully and we shall get back to you soon!", icon:"success" });
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } else {
+      Swal.fire({ text: `❌ Error: ${data.error}` });
+    }
+  } catch (error) {
+    Swal.fire({ text: "❌ Network error, please try again." });
+    console.error("Error submitting form:", error);
+  }
+};
+
+
+
 
   return(
     <>
@@ -167,11 +224,40 @@ export default function ContactSection(){
         </Header>
 
         {/* ---------- FORM ---------- */}
-        <Form>
-          <Input type="text" placeholder="Your Name" required/>
-          <Input type="email" placeholder="Your Email" required/>
-          <Input type="text" placeholder="Subject" required/>
-          <Textarea placeholder="Your Message" required/>
+        <Form onSubmit={handleSubmit}>
+        <Input
+  type="text"
+  name="name"
+  placeholder="Your Name"
+  value={formData.name}
+  onChange={handleChange}
+  required
+/>
+
+<Input
+  type="email"
+  name="email"
+  placeholder="Your Email"
+  value={formData.email}
+  onChange={handleChange}
+  required
+/>
+
+<Input
+  type="text"
+  name="phone"
+  placeholder="Phone Number"
+  value={formData.phone}
+  onChange={handleChange}
+/>
+
+<Textarea
+  name="message"
+  placeholder="Your Message"
+  value={formData.message}
+  onChange={handleChange}
+  required
+/>
           <Button type="submit">Send Message</Button>
         </Form>
 
