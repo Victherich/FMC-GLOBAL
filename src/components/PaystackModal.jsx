@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Swal from "sweetalert2";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig"; // adjust path
+import PaystackPop from "@paystack/inline-js";
 
 // Backdrop
 const ModalBackdrop = styled.div`
@@ -61,48 +62,66 @@ const PayButton = styled.button`
 `;
 
 export default function PaystackModal({ form, close,}) {
+
+
+
+
+const payWithPaystack = () => {
+  Swal.fire({ text: "Please wait..." });
+  Swal.showLoading();
+
+  const paystack = new PaystackPop();
+
+  paystack.newTransaction({
+    key: "pk_test_60e1f53bba7c80b60029bf611a26a66a9a22d4e4",
+    email: form.email,
+    amount: form.amount * 100,
+    currency: "NGN",
+
+    onSuccess: (transaction) => {
+      (async () => {
+        try {
+          await addDoc(collection(db, "donations"), {
+            ...form,
+            reference: transaction.reference,
+            createdAt: new Date(),
+          });
+
+          Swal.fire({
+            title: "Success",
+            text: "Payment completed! GOD BLESS YOUR GIVING.",
+            icon: "success",
+            allowOutsideClick: false,
+          }).then(() => {
+            close();
+            window.location.reload();
+          });
+
+        } catch (err) {
+          Swal.fire("Error", "Could not record donation.", "error");
+        }
+      })();
+    },
+
+    onCancel: () => {
+      Swal.fire("Info", "Payment canceled.", "info");
+      close();
+    },
+  });
+};
+
+
+
+
+
+
+
+
+
+
   if (!form) return null;
 
-  const payWithPaystack = () => {
-    Swal.fire({text:"Please wait"});
-    Swal.showLoading();
-    const handler = window.PaystackPop.setup({
-    //   key: "YOUR_PUBLIC_KEY", // replace with your Paystack key
-      key: "pk_test_60e1f53bba7c80b60029bf611a26a66a9a22d4e4",
-      email: form.email,
-      amount: form.amount * 100,
-      currency: "NGN",
-      callback: function (response) {
-        // Wrap async logic in a proper function
-        (async () => {
-          try {
-            await addDoc(collection(db, "donations"), {
-              ...form,
-              reference: response.reference,
-              createdAt: new Date(),
-            });
-            Swal.fire({title:"Success", text:"Payment completed! GOD BLESS YOUR GIVING.", icon:"success", allowOutsideClick:false})
-  .then(() => {
-    // Close modal
-    close();
-    // Refresh the page
-    window.location.reload();
-  });
-          
-            close();
-
-          } catch (err) {
-            Swal.fire("Error", "Could not record donation.", "error");
-          }
-        })();
-      },
-      onClose: function () {
-        Swal.fire("Info", "Payment canceled.", "info");
-        close();
-      },
-    });
-    handler.openIframe();
-  };
+ 
 
   return (
     <ModalBackdrop>

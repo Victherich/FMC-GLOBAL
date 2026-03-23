@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { db } from '../firebaseConfig'; // Ensure this path is correct
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 
 // --- Styled Components (Reusing and adapting styles from HostingList for consistency) ---
@@ -123,37 +123,40 @@ const NoDataMessage = styled.p`
 const TransactionsList = () => {
   const [transactions, setTransactions] = useState([]);
 
-  const fetchTransactions = async () => {
-    Swal.fire({
-      title: 'Loading Transactions...',
-      allowOutsideClick: false,
-      didOpen: () => Swal.showLoading(),
-    });
 
-    try {
-      // Create a query to fetch documents from 'transactions' collection
-      // Optional: Add orderBy to sort transactions, e.g., by creation date
-      const transactionsQuery = query(
-        collection(db, 'transactions'),
-        orderBy('timestamp', 'desc') // Assuming a 'timestamp' field for sorting
-      );
-      
-      const querySnapshot = await getDocs(transactionsQuery);
-      const data = querySnapshot.docs.map(doc => ({
+
+useEffect(() => {
+  Swal.fire({
+    title: 'Loading Transactions...',
+    allowOutsideClick: false,
+    didOpen: () => Swal.showLoading(),
+  });
+
+  const transactionsQuery = query(
+    collection(db, 'transactions'),
+    orderBy('timestamp', 'desc')
+  );
+
+  const unsubscribe = onSnapshot(
+    transactionsQuery,
+    (snapshot) => {
+      const data = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data(),
       }));
+
       setTransactions(data);
-      Swal.close(); // Close loading after successful fetch
-    } catch (error) {
+      Swal.close(); // close loader after first load
+    },
+    (error) => {
       console.error('Error fetching transactions:', error);
       Swal.fire('Error', 'Failed to fetch transactions.', 'error');
     }
-  };
+  );
 
-  useEffect(() => {
-    fetchTransactions();
-  }, []);
+  // cleanup listener when component unmounts
+  return () => unsubscribe();
+}, []);
 
   return (
     <Section>

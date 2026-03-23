@@ -263,6 +263,7 @@ import DashboardHomeButton from "./DashboardHomeButton";
 import ManageEvents from "./ManageEvents";
 import ManageSermons from './ManageSermons';
 import HostingList from "./HostingList";
+import PaymentHistory from './PaymentHistory'
 
 /* ================= THEME ================= */
 const colors = {
@@ -455,6 +456,10 @@ const UserDashboard = () => {
           case "hosting":
         return <HostingList />;
 
+
+           case "payments":
+        return <PaymentHistory />;
+
       default:
         return <Profile />;
     }
@@ -528,6 +533,16 @@ const UserDashboard = () => {
             }}
           >
             Manage Sermons 
+          </SidebarButton>
+
+
+            <SidebarButton
+            onClick={() => {
+              setActivePage("payments");
+              setMenuOpen(false);
+            }}
+          >
+            Transaction History
           </SidebarButton>
 
             <SidebarButton

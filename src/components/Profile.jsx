@@ -324,6 +324,13 @@ const Profile = ({setActivePage}) => {
               {/* <Desc>Add, Edit and Delete Sermons</Desc> */}
             </ActionCard>
 
+
+                   <ActionCard onClick={() => setActivePage('payments')}>
+              <Icon><FaComments /></Icon>
+              <Label>Transaction History</Label>
+              {/* <Desc>Add, Edit and Delete Sermons</Desc> */}
+            </ActionCard>
+
             <ActionCard onClick={handleLogout}>
               <Icon style={{ color: "red" }}><FaSignOutAlt /></Icon>
               <Label>Logout</Label>

@@ -53,25 +53,17 @@ const AppUpdate = () => {
 
       // Check if there's a version change and if we should alert the user
       if (showAlertOnChange && prevVersion && prevVersion !== currentApp.version) {
-        Swal.fire({
-          title: `This site has a new update by the Developer!`,
-          text: `Kindly click the 'UPDATE" button to catch up`,
-          icon: 'info',
-          showCancelButton: true,
-          confirmButtonText: 'Update',
-          cancelButtonText: 'Remind me later',
-          allowOutsideClick: false, // Prevent closing by clicking outside
-          allowEscapeKey: false,   // Prevent closing with ESC key
-        }).then((result) => {
-          if (result.isConfirmed) {
-            // User confirmed update: Save new version and reload
-            const versionMap = { ...storedVersions, [currentAppId]: currentApp.version };
+ const versionMap = { ...storedVersions, [currentAppId]: currentApp.version };
             saveVersionsToStorage(versionMap);
             window.location.reload(); // Force a full page reload to get the latest code
-          }
-          // If user cancels, the stored version remains the old one, so they'll be reminded later.
-          // No action needed here if result.isDismissed
-        });
+
+
+        Swal.fire({
+          text: `Updating...`,
+          showConfirmButton:false,
+timer:3000
+        })
+        Swal.showLoading();
       } else {
         // No version change, first-time load, or alert not requested:
         // Just save the current version to localStorage.

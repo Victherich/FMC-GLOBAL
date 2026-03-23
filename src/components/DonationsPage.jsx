@@ -113,7 +113,7 @@ return(
 </Select>
 
 {form.category === "Other" && (
-<Input name="customReason" placeholder="Enter reason"/>
+<Input name="customReason" placeholder="Enter reason" onChange={handleChange}/>
 )}
 
 <Select name="currency" onChange={handleChange}>
