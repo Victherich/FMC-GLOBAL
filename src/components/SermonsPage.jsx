@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs, onSnapshot, query, orderBy  } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import sermonhero from '../Images/insp.png'
+import LiveStreamButton from "./LiveStreamButton";
 
 
 /* ---------- PAGE ---------- */
@@ -364,6 +365,7 @@ return(
       </CardBody>
     </Card>
   ))}
+  <LiveStreamButton/>
 </Grid>
 
 

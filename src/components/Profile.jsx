@@ -4,15 +4,17 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import {
-  FaUser,
-  FaPhone,
-  FaIdCard,
-  FaComments,
-  FaSignOutAlt,
-  FaEdit,
+import { 
+  FaCalendarAlt,      // for events
+  FaRegLightbulb,     // for inspirationals
+  FaBook,             // for sermons
+  FaServer,           // for site hosting
+  FaMoneyCheckAlt,    // for payments / transactions
+  FaComments,         // for testimonies
+  FaSignOutAlt        // logout (already used)
 } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import LiveStreamButton from "./LiveStreamButton";
 
 /* ================= THEME ================= */
 const colors = {
@@ -285,7 +287,11 @@ const Profile = ({setActivePage}) => {
           >
             <FaEdit /> Edit Phone
           </EditButton>
+<br/>
+          
         </ProfilePanel>
+
+       
 
         {/* ACTIONS */}
         <ActionArea>
@@ -330,6 +336,10 @@ const Profile = ({setActivePage}) => {
               <Label>Transaction History</Label>
               {/* <Desc>Add, Edit and Delete Sermons</Desc> */}
             </ActionCard>
+
+             <LiveStreamButton/>
+
+            
 
             <ActionCard onClick={handleLogout}>
               <Icon style={{ color: "red" }}><FaSignOutAlt /></Icon>

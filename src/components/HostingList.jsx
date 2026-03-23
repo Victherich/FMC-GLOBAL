@@ -14,13 +14,14 @@ import TransactionsList from './TransactionsList';
 // --- Styled Components ---
 
 const Section = styled.section`
-  background-color: #F0F2F5; /* Light background for the whole section */
-  padding: 20px 25px;
+  // background-color: #F0F2F5; /* Light background for the whole section */
+  // padding: 20px 25px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional font */
+ 
 `;
 
 const Title = styled.h2`
-  color: #0CC1E0; /* Darker, professional blue/gray for title */
+  color: #0A3CFF; /* Darker, professional blue/gray for title */
   font-size: 2rem; /* Slightly larger title */
   font-weight: 700; /* Bolder */
   text-align: center;
@@ -66,7 +67,7 @@ const Card = styled.div`
 `;
 
 const CardTitle = styled.h3`
-  color: #0CC1E0; /* Darker blue/gray for card titles */
+  color: #0A3CFF; /* Darker blue/gray for card titles */
   font-size: 1.6rem; /* Slightly larger card title */
   font-weight: 700;
   margin-bottom: 1.5rem; /* More space below the title */
@@ -104,7 +105,7 @@ const DetailValue = styled.span`
 
 const Button =styled.button`
 padding:10px;
-background-color:#0CC1E0;
+background-color: #0A3CFF;
 color:white;
 cursor:pointer;
 border:none;

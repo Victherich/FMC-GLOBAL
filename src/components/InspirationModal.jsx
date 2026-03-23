@@ -104,7 +104,7 @@ export default function InspirationModal({
     <Overlay>
       <ModalBox>
         <form onSubmit={handleSubmit}>
-          <Title>{editing ? "Edit Inspiration" : "Add Inspiration"}</Title>
+          <Title>{editing ? "Edit Inspirational" : "Add Inspirational"}</Title>
 
           <Label>Category (Eg: Faith, Breakthrough, Devotion etc) (30 characters max.)</Label>
           <Input

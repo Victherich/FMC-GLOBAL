@@ -628,6 +628,8 @@ border-radius:500px 500px 0 0;
 
 padding-top:80px;
 padding-bottom:30px;
+padding-left:5px;
+padding-right:5px;
 `;
 
 const Div = styled.div`

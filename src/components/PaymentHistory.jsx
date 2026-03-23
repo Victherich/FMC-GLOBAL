@@ -15,6 +15,7 @@ const Container = styled.div`
 const Title = styled.h1`
   font-size: 2rem;
   margin-bottom: 1.5rem;
+  color: #0A3CFF;
 `;
 
 const Card = styled.div`
@@ -58,6 +59,7 @@ const Empty = styled.p`
 const PaymentHistory = () => {
   const [payments, setPayments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
 
 useEffect(() => {
@@ -82,17 +84,44 @@ useEffect(() => {
 
 
 
+const filteredPayments = payments.filter((payment) => {
+  const term = searchTerm.toLowerCase();
+
+  return (
+    payment.name?.toLowerCase().includes(term) ||
+    payment.email?.toLowerCase().includes(term) ||
+    payment.phone?.toLowerCase().includes(term)
+  );
+});
+
+
+
 
   if (loading) return <Container><Title>Loading payments...</Title></Container>;
 
   return (
     <Container>
-      <Title>Payment History</Title>
-
-      {payments.length === 0 ? (
-        <Empty>No payments found.</Empty>
+      <Title>Transaction History</Title>
+<input
+  type="text"
+  placeholder="Search by name, email or phone..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  style={{
+    padding: "10px",
+    width: "100%",
+    maxWidth: "400px",
+    marginBottom: "1.5rem",
+    borderRadius: "8px",
+    border: "1px solid #ccc"
+  }}
+/>
+      {filteredPayments.length === 0 ? (
+        <Empty>
+  {searchTerm ? "No matching results found." : "No payments found."}
+</Empty>
       ) : (
-        payments.map(payment => {
+        filteredPayments.map(payment => {
           const isPaypal = !!payment.paymentDetails;
 
           return (
@@ -118,10 +147,31 @@ useEffect(() => {
                 </Row>
               )}
 
+               {payment.phone && (
+                <Row>
+                  <Label>Phone:</Label>
+                  <Value>{payment.phone}</Value>
+                </Row>
+              )}
+
               {payment.amount && (
                 <Row>
                   <Label>Amount:</Label>
                   <Value>{payment.currency} {payment.amount}</Value>
+                </Row>
+              )}
+
+              {payment.category && (
+                <Row>
+                  <Label>Category:</Label>
+                  <Value>{payment.category}</Value>
+                </Row>
+              )}
+
+              {payment.customReason && (
+                <Row>
+                  <Label>Custom Reason:</Label>
+                  <Value>{payment.customReason}</Value>
                 </Row>
               )}
 

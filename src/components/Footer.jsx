@@ -185,6 +185,12 @@ gap:10px;
 
 font-size:13px;
 color:#aaa;
+// text-align:center;
+
+// @media(max-width:768px){
+// flex-direction:column;
+// justify-content:center;
+// }
 `;
 
 const LogoImage = styled.img`

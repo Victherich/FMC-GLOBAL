@@ -467,7 +467,7 @@ const UserDashboard = () => {
 
   if (loading) {
     return (
-      <h2 style={{ textAlign: "center", marginTop: "50px" }}>
+      <h2 style={{ textAlign: "center", marginTop: "50px", color:"#0A3CFF" }}>
         Loading...
       </h2>
     );

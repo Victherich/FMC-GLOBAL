@@ -58,6 +58,9 @@ const [form, setForm] = useState({
   amount:""
 });
 
+
+console.log(form)
+
 const [showPaypal,setShowPaypal] = useState(false);
 const [showPaystack,setShowPaystack] = useState(false);
 

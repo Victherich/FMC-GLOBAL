@@ -8,7 +8,7 @@ const ButtonWrapper = styled.div`
   position: fixed;
   top: 90px;
   right: 5px;
-  z-index: 200;
+  z-index: 3;
   display: flex;
   align-items: center;
   background: orange;

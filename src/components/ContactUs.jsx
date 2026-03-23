@@ -26,6 +26,21 @@ const Overlay = styled.div`
 
 /* ---------- CONTAINER ---------- */
 
+// const Container = styled.div`
+//   position: relative;
+//   z-index: 2;
+//   max-width: 1200px;
+//   margin: auto;
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   gap: 60px;
+  
+//   @media(max-width:900px){
+//     grid-template-columns: 1fr;
+//   }
+// `;
+
+
 const Container = styled.div`
   position: relative;
   z-index: 2;
@@ -34,9 +49,15 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  
-  @media(max-width:900px){
+  grid-template-areas: 
+    "form info"; /* desktop layout */
+
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
+    grid-template-areas:
+    "header"
+      "form"
+      "info"; /* mobile layout: form first, info below */
   }
 `;
 
@@ -46,6 +67,7 @@ const Header = styled.div`
   grid-column: span 2;
   text-align: center;
   margin-bottom: 60px;
+  grid-area:header;
 `;
 
 const Title = styled.h2`
@@ -66,10 +88,21 @@ const Subtitle = styled.p`
 
 /* ---------- FORM ---------- */
 
+// const Form = styled.form`
+//   display: flex;
+//   flex-direction: column;
+//   gap:20px;
+// `;
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap:20px;
+  gap: 20px;
+  grid-area: form;
+`;
+
+const InfoWrapper = styled.div`
+  grid-area: info;
 `;
 
 const Input = styled.input`
@@ -260,8 +293,8 @@ const handleSubmit = async (e) => {
 />
           <Button type="submit">Send Message</Button>
         </Form>
-
-        {/* ---------- CONTACT INFO ---------- */}
+<InfoWrapper>
+       {/* ---------- CONTACT INFO ---------- */}
      <Slide duration={4000} triggerOnce={false} direction="right">
 <Info>
 
@@ -322,6 +355,8 @@ const handleSubmit = async (e) => {
 
 </Info>
 </Slide>
+</InfoWrapper>
+ 
 
       </Container>
 

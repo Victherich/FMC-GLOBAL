@@ -208,7 +208,7 @@ export default function ManageInspirations() {
 
   return (
     <Page>
-      <Title>Manage Inspirations</Title>
+      <Title>Manage<br/> Inspirationals</Title>
 
       <input
         type="text"

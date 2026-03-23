@@ -361,7 +361,7 @@ const handleSave = async () => {
 
   return (
     <Page>
-      <Title>Manage Sermons</Title>
+      <Title>Manage<br/> Sermons</Title>
 
       <input
         type="text"
