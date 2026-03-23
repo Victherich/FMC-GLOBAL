@@ -27,6 +27,7 @@ import wp from './Images/whatsapplogo.png'
 import logo from './Images/p19.jpeg'
 import AppUpdate from './components/AppUpdate';
 import HostingExpiryGuard from './components/HostingExpiryGuard';
+import SocialMediaSection from './components/SocialMediaSection';
 
 
 function App() {
@@ -63,7 +64,7 @@ function App() {
     <a><img src={logo} alt="logo" className="WhatsAppIcon2" /></a> 
   
  <Hero2/>
- 
+ <SocialMediaSection/>
   <Footer/>
  </BrowserRouter>
   );

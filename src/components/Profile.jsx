@@ -11,7 +11,7 @@ import {
   FaServer,           // for site hosting
   FaMoneyCheckAlt,    // for payments / transactions
   FaComments,         // for testimonies
-  FaSignOutAlt        // logout (already used)
+  FaSignOutAlt ,FaIdCard ,FaUser, FaPhone, FaEdit      // logout (already used)
 } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import LiveStreamButton from "./LiveStreamButton";
@@ -296,57 +296,49 @@ const Profile = ({setActivePage}) => {
         {/* ACTIONS */}
         <ActionArea>
           <Title>Actions</Title>
-          <Grid>
+         <Grid>
+  <ActionCard onClick={() => setActivePage('events')}>
+    <Icon><FaCalendarAlt /></Icon>
+    <Label>Manage Events</Label>
+    <Desc>Add, Edit and Delete events</Desc>
+  </ActionCard>
 
-              <ActionCard onClick={() => setActivePage('events')}>
-              <Icon><FaComments /></Icon>
-              <Label>Manage Events</Label>
-              <Desc>Add, Edit and Delete events</Desc>
-            </ActionCard>
+  <ActionCard onClick={() => setActivePage('testimonies')}>
+    <Icon><FaComments /></Icon>
+    <Label>Manage Testimonies</Label>
+    <Desc>Add, Edit and Delete testimonies</Desc>
+  </ActionCard>
 
-            <ActionCard onClick={() => setActivePage('testimonies')}>
-              <Icon><FaComments /></Icon>
-              <Label>Manage Testimonies</Label>
-              <Desc>Add, Edit and Delete testimonies</Desc>
-            </ActionCard>
+  <ActionCard onClick={() => setActivePage('inspirationals')}>
+    <Icon><FaRegLightbulb /></Icon>
+    <Label>Manage Inspirationals</Label>
+    <Desc>Add, Edit and Delete Inspirationals</Desc>
+  </ActionCard>
 
-              <ActionCard onClick={() => setActivePage('inspirationals')}>
-              <Icon><FaComments /></Icon>
-              <Label>Manage Inspirationals</Label>
-              <Desc>Add, Edit and Delete Inspirationals</Desc>
-            </ActionCard>
+  <ActionCard onClick={() => setActivePage('sermons')}>
+    <Icon><FaBook /></Icon>
+    <Label>Manage Sermons</Label>
+    <Desc>Add, Edit and Delete Sermons</Desc>
+  </ActionCard>
 
-      
+  <ActionCard onClick={() => setActivePage('hosting')}>
+    <Icon><FaServer /></Icon>
+    <Label>Manage Site Hosting</Label>
+  </ActionCard>
 
-              <ActionCard onClick={() => setActivePage('sermons')}>
-              <Icon><FaComments /></Icon>
-              <Label>Manage Sermons</Label>
-              <Desc>Add, Edit and Delete Sermons</Desc>
-            </ActionCard>
+  <ActionCard onClick={() => setActivePage('payments')}>
+    <Icon><FaMoneyCheckAlt /></Icon>
+    <Label>Transaction History</Label>
+  </ActionCard>
 
-                <ActionCard onClick={() => setActivePage('hosting')}>
-              <Icon><FaComments /></Icon>
-              <Label>Manage Site Hosting</Label>
-              {/* <Desc>Add, Edit and Delete Sermons</Desc> */}
-            </ActionCard>
+  <LiveStreamButton />
 
-
-                   <ActionCard onClick={() => setActivePage('payments')}>
-              <Icon><FaComments /></Icon>
-              <Label>Transaction History</Label>
-              {/* <Desc>Add, Edit and Delete Sermons</Desc> */}
-            </ActionCard>
-
-             <LiveStreamButton/>
-
-            
-
-            <ActionCard onClick={handleLogout}>
-              <Icon style={{ color: "red" }}><FaSignOutAlt /></Icon>
-              <Label>Logout</Label>
-              <Desc>Sign out securely</Desc>
-            </ActionCard>
-          </Grid>
+  <ActionCard onClick={handleLogout}>
+    <Icon style={{ color: "red" }}><FaSignOutAlt /></Icon>
+    <Label>Logout</Label>
+    <Desc>Sign out securely</Desc>
+  </ActionCard>
+</Grid>
         </ActionArea>
       </Wrapper>
 
