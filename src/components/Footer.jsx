@@ -140,7 +140,7 @@ animation:${pulse} 3s ease-in-out infinite;
 &:hover{
 background:#ffd700;
 color:black;
-transform:scale(1.1);
+transform:scale(1.15);
 }
 `;
 
