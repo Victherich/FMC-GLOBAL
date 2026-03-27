@@ -146,9 +146,9 @@ const UserLogin = () => {
 
           <Button type="submit">Login</Button>
 
-          <LinkText onClick={() => navigate("/signup")}>
+          {/* <LinkText onClick={() => navigate("/signup")}>
             Don't have an account? Sign up
-          </LinkText>
+          </LinkText> */}
         </form>
       </FormWrapper>
     </Container>

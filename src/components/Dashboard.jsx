@@ -264,6 +264,7 @@ import ManageEvents from "./ManageEvents";
 import ManageSermons from './ManageSermons';
 import HostingList from "./HostingList";
 import PaymentHistory from './PaymentHistory'
+import UserSignup from "./Signup";
 
 /* ================= THEME ================= */
 const colors = {
@@ -460,6 +461,9 @@ const UserDashboard = () => {
            case "payments":
         return <PaymentHistory />;
 
+               case "addadmin":
+        return <UserSignup />;
+
       default:
         return <Profile />;
     }
@@ -552,6 +556,15 @@ const UserDashboard = () => {
             }}
           >
             Manage Site Hosting
+          </SidebarButton>
+
+          <SidebarButton
+            onClick={() => {
+              setActivePage("addadmin");
+              setMenuOpen(false);
+            }}
+          >
+            Add Admin
           </SidebarButton>
 
           <LogoutButton onClick={handleLogout}>

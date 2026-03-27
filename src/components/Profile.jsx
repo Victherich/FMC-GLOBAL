@@ -331,7 +331,15 @@ const Profile = ({setActivePage}) => {
     <Label>Transaction History</Label>
   </ActionCard>
 
+ 
+
   <LiveStreamButton />
+
+
+    <ActionCard onClick={() => setActivePage('addadmin')}>
+    <Icon><FaUser /></Icon>
+    <Label>Add Admin</Label>
+  </ActionCard>
 
   <ActionCard onClick={handleLogout}>
     <Icon style={{ color: "red" }}><FaSignOutAlt /></Icon>

@@ -8,6 +8,7 @@ const Container = styled.div`
 //   height: 60vh;
 padding:20px 10px;
   background: linear-gradient(135deg, #0A3CFF, #00c3f7);
+  border-radius:20px;
 `;
 
 const Card = styled.div`
