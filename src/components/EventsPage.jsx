@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Slide, Zoom, Flip } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDocs , onSnapshot} from "firebase/firestore";
@@ -323,17 +323,17 @@ return(
 
 <Hero>
 
-<Flip triggerOnce={false} duration={4000}>
+<Zoom triggerOnce={false} duration={4000}>
 <HeroTitle>
 Our <span>Events</span>
 </HeroTitle>
-</Flip>
+</Zoom>
 
-<Slide direction="left" triggerOnce={false} duration={4000}>
+<Zoom direction="left" triggerOnce={false} duration={4000}>
 <HeroText>
 Be part of our services, conferences, and life-changing programs.
 </HeroText>
-</Slide>
+</Zoom>
 
 </Hero>
 

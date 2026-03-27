@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Slide, Zoom, Flip } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
@@ -228,17 +228,17 @@ return(
 
 <Hero>
 
-<Flip triggerOnce={false} duration={4000}>
+<Zoom triggerOnce={false} duration={4000}>
 <HeroTitle>
 Life-Changing <span>Testimonies</span>
 </HeroTitle>
-</Flip>
+</Zoom>
 
-<Slide direction="left" triggerOnce={false}>
+<Zoom direction="left" triggerOnce={false}>
 <HeroText>
 See what God is doing in the lives of His people.
 </HeroText>
-</Slide>
+</Zoom>
 
 </Hero>
 
@@ -247,7 +247,7 @@ See what God is doing in the lives of His people.
 
 {/* ---------- FEATURED TESTIMONY ---------- */}
 
-<Slide direction="left" triggerOnce>
+<Zoom direction="left" triggerOnce>
 
 {data[0] && (
   <Featured>
@@ -265,7 +265,7 @@ See what God is doing in the lives of His people.
   </Featured>
 )}
 
-</Slide>
+</Zoom>
 
 
 {/* ---------- TESTIMONIES GRID ---------- */}
@@ -277,13 +277,13 @@ See what God is doing in the lives of His people.
     <Card key={item.id}>
       <Category>{item.category}</Category>
 
-<Slide duration={4000} triggerOnce={false} direction="right">
+<Zoom duration={4000} triggerOnce={false} direction="right">
       <Name>
         {`${item.title ? item.title.charAt(0).toUpperCase() + item.title.slice(1) : ""} ${
           item.name ? item.name.charAt(0).toUpperCase() + item.name.slice(1) : ""
         }`}
       </Name>
-      </Slide>
+      </Zoom>
 
       <Text>{item.text}</Text>
 

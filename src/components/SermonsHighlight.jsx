@@ -1,7 +1,7 @@
 import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Slide, Zoom } from "react-awesome-reveal";
+import {  Zoom } from "react-awesome-reveal";
 import sermonImg from '../Images/p8.jpeg'
 
 /* ---------- SECTION ---------- */
@@ -165,9 +165,9 @@ return(
 
 <Image src={sermonImg} alt="Sermons"/>
 
-<Overlay/>
+{/* <Overlay/> */}
 
-<PlayButton>▶</PlayButton>
+{/* <PlayButton>▶</PlayButton> */}
 
 </ImageWrapper>
 
@@ -181,14 +181,14 @@ Watch & Listen to <span>Life-Changing Messages</span>
 </Title>
 </Zoom>
 
-<Slide duration={4000} direction="right" triggerOnce={false}>
+<Zoom duration={4000} direction="right" triggerOnce={false}>
 <Text>
 Be inspired by powerful teachings, spirit-filled worship,
 and life-transforming messages. Whether you missed a service
 or want to grow deeper in faith, our sermons and media
 are always available for you.
 </Text>
-</Slide>
+</Zoom>
 
 <Button onClick={()=>navigate("/sermons")}>
 Explore Sermons & Media

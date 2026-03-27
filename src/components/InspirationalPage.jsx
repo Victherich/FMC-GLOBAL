@@ -1,6 +1,6 @@
 // import React from "react";
 // import styled from "styled-components";
-// import { Slide, Zoom, Flip } from "react-awesome-reveal";
+// import { Zoom, Zoom, Flip } from "react-awesome-reveal";
 // import { Navigate, useNavigate } from "react-router-dom";
 
 // /* ---------- PAGE ---------- */
@@ -177,11 +177,11 @@
 // </HeroTitle>
 // </Flip>
 
-// <Slide direction="left" triggerOnce={false} duration={4000}>
+// <Zoom direction="left" triggerOnce={false} duration={4000}>
 // <HeroText>
 // Words of faith, hope, and encouragement from our Pastor.
 // </HeroText>
-// </Slide>
+// </Zoom>
 
 // </Hero>
 
@@ -190,7 +190,7 @@
 
 // {/* ---------- FEATURED MESSAGE ---------- */}
 
-// <Slide direction="left" triggerOnce>
+// <Zoom direction="left" triggerOnce>
 
 // <Featured>
 
@@ -211,7 +211,7 @@
 
 // </Featured>
 
-// </Slide>
+// </Zoom>
 
 
 // {/* ---------- MESSAGE GRID ---------- */}
@@ -319,7 +319,7 @@
 
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Slide, Zoom, Flip } from "react-awesome-reveal";
+import { Zoom, Flip } from "react-awesome-reveal";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../firebaseConfig";
@@ -558,11 +558,11 @@ Daily <span>Inspiration</span>
 </HeroTitle>
 </Flip>
 
-<Slide direction="left" triggerOnce={false} duration={4000}>
+<Zoom direction="left" triggerOnce={false} duration={4000}>
 <HeroText>
 Words of faith, hope, and encouragement from our Pastor.
 </HeroText>
-</Slide>
+</Zoom>
 
 </Hero>
 
@@ -572,7 +572,7 @@ Words of faith, hope, and encouragement from our Pastor.
 {/* ---------- FEATURED MESSAGE ---------- */}
 
 {featured && (
-<Slide direction="left" triggerOnce>
+<Zoom direction="left" triggerOnce>
 
 <Featured>
 
@@ -590,7 +590,7 @@ Words of faith, hope, and encouragement from our Pastor.
 
 </Featured>
 
-</Slide>
+</Zoom>
 )}
 
 

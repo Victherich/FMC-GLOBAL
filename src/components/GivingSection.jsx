@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { Flip, Slide, Zoom } from "react-awesome-reveal";
+import { Flip, Zoom } from "react-awesome-reveal";
 import { useNavigate } from "react-router-dom";
 import givewithjoy from '../Images/givewithjoy.png'
 
@@ -248,12 +248,12 @@ Give with <span>Joy</span>
 </HeroTitle>
 </Flip>
 
-<Slide direction="right" triggerOnce={false} duration={4000}>
+<Zoom direction="right" triggerOnce={false} duration={4000}>
 <HeroText>
 Giving is an act of worship, faith, and love.
 Through your generosity, lives are touched and God's work advances.
 </HeroText>
-</Slide>
+</Zoom>
 
 <Button onClick={scrollToGive}>
 Start Giving
@@ -274,9 +274,9 @@ Start Giving
 
 <Card>
 <Icon>🙏</Icon>
-<Slide direction="right" triggerOnce={false} duration={4000}>
+<Zoom direction="right" triggerOnce={false} duration={4000}>
 <Title>Tithes</Title>
-</Slide>
+</Zoom>
 <Text>
 Honor God with your substance. Tithing is a covenant practice
 that opens the door to divine provision and blessings.
@@ -285,9 +285,9 @@ that opens the door to divine provision and blessings.
 
 <Card>
 <Icon>🎁</Icon>
-<Slide direction="right" triggerOnce={false} duration={4000}>
+<Zoom direction="right" triggerOnce={false} duration={4000}>
 <Title>Offerings</Title>
-</Slide>
+</Zoom>
 <Text>
 Give freely from your heart as an expression of gratitude
 and worship to God.
@@ -296,9 +296,9 @@ and worship to God.
 
 <Card>
 <Icon>🌱</Icon>
-<Slide direction="right" triggerOnce={false} duration={4000}>
+<Zoom direction="right" triggerOnce={false} duration={4000}>
 <Title>Special Seeds</Title>
-</Slide>
+</Zoom>
 <Text>
 Sow into specific needs and believe God for a harvest
 in every area of your life.

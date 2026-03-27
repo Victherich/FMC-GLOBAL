@@ -1,7 +1,7 @@
 import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Slide, Zoom } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 import youthexplosion from '../Images/youthexplosion1.png'
 import co1 from '../Images/co1.png'
 import { useEffect, useState } from "react";
@@ -11,7 +11,7 @@ import { db } from "../firebaseConfig";
 /* ---------- SECTION ---------- */
 
 const Section = styled.section`
-  padding:100px 20px;
+  padding:100px 10px;
   background:#f8fafc;
 `;
 
@@ -225,11 +225,11 @@ Upcoming <span>Events</span>
 </Title>
 </Zoom>
 
-<Slide duration={4000} triggerOnce={false}>
+<Zoom duration={4000} triggerOnce={false}>
 <Subtitle>
 Stay connected and be part of what God is doing in our community
 </Subtitle>
-</Slide>
+</Zoom>
 
 </Header>
 

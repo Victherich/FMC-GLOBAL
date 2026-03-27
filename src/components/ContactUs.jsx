@@ -1,7 +1,7 @@
 // import React from "react";
 // import styled from "styled-components";
 // import contactus from '../Images/contactus.png'
-// import { Zoom,Slide } from "react-awesome-reveal";
+// import { Zoom,Zoom } from "react-awesome-reveal";
 // import FAQSection from "./FAQSection";
 // import { useState } from "react";
 // import Swal from "sweetalert2";
@@ -251,9 +251,9 @@
 //             <Zoom triggerOnce={false} duration={4000}>
 //           <Title>Contact <span>Us</span></Title>
 //           </Zoom>
-//           <Slide duration={4000} triggerOnce={false}>
+//           <Zoom duration={4000} triggerOnce={false}>
 //           <Subtitle>We would love to hear from you! Reach out to us for any inquiries, prayer requests, or support.</Subtitle>
-//         </Slide>
+//         </Zoom>
 //         </Header>
 
 //         {/* ---------- FORM ---------- */}
@@ -295,7 +295,7 @@
 //         </Form>
 // <InfoWrapper>
 //        {/* ---------- CONTACT INFO ---------- */}
-//      <Slide duration={4000} triggerOnce={false} direction="right">
+//      <Zoom duration={4000} triggerOnce={false} direction="right">
 // <Info>
 
 //   {/* ---------- EMAILS ---------- */}
@@ -354,7 +354,7 @@
 //   </InfoItem>
 
 // </Info>
-// </Slide>
+// </Zoom>
 // </InfoWrapper>
  
 
@@ -375,7 +375,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import contactus from '../Images/contactus.png'
-import { Zoom, Slide } from "react-awesome-reveal";
+import { Zoom} from "react-awesome-reveal";
 import FAQSection from "./FAQSection";
 import Swal from "sweetalert2";
 
@@ -587,11 +587,11 @@ export default function ContactSection() {
             <Zoom triggerOnce={false} duration={4000}>
               <Title>Contact <span>Us</span></Title>
             </Zoom>
-            <Slide triggerOnce={false} duration={4000}>
+            <Zoom triggerOnce={false} duration={4000}>
               <Subtitle>
                 We would love to hear from you! Reach out for inquiries, prayer requests, or support.
               </Subtitle>
-            </Slide>
+            </Zoom>
           </Header>
 
           {/* FORM */}
@@ -607,7 +607,7 @@ export default function ContactSection() {
 
           {/* INFO */}
           <Card>
-            <Slide direction="right" duration={4000} triggerOnce={false}>
+            {/* <Zoom direction="right" duration={4000} triggerOnce={false}> */}
               <Info>
 
                 {/* EMAILS */}
@@ -666,7 +666,7 @@ export default function ContactSection() {
                 </InfoItem>
 
               </Info>
-            </Slide>
+            {/* </Zoom> */}
           </Card>
 
         </Container>

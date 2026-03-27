@@ -1,7 +1,7 @@
 import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
-import {Zoom, Slide} from 'react-awesome-reveal'
+import {Zoom} from 'react-awesome-reveal'
 import insp from '../Images/insp.png'
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
@@ -220,12 +220,12 @@ Inspirational <span>Messages</span>
 </Title>
 </Zoom>
 
-<Slide direction="right" duration={4000} triggerOnce={false}>
+<Zoom direction="right" duration={4000} triggerOnce={false}>
 <Subtitle>
 Be uplifted, encouraged, and strengthened through powerful
 inspirationals from our Pastor.
 </Subtitle>
-</Slide>
+</Zoom>
 
 </Header>
 

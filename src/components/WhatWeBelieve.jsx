@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { Zoom, Slide } from "react-awesome-reveal";
+import { Zoom, } from "react-awesome-reveal";
 
 /* =========================
 ANIMATIONS
@@ -176,17 +176,17 @@ return(
     <Zoom triggerOnce={false} duration={4000}>
 <Title>What We Believe</Title>
 </Zoom>
-<Slide direction="left" triggerOnce={false} duration={4000}>
+<Zoom direction="left" triggerOnce={false} duration={4000}>
 <Subtitle>Our foundation is built on the truth of God's Word</Subtitle>
-</Slide>
+</Zoom>
 </Header>
 
 <Grid>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={4000}>
+    <Zoom direction="right" triggerOnce={false} duration={4000}>
 <CardTitle>ABOUT GOD</CardTitle>
-</Slide>
+</Zoom>
 <Text>
 God is the creator and ruler of the universe. He has eternally existed in three persons - the Father, the Son, and the Holy Spirit These three are co-equal and are one God.
 </Text>
@@ -197,9 +197,9 @@ Psalm 90:2 2 Corinthians 13:14 Matthew 28:19
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={4000}>
+    <Zoom direction="right" triggerOnce={false} duration={4000}>
 <CardTitle>ABOUT MAN</CardTitle>
-</Slide>
+</Zoom>
 <Text>
 Man is made in the spiritual image of God, to be like him in character. He is the supreme object of God's creation. Although man has tremendous potential for good, he is marred by an attitude of disobedience toward God called "sin." This attitude separates man from God.
 </Text>
@@ -209,9 +209,9 @@ Genesis 1:27 Romans 3:23
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={4000}>
+    <Zoom direction="right" triggerOnce={false} duration={4000}>
 <CardTitle>ABOUT ETERNITY</CardTitle>
-</Slide>
+</Zoom>
 <Text>
 Man was created to exist forever. He will either exist eternally separated from God by sin or in union with God through forgive- ness and salvation. To be eternally separated from God is hell. To be eternally in union with Him is eternal life. Heaven and hell are places of eternal existence.
 </Text>
@@ -221,9 +221,9 @@ John 3:16 Romans 6:23 Revelation 20:15 Matthew 25:31-46 John 5:11-13
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={4000}>
+    <Zoom direction="right" triggerOnce={false} duration={4000}>
 <CardTitle>ABOUT JESUS CHRIST</CardTitle>
-</Slide>
+</Zoom>
 <Text>
 Jesus Christ is the Son of God. He is co-equal with the Father. Jesus lived a sinless human life and offered himself as the perfect sacrifice for the sins of all men by dying on a cross. He arose from the dead after three days to demonstrate His power over sin and death. He ascended to heaven's glory and will return again to earth to reign as King of Kings and Lord of Lords.
 </Text>
@@ -233,9 +233,9 @@ Matthew 1:22, 23 Hebrews 4:14, 15 I Corinthians 15:3,4 Acts 1:9-11
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={4000}>
+    <Zoom direction="right" triggerOnce={false} duration={4000}>
 <CardTitle>ABOUT SALVATION</CardTitle>
-</Slide>
+</Zoom>
 <Text>
 Salvation is a gift from God to man. Man can never make up for his sin by self-improvment or good works-only by trusting in Jesus Christ as God's offer of forgiveness can man be saved from sin's penalty. Eternal life begins the moment one receives Jesus Christ into his life by faith.
 </Text>
@@ -245,9 +245,9 @@ Romans 6:23 Ephesians 2:8, 9 John 14:6
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={4000}>
+    <Zoom direction="right" triggerOnce={false} duration={4000}>
 <CardTitle>ABOUT ETERNAL SECURITY</CardTitle>
-</Slide>
+</Zoom>
 <Text>
 Because God gives man eternal life through Jesus Christ, the believer is secure in salvation for eternity. Salvation is maintained by the grace and power of God, not by the self-effort of the Christian.
 </Text>
@@ -257,9 +257,9 @@ John 10:29 2 Timothy 1:12 Hebrews 7:25
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={4000}>
+    <Zoom direction="right" triggerOnce={false} duration={4000}>
 <CardTitle>ABOUT THE HOLY SPIRIT</CardTitle>
-</Slide>
+</Zoom>
 <Text>
 The Holy Spirit is equal with the Father and the Son as God. He is present in the world to make men aware of their need for Jesus Christ. He also lives in every Christian from the moment of salvation. He provides the Christian with power for living, understanding of spiritual truth, and guidance in doing what is right.
 </Text>
@@ -269,9 +269,9 @@ Acts 1:8 Galatians 5:25 John 16:7-13
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={4000}>
+    <Zoom direction="right" triggerOnce={false} duration={4000}>
 <CardTitle>ABOUT THE BIBLE</CardTitle>
-</Slide>
+</Zoom>
 <Text>
 The Bible is God's word to all men. It was written by human authors, under the supernatural guidance of the Holy Spirit. It is the supreme source of truth for Christian beliefs and living. Because it is inspired by God, it is truth without any mixture of error.
 </Text>
@@ -281,9 +281,9 @@ The Bible is God's word to all men. It was written by human authors, under the s
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={4000}>
+    <Zoom direction="right" triggerOnce={false} duration={4000}>
 <CardTitle>ABOUT BAPTISM</CardTitle>
-</Slide>
+</Zoom>
 <Text>
 Baptism by immersion symbolizes the death, burial, and resurrect- ion of Jesus and is your public declaration that you have accepted Jesus Christ as your personal Savior. Baptism does not save you, but shows the world that you have already been saved.
 </Text>
@@ -293,9 +293,9 @@ Colossians 2:12 Acts 2:41 Matthew 28:19-20
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={4000}>
+    <Zoom direction="right" triggerOnce={false} duration={4000}>
 <CardTitle>ABOUT COMMUNION</CardTitle>
-</Slide>
+</Zoom>
 <Text>
 Communion, or the Lord's Supper, is an ordinance given to all believers by Jesus Christ to remember His sacrifice for us and to symbolize the new covenant. The elements of bread and wine or juice are symbols of Christ's broken body and shed blood.
 </Text>

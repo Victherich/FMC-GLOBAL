@@ -66,7 +66,7 @@ function App() {
     <a><img src={logo} alt="logo" className="WhatsAppIcon2" /></a> 
   
  <Hero2/>
- <SocialMediaSection/>
+ {/* <SocialMediaSection/> */}
   <Footer/>
  </BrowserRouter>
   );

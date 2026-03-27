@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { Zoom, Slide } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 import Salvationimg from '../Images/Salvationimg.png'
 import { useLocation } from "react-router-dom";
 
@@ -234,12 +234,12 @@ return(
 <Title>Receive Salvation</Title>
 </Zoom>
 
-<Slide direction="left" duration={4000} triggerOnce={false}>
+<Zoom direction="left" duration={4000} triggerOnce={false}>
 <Subtitle>
 
 Take the time for just a moment to consider your eternity.
 </Subtitle>
-</Slide>
+</Zoom>
 </Header>
 
 <Wrapper>
@@ -254,18 +254,18 @@ Men have discovered many truths (ex. Gravity, the make up of oxygen, cellular an
 <Steps>
 
 <Step>
-    <Slide direction="right" duration={4000} triggerOnce={false}>
+    <Zoom direction="right" duration={4000} triggerOnce={false}>
 <StepTitle>WHAT IS SALVATION?</StepTitle>
-</Slide>
+</Zoom>
 <StepText>
 Salvation is a free gift from God. It means to be made whole and includes deliverance, prosperity, healing and victory.
 </StepText>
 </Step>
 
 <Step>
-    <Slide direction="right" duration={4000} triggerOnce={false}>
+    <Zoom direction="right" duration={4000} triggerOnce={false}>
 <StepTitle>WHAT DOES IT MEAN TO BE BORN-AGAIN?</StepTitle>
-</Slide>
+</Zoom>
 <StepText>
 Being Born-Again or Saved means to accept Jesus Christ as Lord and Savior of your life.
 According to 2 Corinthians 5:17, when you b become Born-Again you are saved and become a new creature in Christ.
@@ -273,9 +273,9 @@ According to 2 Corinthians 5:17, when you b become Born-Again you are saved and 
 </Step>
 
 <Step>
-    <Slide direction="right" duration={4000} triggerOnce={false}>
+    <Zoom direction="right" duration={4000} triggerOnce={false}>
 <StepTitle>HOW DO I BECOME BORN-AGAIN?</StepTitle>
-</Slide>
+</Zoom>
 <StepText>
 You become Born-Again by believing and confessing. Romans 10.9 says, "That if thou shalt confess with thy mouth the Lord Jesus and shalt believe in thine heart that God has raised Him from the dead thou shalt be saved."
 </StepText>

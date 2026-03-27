@@ -1,7 +1,7 @@
 import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Slide, Zoom } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 import give from '../Images/donation2.png'
 
 /* ---------- SECTION ---------- */
@@ -198,13 +198,13 @@ Give & <span>Make an Impact</span>
 </Title>
 </Zoom>
 
-<Slide duration={4000} direction="right" triggerOnce={false}>
+<Zoom duration={4000} direction="right" triggerOnce={false}>
 <Text>
 Your generosity fuels ministry, transforms lives,
 and brings hope to communities. Every seed you sow
 helps expand God's work and touch lives around the world.
 </Text>
-</Slide>
+</Zoom>
 
 <Button onClick={()=>navigate("/donations")}>
 Give Now

@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { Zoom, Slide } from "react-awesome-reveal";
+import { Zoom} from "react-awesome-reveal";
 import { useLocation } from "react-router-dom";
 import p7 from '../Images/p7.jpeg'
 
@@ -207,9 +207,9 @@ return(
 <Zoom triggerOnce={false} duration={4000}>
 <Title>A Word from the Pastor</Title>
 </Zoom>
-<Slide duration={4000} triggerOnce={false}>
+<Zoom duration={4000} triggerOnce={false}>
 <Subtitle>Your Setback is a Setup for a Comeback</Subtitle>
-</Slide>
+</Zoom>
 <Content>
 
 {/* Pastors */}

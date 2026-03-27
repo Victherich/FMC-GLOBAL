@@ -1,7 +1,7 @@
 import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Zoom, Slide } from "react-awesome-reveal";
+import { Zoom} from "react-awesome-reveal";
 import f1 from "../Images/children1.png";
 import f2 from "../Images/children2.png";
 import f3 from "../Images/children3.png";
@@ -224,13 +224,13 @@ Discover Our <span>Ministries</span>
 </Title>
 </Zoom>
 
-<Slide triggerOnce={false} duration={4000}>
+<Zoom triggerOnce={false} duration={4000}>
 <Text>
 Experience a place where lives are transformed, faith is strengthened,
 and purpose is discovered. Our ministries are designed to meet you
 at every stage of life — from youth to families and beyond.
 </Text>
-</Slide>
+</Zoom>
 
 
 

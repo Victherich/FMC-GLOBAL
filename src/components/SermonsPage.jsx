@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Slide, Zoom, Flip } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 import { useEffect, useState } from "react";
 import { collection, getDocs, onSnapshot, query, orderBy  } from "firebase/firestore";
 import { db } from "../firebaseConfig";
@@ -275,18 +275,18 @@ return(
 {/* ---------- HERO ---------- */}
 
 <Hero>
- <Flip triggerOnce={false} duration={4000}>
+ <Zoom triggerOnce={false} duration={4000}>
     <HeroTitle>
       Sermons & <span>Media</span>
     </HeroTitle>
-  </Flip>
+  </Zoom>
 
-  <Slide direction="left" triggerOnce={false} duration={4000}>
+  <Zoom direction="left" triggerOnce={false} duration={4000}>
     <HeroText>
       Grow spiritually through powerful teachings, inspiring messages,
       and life-transforming word from God.
     </HeroText>
-  </Slide>
+  </Zoom>
 </Hero>
 
 
@@ -318,7 +318,7 @@ return(
 
 {/* ---------- CATEGORIES ---------- */}
 
-<Slide direction="right" triggerOnce>
+<Zoom direction="right" triggerOnce>
 
 <CategoryRow>
     <Category>More Sermons</Category>
@@ -328,7 +328,7 @@ return(
   <Category>Devotionals</Category> */}
 </CategoryRow>
 
-</Slide>
+</Zoom>
 
 
 {/* ---------- SERMONS ---------- */}

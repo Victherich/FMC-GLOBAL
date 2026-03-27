@@ -1,7 +1,7 @@
 import React from "react";
 import styled, {keyframes} from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Slide, Zoom } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 import testimony from '../Images/testimonyimg2.png';
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
@@ -218,12 +218,12 @@ return(
 Real Stories. <span>Real Miracles.</span>
 </Title>
 </Zoom>
-<Slide direction="right" triggerOnce={false} duration={4000}>
+<Zoom direction="right" triggerOnce={false} duration={4000}>
 <Text>
 God is still transforming lives every day. These testimonies
 are living proof of His goodness, faithfulness, and power.
 </Text>
-</Slide>
+</Zoom>
 
 <Featured>
 

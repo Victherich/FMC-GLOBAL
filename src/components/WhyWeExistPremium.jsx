@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { FaPray, FaBible, FaChalkboardTeacher, FaHeart } from "react-icons/fa";
-import { Slide, Zoom } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 
 /* =========================
 ANIMATIONS
@@ -230,9 +230,9 @@ return(
     <Zoom triggerOnce={false} duration={3000}>
 <Title>Our Statement: WHY WE EXIST AS A CHURCH</Title>
 </Zoom>
-<Slide direction="left" triggerOnce={false} duration={3000}>
+<Zoom direction="left" triggerOnce={false} duration={3000}>
 <Subtitle>Our purpose defines our mission and our impact</Subtitle>
-</Slide>
+</Zoom>
 </Header>
 
 <Grid>
@@ -276,33 +276,33 @@ He didn't say to His disciples, "I want you to be known for your fabulous preach
 
 <Card>
 <IconWrap><FaPray/></IconWrap>
-<Slide direction="right" triggerOnce={false} duration={3000}>
+<Zoom direction="right" triggerOnce={false} duration={3000}>
 <CardTitle>We exist to celebrate God's Presence</CardTitle>
-</Slide>
+</Zoom>
 <CardText>The number one priority of our lives is fellowship with God.</CardText>
 </Card>
 
 <Card>
 <IconWrap><FaBible/></IconWrap>
-<Slide direction="right" triggerOnce={false} duration={3000}>
+<Zoom direction="right" triggerOnce={false} duration={3000}>
 <CardTitle>We exist to communicate God's word</CardTitle>
-</Slide>
+</Zoom>
 <CardText>Sharing the good news and making God's wisdom known.</CardText>
 </Card>
 
 <Card>
 <IconWrap><FaChalkboardTeacher/></IconWrap>
-<Slide direction="right" triggerOnce={false} duration={3000}>
+<Zoom direction="right" triggerOnce={false} duration={3000}>
 <CardTitle>We exist to educate God's people</CardTitle>
-</Slide>
+</Zoom>
 <CardText>Growing believers into spiritual maturity through discipleship.</CardText>
 </Card>
 
 <Card>
 <IconWrap><FaHeart/></IconWrap>
-<Slide direction="right" triggerOnce={false} duration={3000}>
+<Zoom direction="right" triggerOnce={false} duration={3000}>
 <CardTitle>We exist to demonstrate God's Love</CardTitle>
-</Slide>
+</Zoom>
 <CardText>Meeting needs with love in the church and community.</CardText>
 </Card>
 

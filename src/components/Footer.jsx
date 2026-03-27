@@ -5,7 +5,11 @@ import {
 FaFacebookF, 
 FaYoutube, 
 FaInstagram, 
-FaTwitter 
+FaTwitter, 
+FaBuilding,
+FaUser,
+FaFacebookMessenger,
+FaFacebookSquare
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -121,6 +125,10 @@ const SocialRow = styled.div`
 display:flex;
 gap:12px;
 margin-top:10px;
+
+a{
+color:white;
+}
 `;
 
 const Social = styled.div`
@@ -232,26 +240,55 @@ love and miracles. Join us as we worship God and grow together
 in Christ.
 </Text>
 
+
+<h3>Socials:</h3>
 <SocialRow>
 
-<Social>
-<FaFacebookF/>
-</Social>
+  
+  <a
+    href="https://www.facebook.com/share/v/18ZD2KF5sd/"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="Watch Video"
+  >
+    <Social>
+      <FaFacebookSquare />
+    </Social>
+  </a>
 
-<Social>
-<FaYoutube/>
-</Social>
+  <a
+    href="https://www.facebook.com/share/18Logs2BtD/"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="View Post"
+  >
+    <Social>
+      <FaFacebookMessenger />
+    </Social>
+  </a>
 
-<Social>
-<FaInstagram/>
-</Social>
+  <a
+    href="https://www.facebook.com/sade.kuku?mibextid=ZbWKwL"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="Visit Profile"
+  >
+    <Social>
+      <FaUser />
+    </Social>
+  </a>
 
-<Social>
-<FaTwitter/>
-</Social>
-
+  <a
+    href="https://www.facebook.com/bishoptai?mibextid=ZbWKwL"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="Visit Page"
+  >
+    <Social>
+      <FaBuilding />
+    </Social>
+  </a>
 </SocialRow>
-
 </Column>
 
 

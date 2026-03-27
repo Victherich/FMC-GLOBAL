@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled, { keyframes } from "styled-components"
-import { Fade, Slide, Flip } from "react-awesome-reveal"
+import { Fade, Flip, Zoom } from "react-awesome-reveal"
 import m1 from '../Images/m1.png'
 
 const fade = keyframes`
@@ -77,7 +77,7 @@ filter:blur(120px);
 animation:${float} 6s infinite;
 `
 
-const slides = [
+const Zooms = [
 
 {
 text:"Creating a powerful life-changing atmosphere in God's presence."
@@ -99,7 +99,7 @@ const [index,setIndex] = useState(0)
 
 useEffect(()=>{
 const interval=setInterval(()=>{
-setIndex(prev=>(prev+1)%slides.length)
+setIndex(prev=>(prev+1)%Zooms.length)
 },3000)
 
 return()=>clearInterval(interval)
@@ -123,11 +123,11 @@ Our <span>Ministries</span>
 </Flip>
 
 {/* Subtitle animation */}
-<Slide direction="left" triggerOnce={false} duration={4000}>
+<Zoom direction="left" triggerOnce={false} duration={4000}>
 <HeroSubtitle>
-{slides[index].text}
+{Zooms[index].text}
 </HeroSubtitle>
-</Slide>
+</Zoom>
 
 </HeroContent>
 
