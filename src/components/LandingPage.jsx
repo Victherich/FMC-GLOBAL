@@ -11,6 +11,7 @@ import TestimoniesHighlight from './TestimoniesHighlight';
 import InspirationalHighlight from './InspirationalHighlight';
 import ContactCTA from './ContactUsCTA';
 import InfoLandingSection from './InfoLandingSection';
+import WelcomeBlessingModal from './WelcomeBlessingModal';
 
 const LandingPage = ()=>{
 
@@ -51,7 +52,7 @@ const LandingPage = ()=>{
     
     return(
         <Container>
-          
+          <WelcomeBlessingModal/>
             <HeroSection/>
             <AboutComponent/>
             <MinistriesHighlight/>

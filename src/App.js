@@ -28,11 +28,13 @@ import logo from './Images/p19.jpeg'
 import AppUpdate from './components/AppUpdate';
 import HostingExpiryGuard from './components/HostingExpiryGuard';
 import SocialMediaSection from './components/SocialMediaSection';
+import WelcomeBlessingModal from './components/WelcomeBlessingModal'
 
 
 function App() {
   return (
  <BrowserRouter>
+ 
  <HostingExpiryGuard/>
  <AppUpdate/>
    <AutoAudioPlayer src={worshipMusic}/>

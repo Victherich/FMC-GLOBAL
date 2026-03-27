@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { Slide, Zoom } from "react-awesome-reveal";
+import { Zoom } from "react-awesome-reveal";
 
 /* =========================
 ANIMATIONS
@@ -189,9 +189,9 @@ return(
     <Zoom triggerOnce={false} duration={3000}>
 <Title>About Our Church</Title>
 </Zoom>
-<Slide triggerOnce={false} duration={3000}>
+<Zoom triggerOnce={false} duration={3000}>
 <Subtitle>Welcome and Thank You for visiting The Faith and Miracle Center</Subtitle>
-</Slide>
+</Zoom>
 </Header>
 
 <Grid>
@@ -199,9 +199,9 @@ return(
 {/* LEFT TEXT */}
 
 <TextPanel>
-<Slide direction="right" triggerOnce={false} duration={3000}>
+<Zoom direction="right" triggerOnce={false} duration={3000}>
 <Welcome>Welcome</Welcome>
-</Slide>
+</Zoom>
 <p>
 Welcome and Thank You for visiting
 The Faith and Miracle Center
@@ -222,45 +222,45 @@ If you are searching for a church home, there is special place here just for you
 <Cards>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={3000}>
+    <Zoom direction="right" triggerOnce={false} duration={3000}>
 <CardTitle>A Place for Friendship......</CardTitle>
-</Slide>
+</Zoom>
 <CardText>
 We make it a priority to build lasting bonds of concern and genuine commitment between the members of our church family. We'd love for this family relationship to include you.
 </CardText>
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={3000}>
+    <Zoom direction="right" triggerOnce={false} duration={3000}>
 <CardTitle>A Place for Learning.....</CardTitle>
-</Slide>
+</Zoom>
 <CardText>
 To us, studying the Bible is vital because it does not only in- struct intellectually, but also guides spiritually. We believe it and accept it as God's word to man, a book that is alive and relevant to life today.
 </CardText>
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={3000}>
+    <Zoom direction="right" triggerOnce={false} duration={3000}>
 <CardTitle>A Place for Enrichment.....</CardTitle>
-</Slide>
+</Zoom>
 <CardText>
 We offer a wealth of opportunities and ministries for persons of all ages levels; which include children, youth and adults. You can be assured that you will have the occasion to pro- gress in many levels of growth in Christ.
 </CardText>
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={3000}>
+    <Zoom direction="right" triggerOnce={false} duration={3000}>
 <CardTitle>A Place for Service..</CardTitle>
-</Slide>
+</Zoom>
 <CardText>
 Just as Christ came "not to be ministered unto, but to minister..."We accept our responsibility to reach out in service to others. This applies both within the church family and outside of our fellowship.
 </CardText>
 </Card>
 
 <Card>
-    <Slide direction="right" triggerOnce={false} duration={3000}>
+    <Zoom direction="right" triggerOnce={false} duration={3000}>
 <CardTitle>A Place for Worship......</CardTitle>
-</Slide>
+</Zoom>
 <CardText>
 The primary reason we meet together is to focus our atten- tion on God, to give him our worship, and receive His blessing in faith and inspiration. We hope this is what you will exper- ience today and we certainly hope to see you again very soon.
 </CardText>
