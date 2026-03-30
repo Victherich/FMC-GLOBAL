@@ -29,6 +29,7 @@ import AppUpdate from './components/AppUpdate';
 import HostingExpiryGuard from './components/HostingExpiryGuard';
 import SocialMediaSection from './components/SocialMediaSection';
 import WelcomeBlessingModal from './components/WelcomeBlessingModal'
+import PastorsPage from './components/PastorsPage';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
 <Route path='/inspirationals' element={<InspirationalPage/>}/>
 <Route path='/testimonies' element={<TestimoniesPage/>}/>
 <Route path='/donations' element={<DonationsPage/>}/>
+<Route path='/ministers' element={<PastorsPage/>}/>
 
 
 

@@ -8,6 +8,7 @@ import AnimatedImage from './AnimatedImage'
 import WhatWeBelieve from './WhatWeBelieve'
 import h5 from '../Images/h5.jpeg'
 import h1 from '../Images/h1.jpeg'
+import PastorsCTA from './PastorsCTA'
 
 
 const AboutPage = ()=>{
@@ -22,6 +23,7 @@ const AboutPage = ()=>{
 <MembershipAndCovenant/>
 <AnimatedImage imageSource={h1}/>
 <FoundersSection/>
+<PastorsCTA/>
         </div>
     )
 }

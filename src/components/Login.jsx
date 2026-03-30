@@ -125,7 +125,7 @@ const UserLogin = () => {
   return (
     <Container>
       <FormWrapper>
-        <Title>User Login</Title>
+        <Title>Admin Login</Title>
 
         <form onSubmit={handleLogin}>
           <Label>Email</Label>
