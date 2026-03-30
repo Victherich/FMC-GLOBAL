@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {Zoom} from 'react-awesome-reveal'
 import insp from '../Images/insp.png'
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, onSnapshot, limit } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 
@@ -175,29 +175,32 @@ export default function InspirationalHighlight(){
 const navigate = useNavigate();
 const [data, setData] = useState([]);
 
+
+
 useEffect(() => {
-  const fetchData = async () => {
-    const snap = await getDocs(collection(db, "inspirations"));
+  const q = query(
+    collection(db, "inspirations"),
+    orderBy("createdAt", "desc"),
+    limit(4) // 🔥 only fetch 4 directly
+  );
 
-    let list = snap.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    }));
+  const unsubscribe = onSnapshot(
+    q,
+    (snapshot) => {
+      const list = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
-    // sort newest first
-    list.sort((a, b) => {
-      const aTime = a.createdAt?.seconds || 0;
-      const bTime = b.createdAt?.seconds || 0;
-      return bTime - aTime;
-    });
+      setData(list);
+    },
+    (error) => {
+      console.error("Realtime error:", error);
+    }
+  );
 
-    // 🔥 take only last 4
-    setData(list.slice(0, 4));
-  };
-
-  fetchData();
+  return () => unsubscribe(); // cleanup
 }, []);
-
 
 
 const featured = data[0];

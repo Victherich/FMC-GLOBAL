@@ -5,7 +5,7 @@ import { Zoom } from "react-awesome-reveal";
 import youthexplosion from '../Images/youthexplosion1.png'
 import co1 from '../Images/co1.png'
 import { useEffect, useState } from "react";
-import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, limit, onSnapshot } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 /* ---------- SECTION ---------- */
@@ -173,31 +173,29 @@ const [events, setEvents] = useState([]);
 
 
 
+
+
 useEffect(() => {
-  const fetchEvents = async () => {
-    try {
-      const q = query(
-        collection(db, "events"),
-        orderBy("createdAt", "desc"),
-        limit(3)
-      );
+  const q = query(
+    collection(db, "events"),
+    orderBy("createdAt", "desc"),
+    limit(3)
+  );
 
-      const snap = await getDocs(q);
+  const unsubscribe = onSnapshot(q, (snapshot) => {
+    const list = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
-      const list = snap.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+    setEvents(list);
+  }, (error) => {
+    console.error("Realtime error:", error);
+  });
 
-      setEvents(list);
-    } catch (error) {
-      console.error("Error fetching events:", error);
-    }
-  };
-
-  fetchEvents();
+  // cleanup listener when component unmounts
+  return () => unsubscribe();
 }, []);
-
 
 
 

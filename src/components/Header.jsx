@@ -305,10 +305,12 @@ const menus = [
   { title: "Sermons & Media", link: "/sermons" },
   { title: "Events", link: "/events" },
   { title: "Donations & Tithes", link: "/donations" },
-//   { title: "Gallery", link: "/gallery" },
+
   { title: "Inspirationals", link: "/inspirationals" },
   { title: "Testimonies", link: "/testimonies" },
-  { title: "Contact", link: "/contact" }
+     { title: "Ministers", link: "/ministers" },
+  { title: "Contact", link: "/contact" },
+ 
 ]
 
 useEffect(() => {
@@ -395,7 +397,7 @@ Give
 ))}
 
 <DonateButton onClick={()=>{navigate('/donations');setOpen(false)}}>
-Donate
+Give
 </DonateButton>
 
 </MobileMenu>

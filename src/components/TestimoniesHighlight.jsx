@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Zoom } from "react-awesome-reveal";
 import testimony from '../Images/testimonyimg2.png';
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, limit, orderBy, onSnapshot } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 /* ---------- SECTION ---------- */
@@ -157,118 +157,214 @@ const Card = styled.div`
 
 /* ---------- COMPONENT ---------- */
 
-export default function TestimoniesHighlight(){
-
-const navigate = useNavigate();
-
-const [data, setData] = useState([]);
-
-const testimoniesRef = collection(db, "testimonies");
-
-const fetchData = async () => {
-  const snap = await getDocs(testimoniesRef);
-
-  const list = snap.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-
-  const sorted = list.sort((a, b) => {
-    const dateA = a.createdAt?.seconds
-      ? new Date(a.createdAt.seconds * 1000)
-      : new Date(a.createdAt);
-
-    const dateB = b.createdAt?.seconds
-      ? new Date(b.createdAt.seconds * 1000)
-      : new Date(b.createdAt);
-
-    return dateB - dateA;
-  });
-
-  // 🔥 only 4
-  setData(sorted.slice(0, 4));
-};
-
-useEffect(() => {
-  fetchData();
-}, []);
-
-
-const featured = data[0];
-const others = data.slice(1);
 
 
 
 
-return(
 
-<Section>
+export default function TestimoniesHighlight() {
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
 
-<Container>
+  useEffect(() => {
+    const q = query(
+      collection(db, "testimonies"),
+      orderBy("createdAt", "desc"),
+      limit(4)
+    );
 
-{/* ---------- HERO ---------- */}
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const list = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-<Hero>
+        setData(list);
+      },
+      (error) => {
+        console.error("Realtime error:", error);
+      }
+    );
 
-<Image src={testimony} alt="Testimonies"/>
+    return () => unsubscribe(); // cleanup on unmount
+  }, []);
 
-<Content>
-<Zoom triggerOnce={false} duration={4000}>
-<Title>
-Real Stories. <span>Real Miracles.</span>
-</Title>
-</Zoom>
-<Zoom direction="right" triggerOnce={false} duration={4000}>
-<Text>
-God is still transforming lives every day. These testimonies
-are living proof of His goodness, faithfulness, and power.
-</Text>
-</Zoom>
+  const featured = data[0];
+  const others = data.slice(1);
 
-<Featured>
+  return (
+    <Section>
+      <Container>
 
-<Quote>
-{featured?.text}
-</Quote>
+        {/* ---------- HERO ---------- */}
+        <Hero>
 
-<Author>
-— {featured?.name || "Anonymous"}
-</Author>
+          <Image src={testimony} alt="Testimonies" />
 
-</Featured>
+          <Content>
+            <Zoom triggerOnce={false} duration={4000}>
+              <Title>
+                Real Stories. <span>Real Miracles.</span>
+              </Title>
+            </Zoom>
 
-<Button onClick={()=>navigate("/testimonies")}>
-Read More Testimonies
-</Button>
+            <Zoom direction="right" triggerOnce={false} duration={4000}>
+              <Text>
+                God is still transforming lives every day. These testimonies
+                are living proof of His goodness, faithfulness, and power.
+              </Text>
+            </Zoom>
 
-</Content>
+            {/* ✅ Safe render (prevents crash if empty) */}
+            {featured && (
+              <Featured>
+                <Quote>{featured.text}</Quote>
+                <Author>
+                  — {featured.name || "Anonymous"}
+                </Author>
+              </Featured>
+            )}
 
-</Hero>
+            <Button onClick={() => navigate("/testimonies")}>
+              Read More Testimonies
+            </Button>
+          </Content>
 
+        </Hero>
 
-{/* ---------- GRID ---------- */}
-<Grid>
+        {/* ---------- GRID ---------- */}
+        <Grid>
+          {others.map((item) => (
+            <Card key={item.id}>
+              <Quote>{item.text}</Quote>
+              <Author>
+                — {item.name || "Anonymous"}
+              </Author>
+            </Card>
+          ))}
+        </Grid>
 
-{others.map((item) => (
-  <Card key={item.id}>
-
-    <Quote>
-      {item.text}
-    </Quote>
-
-    <Author>
-      — {item.name || "Anonymous"}
-    </Author>
-
-  </Card>
-))}
-
-</Grid>
-
-</Container>
-
-</Section>
-
-)
-
+      </Container>
+    </Section>
+  );
 }
+
+
+
+// export default function TestimoniesHighlight(){
+
+// const navigate = useNavigate();
+
+// const [data, setData] = useState([]);
+
+// const testimoniesRef = collection(db, "testimonies");
+
+// const fetchData = async () => {
+//   const snap = await getDocs(testimoniesRef);
+
+//   const list = snap.docs.map((doc) => ({
+//     id: doc.id,
+//     ...doc.data(),
+//   }));
+
+//   const sorted = list.sort((a, b) => {
+//     const dateA = a.createdAt?.seconds
+//       ? new Date(a.createdAt.seconds * 1000)
+//       : new Date(a.createdAt);
+
+//     const dateB = b.createdAt?.seconds
+//       ? new Date(b.createdAt.seconds * 1000)
+//       : new Date(b.createdAt);
+
+//     return dateB - dateA;
+//   });
+
+//   // 🔥 only 4
+//   setData(sorted.slice(0, 4));
+// };
+
+// useEffect(() => {
+//   fetchData();
+// }, []);
+
+
+// const featured = data[0];
+// const others = data.slice(1);
+
+
+
+
+// return(
+
+// <Section>
+
+// <Container>
+
+// {/* ---------- HERO ---------- */}
+
+// <Hero>
+
+// <Image src={testimony} alt="Testimonies"/>
+
+// <Content>
+// <Zoom triggerOnce={false} duration={4000}>
+// <Title>
+// Real Stories. <span>Real Miracles.</span>
+// </Title>
+// </Zoom>
+// <Zoom direction="right" triggerOnce={false} duration={4000}>
+// <Text>
+// God is still transforming lives every day. These testimonies
+// are living proof of His goodness, faithfulness, and power.
+// </Text>
+// </Zoom>
+
+// <Featured>
+
+// <Quote>
+// {featured?.text}
+// </Quote>
+
+// <Author>
+// — {featured?.name || "Anonymous"}
+// </Author>
+
+// </Featured>
+
+// <Button onClick={()=>navigate("/testimonies")}>
+// Read More Testimonies
+// </Button>
+
+// </Content>
+
+// </Hero>
+
+
+// {/* ---------- GRID ---------- */}
+// <Grid>
+
+// {others.map((item) => (
+//   <Card key={item.id}>
+
+//     <Quote>
+//       {item.text}
+//     </Quote>
+
+//     <Author>
+//       — {item.name || "Anonymous"}
+//     </Author>
+
+//   </Card>
+// ))}
+
+// </Grid>
+
+// </Container>
+
+// </Section>
+
+// )
+
+// }
