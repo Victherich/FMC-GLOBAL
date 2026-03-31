@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import PayPalModal from "../components/PayPalModal";
 import PaystackModal from "../components/PaystackModal";
@@ -63,6 +63,9 @@ console.log(form)
 
 const [showPaypal,setShowPaypal] = useState(false);
 const [showPaystack,setShowPaystack] = useState(false);
+
+
+
 
 const handleChange = e =>{
   setForm({...form,[e.target.name]:e.target.value});

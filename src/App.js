@@ -30,6 +30,7 @@ import HostingExpiryGuard from './components/HostingExpiryGuard';
 import SocialMediaSection from './components/SocialMediaSection';
 import WelcomeBlessingModal from './components/WelcomeBlessingModal'
 import PastorsPage from './components/PastorsPage';
+import PaystackPaymentPage from './components/PaystackPaymentPage';
 
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
 <Route path='/testimonies' element={<TestimoniesPage/>}/>
 <Route path='/donations' element={<DonationsPage/>}/>
 <Route path='/ministers' element={<PastorsPage/>}/>
-
+<Route path="/paystack-payment" element={<PaystackPaymentPage />} />
 
 
   {/* <Route path='/signup' element={<UserSignup/>}/> */}
@@ -75,3 +76,7 @@ function App() {
 }
 
 export default App;
+
+// github push code
+// date 3/31/2026
+//time 1:26pm

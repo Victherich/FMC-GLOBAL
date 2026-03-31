@@ -18,6 +18,7 @@ import M12 from '../Images/M12.jpeg'
 import M13 from '../Images/M13.jpeg'
 import M14 from '../Images/M14.jpeg'
 import M15 from '../Images/M15.jpeg'
+import M16 from '../Images/M16.jpeg'
 
 
 // Animations
@@ -195,7 +196,7 @@ const pastors = [
 const pastors2 = [
   {
     name: "Pastor Israel Craig ",
-    role: "Coordinating Pastor All Locations Lagos",
+    role: "Coordinating Pastor Lagos, Nigeria",
     image: M7
   },
   {
@@ -212,6 +213,11 @@ const pastors2 = [
     name: "Evangelist Happiness Ikeh ",
     role: "Assistant Pastor, Miracle House.",
     image: M10
+  },
+   {
+    name: "Pastor Ayoade Alao ",
+    role: "Pastor, FMC Solution House",
+    image: M16
   },
   {
     name: "Pastor Joshua Adewoye ",
