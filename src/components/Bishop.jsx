@@ -120,6 +120,7 @@ const Icon = styled.a`
   color: gold;
   font-size: 1.5rem;
   transition: 0.3s;
+  cursor:pointer;
 
   &:hover {
     transform: scale(1.2);
@@ -149,10 +150,10 @@ export default function Bishop() {
           </Fade>
 
           <Socials>
-            <Icon href="#"><FaFacebook /></Icon>
-            <Icon href="#"><FaInstagram /></Icon>
-            <Icon href="#"><FaYoutube /></Icon>
-            <Icon href="#"><FaTwitter /></Icon>
+            <Icon onClick={()=>window.open("https://www.facebook.com/bishoptai?mibextid=ZbWKwL", "_blank")}><FaFacebook /></Icon>
+            {/* <Icon onClick={()=>window.open('', "_blank")}><FaInstagram /></Icon> */}
+            {/* <Icon onClick={()=>window.open('', "_blank")}><FaYoutube /></Icon> */}
+            {/* <Icon onClick={()=>window.open('', "_blank")}><FaTwitter /></Icon> */}
           </Socials>
         </HeroContent>
       </Hero>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { Fade, Slide, Zoom } from "react-awesome-reveal";
-import { FaFacebook, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube, FaTwitter, FaTiktok } from "react-icons/fa";
 import insp from '../Images/p5.jpeg'
 import p10a from '../Images/p10a.jpeg'
 import sadeImg from '../Images/p9.jpeg'
@@ -122,10 +122,11 @@ const Socials = styled.div`
   margin-top: 20px;
 `;
 
-const Icon = styled.a`
+const Icon = styled.p`
   color: #ff4da6;
   font-size: 1.5rem;
   transition: 0.3s;
+  cursor:pointer;
 
   &:hover {
     transform: scale(1.3);
@@ -158,10 +159,10 @@ export default function FounderPage() {
           </Fade>
 
           <Socials>
-            <Icon href="#"><FaFacebook /></Icon>
-            <Icon href="#"><FaInstagram /></Icon>
-            <Icon href="#"><FaYoutube /></Icon>
-            <Icon href="#"><FaTwitter /></Icon>
+            <Icon  onClick={()=>window.open( "https://www.facebook.com/sade.kuku?mibextid=ZbWKwL", "_blank")}><FaFacebook /></Icon>
+            <Icon onClick={()=>window.open( "https://www.instagram.com/pastorsadekuku?igsh=dnlieXI1Z2J5eDRh", "_blank")}><FaInstagram /></Icon>
+            <Icon onClick={()=>window.open( "https://www.youtube.com/@sadek4001", "_blank")}><FaYoutube /></Icon>
+            <Icon onClick={()=>window.open( "https://www.tiktok.com/@pastorsadekuku?_r=1&_t=ZS-95BPbaHyJgj", "_blank")}><FaTiktok /></Icon>
           </Socials>
         </HeroContent>
       </Hero>
