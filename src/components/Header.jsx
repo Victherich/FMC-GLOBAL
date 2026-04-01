@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import logo from '../Images/logo.png'
 import { useNavigate, useLocation } from "react-router-dom";
 import 'animate.css';
+import BeautifulDropdown from "./DropDown";
 
 const gradientMove = keyframes`
 0%{background-position:0% 50%}
@@ -300,11 +301,11 @@ const location = useLocation(); // get current route
 
 const menus = [
   { title: "Home", link: "/" },
-  { title: "About Us", link: "/about" },
-  { title: "Ministries", link: "/ministries" },
+  { title: "About", link: "/about" },
+  // { title: "Ministries", link: "/ministries" },
   { title: "Sermons & Media", link: "/sermons" },
   { title: "Events", link: "/events" },
-  { title: "Donations & Tithes", link: "/donations" },
+  { title: "Giving", link: "/donations" },
 
   { title: "Inspirationals", link: "/inspirationals" },
   { title: "Testimonies", link: "/testimonies" },
@@ -367,10 +368,10 @@ return (
     {menu.title}
   </NavItem>
 ))}
-
-<DonateButton onClick={()=>navigate('/donations')}>
+<BeautifulDropdown/>
+{/* <DonateButton onClick={()=>navigate('/donations')}>
 Give
-</DonateButton>
+</DonateButton> */}
 
 </Nav>
 
@@ -395,7 +396,7 @@ Give
     {menu.title}
   </p>
 ))}
-
+<BeautifulDropdown/>
 <DonateButton onClick={()=>{navigate('/donations');setOpen(false)}}>
 Give
 </DonateButton>

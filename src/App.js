@@ -32,6 +32,9 @@ import WelcomeBlessingModal from './components/WelcomeBlessingModal'
 import PastorsPage from './components/PastorsPage';
 import PaystackPaymentPage from './components/PaystackPaymentPage';
 
+import Bishop from './components/Bishop';
+import PastorShadeKuku from './components/PastorShadeKuku';
+
 
 function App() {
   return (
@@ -56,6 +59,9 @@ function App() {
 <Route path='/ministers' element={<PastorsPage/>}/>
 <Route path="/paystack-payment" element={<PaystackPaymentPage />} />
 
+<Route path='/bishop' element={<Bishop/>}/>
+<Route path='/pastor_sade_kuku' element={<PastorShadeKuku/>}/>
+
 
   {/* <Route path='/signup' element={<UserSignup/>}/> */}
   <Route path='/login' element={<UserLogin/>}/>
@@ -78,5 +84,5 @@ function App() {
 export default App;
 
 // github push code
-// date 3/31/2026
-//time 1:26pm
+// date 4/1/2026
+//time 7:46pm

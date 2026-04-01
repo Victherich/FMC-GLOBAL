@@ -218,7 +218,9 @@ export default function SalvationExperience(){
 
     const location = useLocation();
     
-  if(location.pathname==='/dashboard'|| location.pathname==='/login' || location.pathname==='/signup'){
+  if(location.pathname==='/dashboard'|| location.pathname==='/login' || location.pathname==='/signup'
+    ||location.pathname==='/bishop'||location.pathname==='/pastor_sade_kuku'||location.pathname==='/ministers'
+  ){
     return;
 }
 

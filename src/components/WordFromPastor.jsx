@@ -197,7 +197,7 @@ export default function WordFromPastor(){
 const location = useLocation();
 
 if(location.pathname==='/dashboard'|| location.pathname==='/login' || location.pathname==='/signup'
-    ||location.pathname==='/ministers'
+    ||location.pathname==='/ministers'||location.pathname==='/bishop'|| location.pathname==='/pastor_sade_kuku'
 ){
     return;
 }
