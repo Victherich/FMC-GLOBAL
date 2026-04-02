@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import { Zoom,Slide } from "react-awesome-reveal";
 import p10a from '../Images/p10a.jpeg'
 import p6 from '../Images/p6.jpeg'
+import { useNavigate } from "react-router-dom";
 
 /* =========================
 ANIMATIONS
@@ -182,6 +183,7 @@ FOUNDERS DATA
 const founders = [
   {
     name: "Bishop Taiwo Kuku",
+    route:"/bishop",
     position: "Founder & General Overseer, Faith and Miracle Center Worldwide",
     image: p10a,
     bio: `Bishop Taiwo Kuku is the Founder and General Overseer of  The Faith and Miracle Center (FMC) Worldwide, an apostolic ministry with a growing global presence and church expressions in the United States and Nigeria. He is widely regarded as a dynamic preacher, prayer leader, and apostolic–prophetic voice called to equip believers and strengthen the global Church through the uncompromised teaching of God’s Word and the power of strategic prayer.
@@ -194,6 +196,7 @@ Bishop Taiwo Kuku resides in Atlanta, Georgia, with his wife, Pastor Sade Kuku, 
   },
   {
     name: "Pastor Sade Kuku",
+    route:"/pastor_sade_kuku",
     position: "Co-Pastor & Co-Founder, Faith and Miracle Center Worldwide",
     image: p6,
     bio: `Pastor Sade Kuku is a woman of faith, wisdom, and divine purpose. She serves as the Co-Pastor and Co-Founder of Faith and Miracle Center Global, headquartered in Atlanta, Georgia, USA, alongside her husband, Bishop Taiwo Kuku, Founder and General Overseer of Faith and Miracle Center Global. Together, they bring healing, hope, and transformation to lives through the preaching of the Word and the demonstration of God’s power.
@@ -214,6 +217,8 @@ COMPONENT
 
 export default function FoundersSection() {
   const [activeBio, setActiveBio] = React.useState(null);
+const navigate = useNavigate();
+
 
   return (
     <SectionWrapper>
@@ -228,7 +233,7 @@ export default function FoundersSection() {
             <Name>{founder.name}</Name>
             </Zoom>
             <Position>{founder.position}</Position>
-            <BioButton onClick={() => setActiveBio(idx)}>
+            <BioButton onClick={() => navigate(`${founder.route}`)}>
               {founder.name}'s Biography
             </BioButton>
           </Card>

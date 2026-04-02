@@ -230,6 +230,7 @@ const Wrapper = styled.div`
   display: inline-block;
   font-family: Inter, sans-serif;
   user-select: none;
+  margin-bottom:10px;
 `;
 
 const Trigger = styled.button`
@@ -237,7 +238,7 @@ const Trigger = styled.button`
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 10px 16px;
+  padding:5px 8px;
   font-size: 14px;
   border-radius: 12px;
   background: linear-gradient(180deg, #ffffff, #f7f9fc);
@@ -273,12 +274,12 @@ const Caret = styled(FaChevronDown)`
 
 const Menu = styled.ul`
   position: absolute;
-  top: ${({ placement }) => (placement === "top" ? "auto" : "calc(100% + 8px)")};
-  bottom: ${({ placement }) => (placement === "top" ? "calc(100% + 8px)" : "auto")};
+  top: ${({ placement }) => (placement === "top" ? "auto" : "calc(100% - 120px)")};
+  bottom: ${({ placement }) => (placement === "top" ? "calc(100% - 8px)" : "auto")};
   right: 0;
   width: 220px;
   margin: 0;
-  padding: 8px 0;
+  padding: 4px 0;
   list-style: none;
   border-radius: 12px;
   background: linear-gradient(180deg, #ffffff, #f8fbff);
@@ -290,10 +291,10 @@ const Menu = styled.ul`
 const Item = styled.li`
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
+  gap: 5px;
+  padding: 5px 8px;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: #0033a0; /* default text color */
   transition: background 0.2s ease, transform 0.2s ease;

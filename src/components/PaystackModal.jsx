@@ -77,7 +77,7 @@ const payWithPaystack = () => {
     email: "faithandmiraclecenter@gmail.com",
     amount: form.amount * 100,
     currency: "NGN",
-    subaccount: "ACCT_6r0tyg8mdqdusld",
+    subaccount: "ACCT_nb1fgn9yju5fohg",
     bearer: "subaccount", // or "subaccount"
 
     onSuccess: (transaction) => {
@@ -107,6 +107,7 @@ const payWithPaystack = () => {
 
     onCancel: () => {
       Swal.fire("Info", "Payment canceled.", "info");
+      window.location.reload();
       close();
     },
   });

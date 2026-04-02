@@ -70,7 +70,7 @@ const FemaleImage = styled.img`
 `;
 
 const Section = styled.section`
-  padding: 80px 20px;
+  padding: 20px 20px;
   max-width: 1100px;
   margin: auto;
 `;
@@ -169,7 +169,7 @@ export default function FounderPage() {
 
       {/* BIO */}
       <Section>
-        <Heading>Full Biography</Heading>
+        <Heading style={{marginTop:"20px"}}>Biography</Heading>
         <Slide direction="up" triggerOnce>
           <DetailText>
 Pastor Sade Kuku is a woman of faith, wisdom, and divine purpose. She serves as the Co-Pastor and Co-Founder of Faith and Miracle Center Global, headquartered in Atlanta, Georgia, USA, alongside her husband, Bishop Taiwo Kuku.

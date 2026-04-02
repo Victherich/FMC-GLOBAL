@@ -111,12 +111,14 @@ const Title = styled.h1`
 
   line-height:1.2;
 
+
+
   span{
     color:#d4af37;
   }
 
-  @media(max-width:768px){
-    font-size:2.2rem;
+  @media(max-width:1280px){
+    font-size:1.5rem;
   }
 `;
 
@@ -127,6 +129,10 @@ const Text = styled.p`
   line-height:1.7;
   margin-bottom:30px;
   color:#e2e8f0;
+
+    @media(max-width:1280px){
+    font-size:0.8rem;
+  }
 `;
 
 /* ---------- BUTTON ---------- */

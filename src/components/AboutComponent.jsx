@@ -764,6 +764,11 @@ padding-bottom:30px;
 padding-left:5px;
 padding-right:5px;
 overflow:hidden;
+
+@media(max-width:1280px){
+border-radius:200px 200px 0 0;
+}
+
 `;
 
 const Div = styled.div`
@@ -846,6 +851,10 @@ animation: blinkCursor 0.8s steps(2,start) infinite;
 @keyframes blinkCursor{
 50%{border-color:transparent;}
 }
+
+  @media(max-width:1280px){
+    font-size:0.8rem;
+  }
 `;
 
 const More = styled.p`

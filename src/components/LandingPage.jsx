@@ -52,7 +52,7 @@ const LandingPage = ()=>{
     
     return(
         <Container>
-          <WelcomeBlessingModal/>
+          {/* <WelcomeBlessingModal/> */}
             <HeroSection/>
             <AboutComponent/>
             <MinistriesHighlight/>

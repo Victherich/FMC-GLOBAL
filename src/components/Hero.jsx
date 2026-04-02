@@ -300,7 +300,7 @@ background:black;
 background-size:400% 400%;
 animation:${gradientMove} 18s ease infinite;
 
-@media(max-width:768px){
+@media(max-width:1280px){
 flex-direction:column;
 }
 
@@ -371,7 +371,7 @@ const Title = styled.h1`
     color:#ffd700;
   }
 
-  @media(max-width:768px){
+  @media(max-width:1280px){
     font-size:2.5rem;
   }
 `;
@@ -383,7 +383,7 @@ color:#eee;
 line-height:1.7;
 text-shadow: 0 5px 15px rgba(0,0,0,1);
 
-@media(max-width:768px){
+@media(max-width:1280px){
 font-size:1rem;
 }
 `;

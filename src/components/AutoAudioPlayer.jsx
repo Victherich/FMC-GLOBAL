@@ -46,7 +46,7 @@ export default function AutoAudioPlayer({ src, volume = 0.5 }) {
         onClick={toggleAudio}
         style={{
           position: "fixed",
-          bottom: "13%",
+          bottom: "16%",
           right: "1%",
           padding: "3px 8px",
           borderRadius: "50px",

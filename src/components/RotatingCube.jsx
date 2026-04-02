@@ -22,7 +22,7 @@ width: ${({ size }) => size || "300px"};
 height: ${({ size }) => size || "300px"};
 z-index:2;
 
-@media(max-width:768px){
+@media(max-width:1280px){
 width: ${({ size2 }) => size2 || "100px"};
 height: ${({ size2 }) => size2 || "100px"};
 

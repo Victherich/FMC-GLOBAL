@@ -28,6 +28,8 @@ const ModalBox = styled.div`
   background: white;
   border-radius: 20px;
   padding: 25px;
+    overflow:auto;
+  max-height:95vh;
 `;
 
 const Title = styled.h3`

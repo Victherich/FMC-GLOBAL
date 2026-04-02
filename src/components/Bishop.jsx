@@ -61,7 +61,7 @@ const Image = styled.img`
 `;
 
 const Section = styled.section`
-  padding: 80px 20px;
+  padding: 20px 20px;
   max-width: 1100px;
   margin: auto;
 `;
@@ -212,13 +212,13 @@ Bishop Taiwo Kuku resides in Atlanta, Georgia, with his wife, Pastor Sade Kuku, 
 
       <Section>
         <Heading>Contact & Connect</Heading>
-        <Text>Email: info@fmcworldwide.org</Text>
+        <Text>Email: info@fmcglobal.org</Text>
         <Text>Phone: +1 (000) 000-0000</Text>
         <Socials>
-          <Icon href="#"><FaFacebook /></Icon>
-          <Icon href="#"><FaInstagram /></Icon>
-          <Icon href="#"><FaYoutube /></Icon>
-          <Icon href="#"><FaTwitter /></Icon>
+         <Icon onClick={()=>window.open("https://www.facebook.com/bishoptai?mibextid=ZbWKwL", "_blank")}><FaFacebook /></Icon>
+           {/* <Icon href="#"><FaInstagram /></Icon> */}
+          {/* <Icon href="#"><FaYoutube /></Icon> */}
+          {/* <Icon href="#"><FaTwitter /></Icon> */}
         </Socials>
       </Section>
 

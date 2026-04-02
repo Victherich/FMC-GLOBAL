@@ -52,8 +52,8 @@ span{
 color:#ffd700;
 }
 
-@media(max-width:768px){
-font-size:2.4rem;
+@media(max-width:1280px){
+font-size:2rem;
 }
 `
 
@@ -64,6 +64,10 @@ color:#ddd;
 line-height:1.7;
 font-weight:bold;
   text-shadow: 0 5px 15px rgba(0,0,0,1);
+
+  @media(max-width:1280px){
+font-size:0.9rem;
+}
 `
 
 const GlowCircle = styled.div`

@@ -30,11 +30,11 @@ const Title = styled.h2`
 
 const Grid = styled.div`
   display: grid;
-  gap: 2rem; /* Consistent gap between cards */
+  gap: 1rem; /* Consistent gap between cards */
   grid-template-columns: 1fr;
 
   @media (min-width: 640px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
   @media (min-width: 1024px) {

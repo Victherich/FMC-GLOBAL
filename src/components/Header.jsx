@@ -119,7 +119,7 @@ span{
 
   /* animation for moving text */
   display:inline-block;
-  
+  // display:none;
 }
 
 img{
@@ -169,7 +169,7 @@ align-items:center;
 const NavItem = styled.a`
   color: ${props => props.active ? "#ffd700" : "white"};  // gold if active
   font-weight:500;
-  font-size:15px;
+  font-size:13px;
   cursor:pointer;
   position:relative;
   text-decoration:none;
@@ -236,7 +236,7 @@ cursor:pointer;
 color:white;
 font-size:28px;
 
-@media(max-width:900px){
+@media(max-width:1280px){
 display:block;
 }
 `;
@@ -249,11 +249,12 @@ width:260px;
 
 background:rgba(0,0,0,0.85);
 backdrop-filter:blur(10px);
-
-padding:30px;
+height:300px;
+padding:10px;
 
 flex-direction:column;
-gap:18px;
+gap:5px;
+overflow-y:scroll;
 
 display:${props => props.open ? "flex" : "none"};
 transition:0.4s;
@@ -261,7 +262,7 @@ transition:0.4s;
 p{
 color:white;
 text-decoration:none;
-font-size:16px;
+font-size:0.9rem;
 cursor:pointer;
 }
 
@@ -271,7 +272,7 @@ const DesktopMenu = styled.div`
 display:flex;
 gap:25px;
 
-@media(max-width:900px){
+@media(max-width:1280px){
 display:none;
 }
 `;
@@ -309,7 +310,7 @@ const menus = [
 
   { title: "Inspirationals", link: "/inspirationals" },
   { title: "Testimonies", link: "/testimonies" },
-     { title: "Ministers", link: "/ministers" },
+    //  { title: "Ministers", link: "/ministers" },
   { title: "Contact", link: "/contact" },
  
 ]
