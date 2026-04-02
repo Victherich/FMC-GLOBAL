@@ -76,7 +76,7 @@ export default function PayPalModal({ form, close}) {
         <Header>Complete Donation</Header>
         <p>Amount: ${form.amount}</p>
         {/* BRO MATT PAYPAL TEST KEY */}
-        <PayPalScriptProvider options={{ "client-id": "AVw5SK5QbcJalyLRwng7Dilfy3Wj16c8zzLmbX55Ff6TGs-7js8FdE8z7ZjWWEOknSyNfd9ITIf2pWEx" }}>
+        <PayPalScriptProvider options={{ "client-id": "AavNyWV2t6Ih-7AC2EqiU4VBGXjpB5J9ZB6eK9IQV2a2H-onWs-FL1vEz10idSU63pjI_wZGvCESso6O" }}>
           <PayPalButtons
             style={{ layout: "vertical", color: "gold", shape: "rect", label: "paypal" }}
             createOrder={(data, actions) => {
