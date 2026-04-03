@@ -4,6 +4,7 @@ import logo from '../Images/logo.png'
 import { useNavigate, useLocation } from "react-router-dom";
 import 'animate.css';
 import BeautifulDropdown from "./DropDown";
+import BeautifulDropdown2 from "./DropDown2";
 
 const gradientMove = keyframes`
 0%{background-position:0% 50%}
@@ -236,7 +237,7 @@ cursor:pointer;
 color:white;
 font-size:28px;
 
-@media(max-width:1280px){
+@media(max-width:900px){
 display:block;
 }
 `;
@@ -249,11 +250,11 @@ width:260px;
 
 background:rgba(0,0,0,0.85);
 backdrop-filter:blur(10px);
-height:300px;
+// height:300px;
 padding:10px;
 
 flex-direction:column;
-gap:5px;
+gap:10px;
 overflow-y:scroll;
 
 display:${props => props.open ? "flex" : "none"};
@@ -272,7 +273,7 @@ const DesktopMenu = styled.div`
 display:flex;
 gap:25px;
 
-@media(max-width:1280px){
+@media(max-width:900px){
 display:none;
 }
 `;
@@ -303,14 +304,13 @@ const location = useLocation(); // get current route
 const menus = [
   { title: "Home", link: "/" },
   { title: "About", link: "/about" },
-  // { title: "Ministries", link: "/ministries" },
-  { title: "Sermons & Media", link: "/sermons" },
+  { title: "Ministries", link: "/ministries" },
   { title: "Events", link: "/events" },
   { title: "Giving", link: "/donations" },
 
+  { title: "Sermons & Media", link: "/sermons" },
   { title: "Inspirationals", link: "/inspirationals" },
   { title: "Testimonies", link: "/testimonies" },
-    //  { title: "Ministers", link: "/ministers" },
   { title: "Contact", link: "/contact" },
  
 ]
@@ -360,7 +360,7 @@ return (
 <NavItem  onClick={()=>navigate(`${menu.link}`)} key={i}>{menu.title}</NavItem>
 ))} */}
 
-{menus.map((menu,i)=>(
+{menus.slice(0,5).map((menu,i)=>(
   <NavItem  
     key={i} 
     active={location.pathname === menu.link}
@@ -370,6 +370,8 @@ return (
   </NavItem>
 ))}
 <BeautifulDropdown/>
+<BeautifulDropdown2/>
+
 {/* <DonateButton onClick={()=>navigate('/donations')}>
 Give
 </DonateButton> */}

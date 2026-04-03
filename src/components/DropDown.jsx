@@ -230,7 +230,7 @@ const Wrapper = styled.div`
   display: inline-block;
   font-family: Inter, sans-serif;
   user-select: none;
-  margin-bottom:10px;
+
 `;
 
 const Trigger = styled.button`
@@ -274,7 +274,7 @@ const Caret = styled(FaChevronDown)`
 
 const Menu = styled.ul`
   position: absolute;
-  top: ${({ placement }) => (placement === "top" ? "auto" : "calc(100% - 120px)")};
+  top: ${({ placement }) => (placement === "top" ? "auto" : "calc(100% + 8px)")};
   bottom: ${({ placement }) => (placement === "top" ? "calc(100% - 8px)" : "auto")};
   right: 0;
   width: 220px;
@@ -285,7 +285,11 @@ const Menu = styled.ul`
   background: linear-gradient(180deg, #ffffff, #f8fbff);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(15, 23, 42, 0.08);
-  z-index: 1000;
+  z-index: 444;
+
+  @media(max-width:900px){
+   top: ${({ placement }) => (placement === "top" ? "auto" : "calc(100% - 120px)")};
+  }
 `;
 
 const Item = styled.li`

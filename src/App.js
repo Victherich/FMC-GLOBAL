@@ -34,9 +34,24 @@ import PaystackPaymentPage from './components/PaystackPaymentPage';
 
 import Bishop from './components/Bishop';
 import PastorShadeKuku from './components/PastorShadeKuku';
+import PaymentInProgressModal from './components/PaymentInProgressModal';
+import { useContext , useEffect} from 'react';
+import { Context } from './components/Context';
 
 
 function App() {
+  const {openPendingModal, setOpenPendingModal} = useContext(Context);
+
+    useEffect(() => {
+      const pending = localStorage.getItem("pendingDonation");
+  
+      if (pending) {
+        setOpenPendingModal(true);
+      }
+    }, []);
+
+
+
   return (
  <BrowserRouter>
  
@@ -75,6 +90,7 @@ function App() {
     <a><img src={logo} alt="logo" className="WhatsAppIcon2" /></a> 
   
  <Hero2/>
+{openPendingModal&& <PaymentInProgressModal/>}
  {/* <SocialMediaSection/> */}
   <Footer/>
  </BrowserRouter>
@@ -84,5 +100,5 @@ function App() {
 export default App;
 
 // github push code
-// date 4/1/2026
-//time 2:35pm
+// date 4/3/2026
+//time 8:16am

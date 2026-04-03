@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PayPalModal from "../components/PayPalModal";
 import PaystackModal from "../components/PaystackModal";
 import GivingSection from "./GivingSection";
+import Swal from "sweetalert2";
 
 const Page = styled.div`
   padding:80px 20px;
@@ -72,6 +73,16 @@ const handleChange = e =>{
 };
 
 const handleSubmit = () => {
+  if(!form.name||
+    !form.email||
+    !form.phone||
+    !form.category||
+    !form.currency||
+    !form.amount
+  ){
+    Swal.fire({text:"Please enter all details. Thank you"})
+    return;
+  }
 
   if(form.currency === "USD"){
     setShowPaypal(true);
@@ -137,11 +148,11 @@ Proceed to Payment
 </Form>
 
 {showPaypal && (
-<PayPalModal form={form} close={()=>{setShowPaypal(false); resetForm()}}/>
+<PayPalModal form={form} close={()=>{setShowPaypal(false);}}/>
 )}
 
 {showPaystack && (
-<PaystackModal form={form} close={()=>{setShowPaystack(false); resetForm()}}/>
+<PaystackModal form={form} close={()=>{setShowPaystack(false);}}/>
 )}
 
 </Page>
