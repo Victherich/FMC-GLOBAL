@@ -19,6 +19,7 @@ import M13 from '../Images/M13.jpeg'
 import M14 from '../Images/M14.jpeg'
 import M15 from '../Images/M15.jpeg'
 import M16 from '../Images/M16.jpeg'
+import M17 from '../Images/M17.jpeg'
 
 
 // Animations
@@ -189,6 +190,11 @@ const pastors = [
     name: "Min Adesuwa Oduntan ",
     role: "Minister Of Music",
     image: M6
+  },
+   {
+    name: "Dr Pelumi Esther Kuku (PharmD)",
+    role: "Head, Media, Atlanta Ga.",
+    image: M17
   }
 ];
 
